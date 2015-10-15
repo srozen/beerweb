@@ -16,5 +16,9 @@
 !/log/.keep
 /tmp
 
-# Layout files 
+# Layout files
 .DS_Store
+
+# Sensitive Files
+config/secrets.yml
+config/database.yml
