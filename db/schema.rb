@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20151016091803) do
 
   create_table "beers", force: :cascade do |t|
     t.string   "name"
-    t.integer  "degree"
+    t.float    "degree"
     t.text     "description"
     t.text     "story"
     t.datetime "created_at",  null: false
