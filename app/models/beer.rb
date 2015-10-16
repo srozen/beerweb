@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string
-#  degree      :integer
+#  degree      :float
 #  description :text
 #  story       :text
 #  created_at  :datetime         not null
@@ -13,7 +13,12 @@
 
 class Beer < ActiveRecord::Base
 
-  validates :name, :presence => true
-  validates :degree, :presence => true
+  validates :name, presence: true,
+                   length: { maximum: 40},
+                   uniqueness: { case_sensitive: false }
+
+  validates :degree, presence: true,
+                     numericality: true,
+                     inclusion: { in: 0.0..100 }
 
 end
