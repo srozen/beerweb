@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+      <%= yield %>
 
-<%= yield %>
 
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.test? %>
+  </div>
 </body>
 </html>
