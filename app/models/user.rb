@@ -14,4 +14,7 @@
 #
 
 class User < ActiveRecord::Base
+
+  validates :login, presence: true,
+                    length: { minimum: 6 , maximum: 25 }
 end
