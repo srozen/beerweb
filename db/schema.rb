@@ -13,15 +13,24 @@
 
 ActiveRecord::Schema.define(version: 20151016091803) do
 
+  create_table "beer_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "beers", force: :cascade do |t|
     t.string   "name"
     t.float    "degree"
     t.text     "description"
     t.text     "story"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "beer_category_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
+  add_index "beers", ["beer_category_id"], name: "index_beers_on_beer_category_id"
   add_index "beers", ["name"], name: "index_beers_on_name", unique: true
 
 end
