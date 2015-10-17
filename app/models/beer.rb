@@ -2,16 +2,19 @@
 #
 # Table name: beers
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  degree      :float
-#  description :text
-#  story       :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id               :integer          not null, primary key
+#  name             :string
+#  degree           :float
+#  description      :text
+#  story            :text
+#  beer_category_id :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class Beer < ActiveRecord::Base
+
+  belongs_to :beer_category
 
   #===================#
   #=== Validations ===#
