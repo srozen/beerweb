@@ -17,7 +17,10 @@ RSpec.describe Beer, type: :model do
 
   # Entité champs valides
   before(:each) do
-    @attr = { :name => "Taras Boulba", :degree => 4.5}
+    @attr = { :name => "Taras Boulba",
+              :degree => 4.5,
+              :description => "Blonde légère de 4,5 % d’alc., généreusement houblonnée avec le houblon aromatique le plus fin, lui conférant un caractère très rafraîchissant et un nez qui rappelle les agrumes.",
+              :story => "Tarass Boulba est un cosaque ukrainien robuste et belliqueux. Ses deux fils, Andreï et Ostap, rentrant de Kiev après avoir fini leurs études, sont très vite conduits à la Setch, le campement militaire cosaque. Une rumeur circulant dans le camp constitue un motif suffisant pour entrer en guerre contre les Polonais, au nom de la défense de la foi orthodoxe."}
   end
 
   it "devrait créer une instance dotée des attributs valides" do
@@ -42,7 +45,7 @@ RSpec.describe Beer, type: :model do
     expect(beer_duplicate_name).to_not be_valid
   end
 
-  # XXX : Console prompting that degree can't be blank, test not working
+  # XXX : La console confirme que le degré ne peut être vide, mais le test n'est pas fonctionnel
   it "exige un titrage en alcool" do
     no_titling_beer = Beer.new(@attr.merge(:degree => nil))
     expect(no_titling_beer).to_not be_valid
@@ -56,5 +59,17 @@ RSpec.describe Beer, type: :model do
   it "rejette titrage négatif ou supérieur à 100" do
     out_of_rate_titling = Beer.new(@attr.merge(:degree => (-6.5)))
     expect(out_of_rate_titling).to_not be_valid
+  end
+
+  it "rejette une description trop longue" do
+    long_description = "z" * 500
+    too_long_description = Beer.new(@attr.merge(:description => long_description))
+    expect(too_long_description).to_not be_valid
+  end
+
+  it "rejette un historique trop longue" do
+    long_story = "z" * 500
+    too_long_story = Beer.new(@attr.merge(:description => long_story))
+    expect(too_long_story).to_not be_valid
   end
 end
