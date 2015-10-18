@@ -11,4 +11,11 @@
 
 class BeerCategory < ActiveRecord::Base
   has_many :beers
+
+  validates :name, presence: true,
+                   length: { maximum: 40},
+                   uniqueness: { case_sensitive: false }
+
+  validates :description, presence: true,
+                          length: { maximum: 500}
 end
