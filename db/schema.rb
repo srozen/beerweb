@@ -33,4 +33,18 @@ ActiveRecord::Schema.define(version: 20151016091803) do
   add_index "beers", ["beer_category_id"], name: "index_beers_on_beer_category_id"
   add_index "beers", ["name"], name: "index_beers_on_name", unique: true
 
+  create_table "users", force: :cascade do |t|
+    t.string   "login"
+    t.string   "password"
+    t.string   "email"
+    t.string   "firstName"
+    t.string   "lastName"
+    t.date     "birthday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["login"], name: "index_users_on_login", unique: true
+
 end
