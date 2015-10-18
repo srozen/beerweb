@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
                     format: { with: email_regex },
                     uniqueness: { case_sensitive: false }
 
-  validates :firstName, presence: true,
-                        format: { with: name_regex, message: "only allows letters" }
+  validates :firstName, format: { with: name_regex, message: "only allows letters" }
 
 end

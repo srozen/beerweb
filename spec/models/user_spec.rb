@@ -18,8 +18,11 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   before(:each) do
-    @attr  = { :login => "zyvaah", :password => "onverra", :email => "bienoubien@gmail.com",
-    :firstName => "miche" }
+    @attr  = { :login => "Mickazzzz",
+               :password => "jurgen9999",
+               :email => "bienoubien@gmail.com",
+               :firstName => "Miche",
+               :lastName => "Rifouille"}
   end
 
   it "devrait créer une instance possédant des attributs valides" do
@@ -85,11 +88,6 @@ RSpec.describe User, type: :model do
   end
 
   ### Check du prénom
-
-  it "devrait exiger un nom" do
-    nameless_user = User.new(@attr.merge(:firstName => nil))
-    expect(nameless_user).to_not be_valid
-  end
 
   it "devrait rejeter un nom de personne invalide" do
     name_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
