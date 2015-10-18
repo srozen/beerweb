@@ -26,7 +26,8 @@ RSpec.describe User, type: :model do
     User.create!(@attr)
   end
 
-  #Check du login
+  ### Check du login
+
   it "devrait exiger un nom" do
     john_snow = User.new(@attr.merge(:login => nil))
     expect(john_snow).to_not be_valid
@@ -44,7 +45,8 @@ RSpec.describe User, type: :model do
     expect(too_long_login_user).to_not be_valid
   end
 
-  #check du password
+  ### Check du password
+
   it "devrait exiger un mot de passe" do
     no_pass = User.new(@attr.merge(:password => nil))
     expect(no_pass).to_not be_valid
@@ -56,7 +58,8 @@ RSpec.describe User, type: :model do
     expect(pass_invalid_user).to_not be_valid
   end
 
-  #check du email
+  ### Check de l'email
+
   it "devrait exiger un email" do
     emailess_user = User.new(@attr.merge(:email => nil))
     expect(emailess_user).to_not be_valid
@@ -81,16 +84,16 @@ RSpec.describe User, type: :model do
     expect(user_with_same_email).to_not be_valid
   end
 
-  #check des nom et prénom
+  ### Check du prénom
+
   it "devrait exiger un nom" do
     nameless_user = User.new(@attr.merge(:firstName => nil))
     expect(nameless_user).to_not be_valid
   end
 
-  #it "devrait rejeter un nom de personne invalide" do
-  #  firstName_invalid = "jeanmichdu93"
-  #  firstName_invalid_user = User.new(@attr.merge(:firstName => firstName_invalid))
-  #  expect(firstName_invalid_user).to_not be_valid
-  #end
+  it "devrait rejeter un nom de personne invalide" do
+    name_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
+    expect(name_invalid_user).to_not be_valid
+  end
 
 end
