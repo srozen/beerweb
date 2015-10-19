@@ -89,9 +89,26 @@ RSpec.describe User, type: :model do
 
   ### Check du prénom
 
+  it "devrait rejeter un prénom de personne invalide" do
+    firstname_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
+    expect(firstname_invalid_user).to_not be_valid
+  end
+
+  it "ne devrait pas exiger de prénom" do
+    firstNameLess = User.new(@attr.merge(:firstName => ""))
+    expect(firstNameLess).to be_valid
+  end
+
+  ### Check du nom
+
   it "devrait rejeter un nom de personne invalide" do
-    name_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
-    expect(name_invalid_user).to_not be_valid
+    lastname_invalid_user = User.new(@attr.merge(:lastName => "789Miche"))
+    expect(lastname_invalid_user).to_not be_valid
+  end
+
+  it "ne devrait pas exiger de nom" do
+    lastNameLess = User.new(@attr.merge(:lastName => ""))
+    expect(lastNameLess).to be_valid
   end
 
 end
