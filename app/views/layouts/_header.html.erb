@@ -5,16 +5,19 @@
             <a href="<%= root_path %>" id="logo-container" class="brand-logo">Beer Collection</a>
                 <ul class="right hide-on-med-and-down">
                     <% if current_page?(root_path) %>
-                      <li><a href="#intro">Service</a></li>
-                      <li><a href="#work">Work</a></li>
-                      <li><a href="#contact">Contact</a></li>
+                        <li><a href="#intro">Service</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     <% end %>
-                    <li><%= link_to "Catalogue", catalogue_path %></li>    
-                 
+                    <li><%= link_to "Catalogue", catalogue_path %></li>
+                    <li><%= link_to "S'inscrire", signup_path %></li>  
+                    <li><%= link_to "Connexion", signin_path %></li>        
                 </ul>
+
                 <ul id="nav-mobile" class="side-nav">                     
                     <li><%= link_to "Catalogue", catalogue_path %></li>
-         
+                    <li><%= link_to "S'inscrire", signup_path %></li>  
+                    <li><%= link_to "Connexion", signin_path %></li>        
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
@@ -22,13 +25,13 @@
                 <div id="loader"></div>
                 <div class="loader-section section-left"></div>
                 <div class="loader-section section-right"></div>
-                <script src="min/plugin-min.js"></script>
-                <script src="min/custom-min.js"></script>
             </div>
         </div>
     </nav>
 </div>
-
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
 
 
    
