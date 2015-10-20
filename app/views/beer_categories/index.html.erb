@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+        <th data-field="name">Name</th>
+        <th data-field="degree">Degrés</th>
+        <th data-field="price">Catégorie</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beers.each do |beer| %>
+      <tr>
+        <td><%= beer.name %></td>
+        <td><%= beer.degree %></td>
+        <td><%= beer.beer_category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
