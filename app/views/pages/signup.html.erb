@@ -1,0 +1,68 @@
+
+
+<div id="login-page" class="row-login">
+    <div class="col s12 ">
+      <%= form_for(@user) do |f| %>
+      <form class="login-form">
+        <div class="row">
+         
+          <div class="input-field col s12 center">
+         
+          </div>
+        </div>
+         <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
+          </div>
+        </div>
+         <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <%= f.label :email, "eMail" %><br />
+        <%= f.text_field :email %>
+          </div>
+        </div>
+          <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <%= f.label :password, "Mot de passe" %><br />
+        <%= f.password_field :password %>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+        <%= f.label :password_confirmation, "Confirmation" %><br/><br />
+    <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+      
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 actions">
+            
+             <%= f.submit "Inscription" , :class => "btn col s12 waves-light "  %>
+      
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+           
+            <p class="margin medium-small">Pas encore inscrit ? <%= link_to "Register Now!", signup_path  %></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
+          </div>          
+        </div>
+
+      </form>
+        <% end %>
+    </div>
+  </div>
