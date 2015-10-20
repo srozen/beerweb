@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//= require materialize
+
+// Initialise les parallax
+
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+
+// Initialise le menu mobile
+$(".button-collapse").sideNav();
