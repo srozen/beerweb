@@ -43,6 +43,8 @@ group :development, :test do
 
   # Rspec testing
   gem 'rspec', '~> 3.3.0'
+  gem 'rspec-rails', '~> 3.3.0'
+
 end
 
 group :development do
