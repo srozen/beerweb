@@ -39,8 +39,11 @@ group :development, :test do
   # Display database structure
   gem 'annotate', '~> 2.6.10'
 
+
   # Rspec testing
   gem 'rspec', '~> 3.3.0'
+  gem 'rspec-rails', '~> 3.3.0'
+
 end
 
 group :development do
