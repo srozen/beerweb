@@ -32,4 +32,18 @@ class Beer < ActiveRecord::Base
   validates :description, length: { maximum: 300}
 
   validates :story, length: { maximum: 400}
+
+
+
+  ## Recherche des bières sur base du nom
+  # => XXX La méthode devra peut-être être renomée si complexification
+  #
+  def self.search(name)
+    if name
+      self.where('name LIKE ?', "%#{name}%")
+    else
+      self.all
+    end
+  end
+
 end
