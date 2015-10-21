@@ -24,13 +24,32 @@ RSpec.describe SessionsController, type: :controller do
 
       it "devrait avoir le bon titre" do
         post :create, :session => @attr
-        expect(response).to have_selector("title", :content => "S'identifier")
+        expect(response).to have_selector("titre", :content => "Login")
       end
 
       it "devait avoir un message flash.now" do
         post :create, :session => @attr
         expect(flash.now[:error]).to =~ /invalid/i
       end
+    end
+
+    describe "login et pwd valides" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        @attr = { :login => @user.login, :pwd => @user.pwd }
+      end
+
+      it "devrait rediriger vers la page d'affichage de l'utilisateur" do
+        post :create, :session => @attr
+        expect(response).to redirect_to(user_path(@user))
+      end
+
+      it "devrait identifier l'utilisateur" do
+        post :create, :session => @attr
+        controller.current_user.to_be == @user
+        expect(controller).to be login
+      end
+
     end
   end
 end
