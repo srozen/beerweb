@@ -54,5 +54,24 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to render_template('new')
       end
     end
+
+    describe "succès" do
+
+      before(:each) do
+        @attr = { :login => "NewUser", :email => "user@example.com",
+                  :pwd => "foobar", :pwd_confirmation => "foobar" }
+      end
+
+      it "devrait créer un utilisateur" do
+        expect(lambda do
+          post :create, :user => @attr
+        end).to change(User, :count).by(1)
+      end
+
+      it "devrait rediriger vers la page d'affichage de l'utilisateur" do
+        post :create, :user => @attr
+        expect(response).to redirect_to(user_path(assigns(:user)))
+      end
+    end
   end
 end
