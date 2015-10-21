@@ -7,7 +7,6 @@ resources :users
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collection', :to => 'pages#collection'
-  get '/catalogue', :to => 'pages#catalogue'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
   post '/mlogin', :to => 'users#mlogin'
@@ -23,12 +22,17 @@ resources :users
   # You can have the root of your site routed with "root"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get '/catalogue', :to => 'beer_categories#index'
+  post '/catalogue', :to => 'beer_categories#index'
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :beers
+  resources :beer_categories
 
   # Example resource route with options:
   #   resources :products do

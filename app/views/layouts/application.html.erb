@@ -8,7 +8,6 @@
 
   </head>
   <body>
-
       <%= render 'layouts/header' %>
 
         <% flash.each do |key, value| %>
@@ -17,6 +16,8 @@
 
         <%= yield %>
 
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.test? %>
+  </div>
 </body>
- <%= render 'layouts/footer' %>
 </html>
