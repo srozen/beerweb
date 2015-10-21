@@ -18,5 +18,8 @@
 
 <%= yield %>
 
+<%= debug(params) if Rails.env.test? %>
+
+
 </body>
 </html>

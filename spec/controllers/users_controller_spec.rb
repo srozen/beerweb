@@ -11,13 +11,8 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "devrait réussir" do
-      get 'new'
+      get :new
       expect(response).to be_success
-    end
-
-    it "devrait avoir le bon titre" do
-      get 'new'
-      expect(response).to have_selector("title", :content => "Register")
     end
 
   end
@@ -37,6 +32,27 @@ RSpec.describe UsersController, type: :controller do
       get :show, :id => @user
       expect(assigns(:user)) == @user
     end
+  end
 
+  describe "POST 'create'" do
+
+    describe "échec" do
+
+      before(:each) do
+        @attr = { :login => "", :email => "", :pwd => "",
+                  :pwd_confirmation => "" }
+      end
+
+      it "ne devrait pas créer d'utilisateur" do
+        expect(lambda do
+          post :create, :user => @attr
+        end).to_not change(User, :count)
+      end
+
+      it "devrait rendre la page 'new'" do
+        post :create, :user => @attr
+        expect(response).to render_template('new')
+      end
+    end
   end
 end

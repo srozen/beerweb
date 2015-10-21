@@ -25,3 +25,7 @@ $(document).ready(function(){
 
 // Initialise le menu mobile
 $(".button-collapse").sideNav();
+
+$(document).ready(function() {
+    $('input#input_text, textarea#textarea1').characterCounter();
+});

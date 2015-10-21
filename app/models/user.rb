@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   # Champ virtuel (mot de passe de travail)
   attr_accessor :pwd
 
+  #attr_accessible :login, :email, :pwd, :pwd_confirmation
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   name_regex = /\A[a-zA-Z]+\z/
 
@@ -28,8 +30,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     format: { with: email_regex },
                     uniqueness: { case_sensitive: false }
-
-  validates :firstName, format: { with: name_regex, message: "only allows letters" }
 
   # Attributs virtuels pour création du mot de passe
   validates :pwd, :presence     => true,
