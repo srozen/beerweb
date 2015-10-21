@@ -1,9 +1,8 @@
-
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'beerweb'
-set :repo_url, 'git@github.com:srozen/beerweb.git'
+set :application, 'beer_collection_website'
+set :repo_url, 'git@github.com:srozen/beer_collection_website.git'
 
 set :passenger_restart_with_touch, true
 
@@ -11,7 +10,7 @@ set :passenger_restart_with_touch, true
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/beerweb'
+set :deploy_to, '/home/deploy/beer_collection_website'
 
 # Default value for :scm is :git
 # set :scm, :git

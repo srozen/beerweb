@@ -1,28 +1,20 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+L'épopée du BeerCollectionWebsite !
 
-Things you may want to cover:
+Ce fichier est destiné d'abord aux devs du site, mais sera également rédigé à terme pour toute autre personne intéressée dans ce projet.
 
-* Ruby version
+=== Versions des outils utilisés
+* Ruby 2.2.3
+* Rails 4.2.4
 
-* System dependencies
+=== Maintenance de la DB
+* Premièrement, il faut créer le fichier *migrate* qui contiendra les changements apportés à la base de données.
+Ceci est fait via rails generate migration AjoutExampleMigrationUsers.
+Il est primordial de nommer cette migration en CamelCase et en terminant par le nom de classe au pluriel !
 
-* Configuration
+* Imaginons qu'on veuille ajouter un champ numéro de téléphone, on génèrera la migration AddTelnumberToUsers.
 
-* Database creation
+* Ensuite, éditez le fichier créé dans db/migrate afin d'insérer les changements voulu sur la database.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Finalement, faites rake db:migrate pour effectuer la migration !
