@@ -2,14 +2,14 @@
   <div class="card-panel grey lighten-5 z-depth-1">
     <div class="row valign-wrapper">
       <div class="card-image">
-        <img class="z-depth-2" src="../images/beer_sticker/<%= @beer.id %>.jpg">
+        <img class="z-depth-2 materialboxed" src="../images/beer_sticker/<%= @beer.id %>.jpg">
         
       </div>
       <div class="col s2">
-        <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="circle responsive-img z-depth-2"> <!-- notice the "circle" class -->
+        <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="circle responsive-img z-depth-2 materialboxed"> <!-- notice the "circle" class -->
       </div>
       <div class="col s10">
-    
+   
     
 <ul class="collapsible popout">
         <li> 
@@ -41,5 +41,14 @@
       </ul>
     </div>
     <!--  Scripts-->
-    <script src="min/plugin-min.js"></script>
-    <script src="min/custom-min.js"></script>
+    <script src="../min/plugin-min.js"></script>
+    <script src="../min/custom-min.js"></script>
+    <script>
+      $(document).ready(function () {
+    $('.materialboxed').materialbox();
+});
+$(document).ready(function () {
+    $('.materialboxed').materialbox();
+});
+      //@ sourceURL=pen.js
+    </script>
