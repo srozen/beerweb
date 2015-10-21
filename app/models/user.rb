@@ -31,6 +31,11 @@ class User < ActiveRecord::Base
 
   validates :firstName, format: { with: name_regex, message: "only allows letters" }
 
+  # Attributs virtuels pour création du mot de passe
+  validates :pwd, :presence     => true,
+                  :confirmation => true,
+                  :length       => { :within => 6..40 }
+
 
   before_save :encrypt_password
 

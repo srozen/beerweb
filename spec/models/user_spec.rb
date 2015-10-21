@@ -19,10 +19,11 @@ RSpec.describe User, type: :model do
 
   before(:each) do
     @attr  = { :login => "Mickazzzz",
-               :password => "jurgen9999",
                :email => "bienoubien@gmail.com",
                :firstName => "Miche",
-               :lastName => "Rifouille"}
+               :lastName => "Rifouille",
+               :pwd => "bigbick",
+               :pwd_confirmation => "digbick"}
   end
 
   it "devrait créer une instance possédant des attributs valides" do
@@ -61,6 +62,33 @@ RSpec.describe User, type: :model do
     expect(pass_invalid_user).to_not be_valid
   end
 
+  describe "password validations" do
+
+    it "devrait exiger un mot de passe" do
+      no_pwd_user = User.new(@attr.merge(:pwd => "", :pwd_confirmation => ""))
+      expect(no_pwd_user).to_not be_valid
+    end
+
+    it "devrait exiger une confirmation du mot de passe qui correspond" do
+      bad_confirmation_user = User.new(@attr.merge(:pwd_confirmation => "invalid"))
+      expect(bad_confirmation_user).to_not be_valid
+    end
+
+    it "devrait rejeter les mots de passe (trop) courts" do
+      short = "a" * 5
+      hash = @attr.merge(:pwd => short, :pwd_confirmation => short)
+      short_pwd_user = User.new(hash)
+      expect(short_pwd_user).to_not be_valid
+    end
+
+    it "devrait rejeter les (trop) longs mots de passe" do
+      long = "a" * 41
+      hash = @attr.merge(:password => long, :password_confirmation => long)
+      long_pwd_user = User.new(hash)
+      expect(long_pwd_user).to_not be_valid
+    end
+  end
+
   ### Check de l'email
 
   it "devrait exiger un email" do
@@ -93,26 +121,4 @@ RSpec.describe User, type: :model do
     name_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
     expect(name_invalid_user).to_not be_valid
   end
-
-
-  describe "Cryptage du mot de passe" do
-
-    before(:each) do
-      @user = User.create!(@attr)
-    end
-
-    describe "Test de has_password" do
-
-      it "devrait retourner true si les mots de passe coïncident" do
-        expect(@user.has_password?(@attr[:password])).to be true
-      end
-
-      it "devrait retourner false si les mots de passe ne sont pas les mêmes" do
-        expect(@user.has_password?(@attr["bordel"])).to be false
-      end
-
-    end
-
-  end
-
 end
