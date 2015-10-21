@@ -54,6 +54,15 @@ class User < ActiveRecord::Base
     return user if user.match_password?(submitted_password)
   end
 
+  # Authentification d'un user sur base de son id unique et du salt de son cookie
+  def self.authenticate_with_salt(id, cookie_salt)
+    # On cherche le user par son id unique
+    user = find_by_id(id)
+    # On vérifie que le salt enregistré dans le cookie est celui du user
+    return nil  if user.nil?
+    return user if user.salt == cookie_salt
+  end
+
   private
 
     # Encryption du password et création du sel si nouvel utilisateur
