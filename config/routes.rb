@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 resources :sessions, :only => [:new, :create, :destroy]
 resources :users
+resources :beers
+resources :beer_categories
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
   get '/about',   :to => 'pages#about'
@@ -16,6 +18,9 @@ resources :users
   #get '/', :to => 'pages#home'
   root :to => 'pages#home'
 
+  ## API ROUTES ##
+  post '/api_login', :to => 'users#api_login'
+  get '/api_login', :to => 'users#api_login'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -31,8 +36,6 @@ resources :users
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :beers
-  resources :beer_categories
 
   # Example resource route with options:
   #   resources :products do

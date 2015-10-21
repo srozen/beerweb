@@ -22,15 +22,34 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+
+  # TODO 
+  #def api_register
+  #
+  #end
+
   def create
     @user = User.new(user_params)
     if @user.save
-     sign_in @user
+      sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
     else
       @titre = "Inscription"
       render 'new'
+    end
+  end
+
+  def api_login
+    @user = User.authenticate(params[:login], params[:password])
+    if @user.nil?
+      render :json => {
+        :checkLog => false, :idUser => nil
+      }
+    else
+      render :json => {
+        :checkLog => true, :idUser => @user.id
+      }
     end
   end
 
