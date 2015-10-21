@@ -13,6 +13,7 @@
 #  updated_at :datetime         not null
 #
 
+require 'digest'
 class User < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -30,4 +31,29 @@ class User < ActiveRecord::Base
 
   validates :firstName, format: { with: name_regex, message: "only allows letters" }
 
+
+  before_save :encrypt_password
+
+  def has_password?(wpassword)
+    password == wpassword
+  end
+
+  private
+
+    def secure_hash(string)
+      Digest::SHA2.hexdigest(string)
+    end
+
+    def encrypt(string)
+      secure_hash(string)
+    end
+
+    def make_salt
+      secure_hash("#{Time.now.utc}--#{wpassword_submit}")
+    end
+
+    def encrypt_password
+      self.salt = make_salt if new_record?
+      self.password = encrypt(wpassword_submit)
+    end
 end
