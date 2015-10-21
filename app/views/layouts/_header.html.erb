@@ -1,23 +1,21 @@
 <div class="navbar-fixed scrollspy">
     <nav id="nav_f" class="default_color" role="navigation">
         <div class="container">
+        <% if signed_in? %>
 
-
-            <% if signed_in? %>
-     
 
   <div class="nav-wrapper">
             <a href="<%= root_path %>" id="logo-container" class="brand-logo">Beer Collection</a>
                 <ul class="right hide-on-med-and-down">
-               
+
                      <% if current_page?(root_path) %>
                     <li><a href="#intro">Service</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <% end %>              
-       
+                    <% end %>
+
                     <li><%= link_to "Profil", edit_user_path(current_user) %></li>
-                    
+
                     <li><%= link_to "Ma collection", collection_path %></li>
                   <li><%= link_to "Catalogue", catalogue_path %></li>
                     <li><%= link_to "Déconnexion", signout_path %></li>
@@ -28,7 +26,7 @@
                     <li><a href="#work">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <% end %>
-                  
+
                     <li><%= link_to "Profil", edit_user_path(current_user) %></li>
                     <li><%= link_to "Ma collection", collection_path %></li>
                   <li><%= link_to "Catalogue", catalogue_path %></li>
@@ -46,7 +44,7 @@
                     <li><a href="#contact">Contact</a></li>
                     <% end %>
                     <li><%= link_to "Catalogue", catalogue_path %></li>
-                    
+
                     <li><%= link_to "S'identifier", signin_path %></li>
                      <li><%= link_to "S'inscrire", signup_path %></li>
                 </ul>
@@ -56,21 +54,16 @@
                     <li><a href="#work">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <% end %>
-                    
-                   
-                    
-                    <li><%= link_to "Catalogue", catalogue_path %></li>
-                  
-              
-                         <li><%= link_to "S'identifier", signin_path %></li>
-                           <li><%= link_to "S'inscrire", signup_path %></li>
+                  <li><%= link_to "Catalogue", catalogue_path %></li>
+                  <li><%= link_to "S'identifier", signin_path %></li>
+                  <li><%= link_to "S'inscrire", signup_path %></li>
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
       <% end %>
         <div id="loader-wrapper">
     <div id="loader"></div>
- 
+
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
         <script src="min/plugin-min.js"></script>
@@ -81,8 +74,3 @@
         </div>
     </nav>
 </div>
-
-
-
-   
- 

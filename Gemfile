@@ -51,7 +51,6 @@ group :development, :test do
   # Factory instances
   gem 'factory_girl_rails', '4.5.0'
 
-
 end
 
 group :development do
