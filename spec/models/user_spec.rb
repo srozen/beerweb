@@ -94,4 +94,25 @@ RSpec.describe User, type: :model do
     expect(name_invalid_user).to_not be_valid
   end
 
+
+  describe "Cryptage du mot de passe" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    describe "Test de has_password" do
+
+      it "devrait retourner true si les mots de passe coïncident" do
+        expect(@user.has_password?(@attr[:password])).to be true
+      end
+
+      it "devrait retourner false si les mots de passe ne sont pas les mêmes" do
+        expect(@user.has_password?(@attr["bordel"])).to be false
+      end
+
+    end
+
+  end
+
 end
