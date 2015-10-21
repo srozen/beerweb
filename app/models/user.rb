@@ -16,14 +16,14 @@
 require 'digest'
 class User < ActiveRecord::Base
 
+  # Champ virtuel (mot de passe de travail)
+  attr_accessor :pwd
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   name_regex = /\A[a-zA-Z]+\z/
 
   validates :login, presence: true,
                     length: { minimum: 6 , maximum: 25 }
-
-  validates :password, presence: true,
-                       length: { within: 6..40 }
 
   validates :email, presence: true,
                     format: { with: email_regex },
@@ -36,29 +36,45 @@ class User < ActiveRecord::Base
                   :confirmation => true,
                   :length       => { :within => 6..40 }
 
-
+  # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password
 
-  def has_password?(wpassword)
-    password == wpassword
+  # Retour true (vrai) si le mot de passe correspond.
+  def match_password?(submitted_password)
+    password == encrypt(submitted_password)
+  end
+
+  # Authentification d"un user sur base du login/mot de passe soumis
+  def self.authenticate(login, submitted_password)
+    # On recherche le user sur base du login
+    user = find_by_login(login)
+    # On renvoie NIL si inexistant
+    return nil  if user.nil?
+    # On renvoie le résultat de la comparaison avec le mot de passe
+    return user if user.match_password?(submitted_password)
   end
 
   private
 
-    def secure_hash(string)
-      Digest::SHA2.hexdigest(string)
-    end
-
-    def encrypt(string)
-      secure_hash(string)
-    end
-
-    def make_salt
-      secure_hash("#{Time.now.utc}--#{wpassword_submit}")
-    end
-
+    # Encryption du password et création du sel si nouvel utilisateur
     def encrypt_password
+      # Si nouvel user, on crée son SALT
       self.salt = make_salt if new_record?
-      self.password = encrypt(wpassword_submit)
+      self.password = encrypt(pwd)
     end
+
+    # Renvoie un hash sur base du SALT et d'un string
+    def encrypt(string)
+      secure_hash("#{salt}--#{string}")
+    end
+
+    # Création du sel avec le pwd de travail
+    def make_salt
+      secure_hash("#{Time.now.utc}--#{pwd}")
+    end
+
+    def secure_hash(string)
+      Digest::SHA512.hexdigest(string)
+    end
+
 end

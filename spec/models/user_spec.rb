@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
                :email => "bienoubien@gmail.com",
                :firstName => "Miche",
                :lastName => "Rifouille",
-               :pwd => "bigbick",
+               :pwd => "digbick",
                :pwd_confirmation => "digbick"}
   end
 
@@ -51,21 +51,10 @@ RSpec.describe User, type: :model do
 
   ### Check du password
 
-  it "devrait exiger un mot de passe" do
-    no_pass = User.new(@attr.merge(:password => nil))
-    expect(no_pass).to_not be_valid
-  end
-
-  it "devrait rejeter les mot de passes de longueur invalide" do
-    pass_invalid = "z" * 41
-    pass_invalid_user = User.new(@attr.merge(:password => pass_invalid))
-    expect(pass_invalid_user).to_not be_valid
-  end
-
   describe "password validations" do
 
     it "devrait exiger un mot de passe" do
-      no_pwd_user = User.new(@attr.merge(:pwd => "", :pwd_confirmation => ""))
+      no_pwd_user = User.new(@attr.merge(:pwd => nil, :pwd_confirmation => nil))
       expect(no_pwd_user).to_not be_valid
     end
 
@@ -82,8 +71,8 @@ RSpec.describe User, type: :model do
     end
 
     it "devrait rejeter les (trop) longs mots de passe" do
-      long = "a" * 41
-      hash = @attr.merge(:password => long, :password_confirmation => long)
+      long = "a" * 456
+      hash = @attr.merge(:password => long, :pwd_confirmation => long)
       long_pwd_user = User.new(hash)
       expect(long_pwd_user).to_not be_valid
     end
@@ -120,5 +109,50 @@ RSpec.describe User, type: :model do
   it "devrait rejeter un nom de personne invalide" do
     name_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
     expect(name_invalid_user).to_not be_valid
+  end
+
+  ### Check mot de passe crypté EN bdd
+  describe "cryptage du mot de passe" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "devrait avoir un attribut  mot de passe crypté" do
+      expect(@user).to respond_to(:password)
+    end
+
+    it "devrait avoir un mot de passe crypté" do
+      expect(@user.password).to_not be_blank
+    end
+
+    describe "méthode match_password?" do
+
+      it "doit retourner true si les mots de passe coïncident" do
+        expect(@user.match_password?(@attr[:pwd])).to be true
+      end
+
+      it "doit retourner false si les mots de passe divergent" do
+        expect(@user.match_password?("invalide")).to be false
+      end
+    end
+
+    describe "méthode authenticate" do
+
+      it "devrait retourner nul en cas d'inéquation entre login/mot de passe" do
+        wrong_password_user = User.authenticate(@attr[:login], "wrong_password")
+        expect(wrong_password_user).to be nil
+      end
+
+      it "devrait retourner nil quand un login ne correspond à aucun utilisateur" do
+        no_user = User.authenticate("nouser@kek.com", @attr[:pwd])
+        expect(no_user).to be nil
+      end
+
+      it "devrait retourner l'utilisateur si login/mot de passe correspondent" do
+        matched_user = User.authenticate(@attr[:login], @attr[:pwd])
+        expect(matched_user) == @user
+      end
+    end
   end
 end
