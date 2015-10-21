@@ -45,6 +45,10 @@ group :development, :test do
   gem 'rspec', '~> 3.3.0'
   gem 'rspec-rails', '~> 3.3.0'
 
+  # Factory instances
+  gem 'factory_girl_rails', '4.5.0'
+
+
 end
 
 group :development do
