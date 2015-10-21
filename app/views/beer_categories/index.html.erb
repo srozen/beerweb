@@ -31,7 +31,7 @@
     <% else %>
       <% @beers.each do |beer| %>
         <tr>
-          <td><%= beer.name %></td>
+          <td><%= link_to beer.name, beer %></td>
           <td><%= beer.degree %></td>
           <td><%= beer.beer_category.name %></td>
         </tr>
