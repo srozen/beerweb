@@ -1,6 +1,7 @@
 <div id="login-page" class="row-login">
   <div class="container col s12 ">
     <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages' %>
     <form class="login-form">
        <div class="row margin">
         <div class="input-field col s12">

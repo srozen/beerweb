@@ -32,18 +32,18 @@ RSpec.describe User, type: :model do
 
   ### Check du login
 
-  it "devrait exiger un nom" do
+  it "devrait exiger unlogin" do
     john_snow = User.new(@attr.merge(:login => nil))
     expect(john_snow).to_not be_valid
   end
 
-  it "devrait rejeter les noms trop courts" do
+  it "devrait rejeter les login trop courts" do
     too_short_login = "y" * 5
     too_short_login_user = User.new(@attr.merge(:login => too_short_login))
     expect(too_short_login_user).to_not be_valid
   end
 
-  it "devrait rejeter les noms trop longs" do
+  it "devrait rejeter les login trop longs" do
     too_long_login = "y" * 26
     too_long_login_user = User.new(@attr.merge(:login => too_long_login))
     expect(too_long_login_user).to_not be_valid
@@ -103,14 +103,7 @@ RSpec.describe User, type: :model do
     user_with_same_email = User.new(@attr)
     expect(user_with_same_email).to_not be_valid
   end
-
-  ### Check du prénom
-
-  it "devrait rejeter un nom de personne invalide" do
-    name_invalid_user = User.new(@attr.merge(:firstName => "8977jeanmichdu93"))
-    expect(name_invalid_user).to_not be_valid
-  end
-
+  
   ### Check mot de passe crypté EN bdd
   describe "cryptage du mot de passe" do
 

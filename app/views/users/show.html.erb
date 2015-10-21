@@ -1,5 +1,23 @@
-<h1>
-  <%= gravatar_image_tag @user.email %>
+<div id="intro" class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div  class="col s12">
+              <table class="profile" summary="Information profil">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_image_tag @user.email %>
+        <%= @user.login %>
+      </h1>
 
-  <%= @user.login %>
-</h1>
+    </td>
+    <td class="sidebar round">
+      <strong>login</strong> <%= @user.login %><br />
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+    </td>
+  </tr>
+</table>
+            </div>
+        </div>
+    </div>
+</div>
