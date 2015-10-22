@@ -9,7 +9,7 @@ def current_user=(user)
   def create
     user = User.authenticate(params[:session][:login], params[:session][:pwd])
     if user.nil?
-      flash.now[:error] = "Combinaison Email/Mot de passe invalide."
+      flash.now[:error] = "Combinaison Login/Mot de passe invalide."
       @titre = "S'identifier"
       render 'new'
     else

@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @titre = "Inscription"
+      flash[:success] = "kekekeke!"
       render 'new'
     end
   end

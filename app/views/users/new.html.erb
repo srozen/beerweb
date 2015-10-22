@@ -1,6 +1,4 @@
-
-
-<div id="login-page" class="row-login">
+<div id="login-page" class="container row-login">
   <div class="col s12 ">
     <%= form_for(@user) do |f| %>
     <form class="login-form">
@@ -34,13 +32,6 @@
           <i class="mdi-action-lock-outline prefix"></i>
       <%= f.label :pwd_confirmation, "Confirmation" %><br/><br />
   <%= f.password_field :pwd_confirmation %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12 m12 l12  login-text">
-            <input type="checkbox" id="remember-me" />
-            <label for="remember-me">Remember me</label>
         </div>
       </div>
       <div class="row">
