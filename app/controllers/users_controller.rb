@@ -25,12 +25,8 @@ class UsersController < ApplicationController
 
   # TODO
   def api_register
-    @login = params[:login]
-    @password = params[:password]
-    @email = params[:password]
-
-    @user_exists = User.find_by_login(@login).nil?
-    @email_exists = User.find_by_email(@email).nil?
+    @user_exists = User.exists?(:login => params[:login])
+    @email_exists = User.exists?(:email => params[:password])
 
     render :json => {
       :checkUser => @user_exists, :checkMail => @email_exists
