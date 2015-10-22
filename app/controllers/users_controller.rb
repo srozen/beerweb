@@ -32,6 +32,13 @@ class UsersController < ApplicationController
       :checkUser => !@user_exists, :checkMail => !@email_exists
     }
 
+    if(!@user_exists && !@email_exists)
+      @user = User.new(:login => params[:login],
+                       :email => params[:email],
+                       :pwd => params[:password],
+                       :pwd_confirmation => params[:password])
+      @user.save
+    end
   end
 
   def create
