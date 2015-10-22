@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @email_exists = User.exists?(:email => params[:password])
 
     render :json => {
-      :checkUser => @user_exists, :checkMail => @email_exists
+      :checkUser => !@user_exists, :checkMail => !@email_exists
     }
 
   end
