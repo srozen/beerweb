@@ -22,25 +22,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-
-  # TODO
-  def api_register
-    @user_exists = User.exists?(:login => params[:login])
-    @email_exists = User.exists?(:email => params[:password])
-
-    render :json => {
-      :checkUser => !@user_exists, :checkMail => !@email_exists
-    }
-
-    if(!@user_exists && !@email_exists)
-      @user = User.new(:login => params[:login],
-                       :email => params[:email],
-                       :pwd => params[:password],
-                       :pwd_confirmation => params[:password])
-      @user.save
-    end
-  end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -51,19 +32,6 @@ class UsersController < ApplicationController
       @titre = "Inscription"
       flash[:success] = "kekekeke!"
       render 'new'
-    end
-  end
-
-  def api_login
-    @user = User.authenticate(params[:login], params[:password])
-    if @user.nil?
-      render :json => {
-        :checkLog => false, :idUser => nil
-      }
-    else
-      render :json => {
-        :checkLog => true, :idUser => @user.id
-      }
     end
   end
 
