@@ -19,11 +19,8 @@ resources :beer_categories
   root :to => 'pages#home'
 
   ## API ROUTES ##
-  post '/api_login', :to => 'users#api_login'
-  get '/api_login', :to => 'users#api_login'
-
-  post '/api_register', :to => 'users#api_register'
-  get '/api_register', :to => 'users#api_register'
+  post '/mlogin', :to => 'web_services#login'
+  post '/mregister', :to => 'web_services#register'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
