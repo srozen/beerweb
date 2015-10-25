@@ -10,7 +10,11 @@
 #
 
 require 'digest'
+
 class User < ActiveRecord::Base
+
+  has_one :collection
+
   attr_accessor :pwd
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
