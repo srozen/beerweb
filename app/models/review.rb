@@ -1,5 +1,8 @@
+
+# Une review est une entrée de la collection d'un utilisateur et porte sur une bière.
 class Review < ActiveRecord::Base
   belongs_to :collection
+  belongs_to :beer
 
   validates :note, presence: true,
                    numericality: true,
