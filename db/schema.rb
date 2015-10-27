@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021165030) do
+ActiveRecord::Schema.define(version: 20151027121741) do
 
   create_table "beer_categories", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20151021165030) do
 
   add_index "beers", ["beer_category_id"], name: "index_beers_on_beer_category_id"
   add_index "beers", ["name"], name: "index_beers_on_name", unique: true
+
+  create_table "deals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
