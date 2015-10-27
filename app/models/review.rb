@@ -1,4 +1,4 @@
-
+# TODO : Assurer les tests et les validations
 # Une review est une entrée de la collection d'un utilisateur et porte sur une bière.
 class Review < ActiveRecord::Base
   belongs_to :collection
