@@ -1,52 +1,50 @@
 
-
 <div class="container">
-<div class="row">
-    <form class="col s12" action="/catalogue" method="post">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">search</i>
-            <input id="icon_prefix" type="text" class="validate" name="name">
-          <label for="icon_prefix">Bon plan</label>
-        </div>
-      </div>
-    </form>
-</div>
-<div class="row">
-  <button class="btn waves-effect waves-light" type="submit" name="action">Go
-    <i class="material-icons right">send</i>
-  </button>
-</div>
-
 
 <table>
-  <thead>
-    <tr>
-        <th data-field="nameShop">Nom du vendeur </th>
-		<th data-field="nameBeer">Nom de la bière</th>
-        <th data-field="description">Description</th>
-		<th data-field="reduction">Réduction</th>
-		<th data-field="prix">Prix</th>
-		
-    </tr>
-  </thead>
-
-  <tbody>
-    <% # Résultat de la recherche #index %>
-    <% if @deal.blank? %>
-      <%= "Aucun bon plan n'a été trouvé." %>
-    <% else %>
-      <% @deals.each do |deal| %>
-        <tr>
-          <td><%= link_to deal.nameShop, deal %></td>
-          <td><%= deal.nameBeer %></td>
-          <td><%= deal.description %></td>
-		  <td><%= deal.reduction %></td>
-		  <td><%= deal.prix %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
+	<thead><div class="card-panel teal lighten-2">Bons Plans</div></thead>
+		<tbody>
+			<tr>
+				<div class="card small">
+					<div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+							<img class="activator" src="images/beer.jpg">
+						</div>
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">Promo Jupiler<i class="material-icons right">more_vert</i></span>
+							<p><a href="#">Link</a></p>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+							<p>Here is some more information about this product that is only revealed once clicked on.</p>
+								<div class="card-action">
+									<a href="#">This is a link</a>
+								</div>
+						</div>
+					</div>
+				</div>
+			</tr>
+			<tr>
+				<div class="card small">
+					<div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+							<img class="activator" src="images/project5.jpg">
+						</div>
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">Promo Maes<i class="material-icons right">more_vert</i></span>
+							<p><a href="#">Link</a></p>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+							<p>Here is some more information about this product that is only revealed once clicked on.</p>
+								<div class="card-action">
+									<a href="#">This is a link</a>
+								</div>
+						</div>
+					</div>
+				</div>
+			</tr>
+	  </tbody>            
 </table>
 </div>
 

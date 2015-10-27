@@ -15,7 +15,7 @@
 
 class Deal < ActiveRecord::Base
 
- validates :nameShop, presence: true,
+ validates :name, presence: true,
                    length: { maximum: 40},
                    uniqueness: { case_sensitive: false }
 				   				   	
@@ -47,3 +47,9 @@ class Deal < ActiveRecord::Base
 						  
 
 end
+
+
+
+
+
+
