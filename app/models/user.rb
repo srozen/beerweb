@@ -14,6 +14,7 @@ require 'digest'
 class User < ActiveRecord::Base
 
   has_one :collection
+  has_one :friendlist
 
   attr_accessor :pwd
 
