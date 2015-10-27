@@ -19,7 +19,7 @@ class Deal < ActiveRecord::Base
                    length: { maximum: 40},
                    uniqueness: { case_sensitive: false }
 				   				   	
- validates :titre, presence: true,
+ validates :nameBeer, presence: true,
                           length: { maximum: 50}
 					
  validates :description, presence: true,

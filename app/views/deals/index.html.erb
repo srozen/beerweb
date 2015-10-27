@@ -1,3 +1,5 @@
+
+
 <div class="container">
 <div class="row">
     <form class="col s12" action="/catalogue" method="post">
@@ -5,7 +7,7 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">search</i>
             <input id="icon_prefix" type="text" class="validate" name="name">
-          <label for="icon_prefix">Bière</label>
+          <label for="icon_prefix">Bon plan</label>
         </div>
       </div>
     </form>
@@ -20,25 +22,31 @@
 <table>
   <thead>
     <tr>
-        <th data-field="name">Nom</th>
-        <th data-field="degree">Degrés</th>
-        <th data-field="price">Catégorie</th>
+        <th data-field="nameShop">Nom du vendeur </th>
+		<th data-field="nameBeer">Nom de la bière</th>
+        <th data-field="description">Description</th>
+		<th data-field="reduction">Réduction</th>
+		<th data-field="prix">Prix</th>
+		
     </tr>
   </thead>
 
   <tbody>
     <% # Résultat de la recherche #index %>
-    <% if @beers.blank? %>
-      <%= "Aucune bière n'a été trouvée." %>
+    <% if @deal.blank? %>
+      <%= "Aucun bon plan n'a été trouvé." %>
     <% else %>
-      <% @beers.each do |beer| %>
+      <% @deals.each do |deal| %>
         <tr>
-          <td><%= link_to beer.name, beer %></td>
-          <td><%= beer.degree %></td>
-          <td><%= beer.beer_category.name %></td>
+          <td><%= link_to deal.nameShop, deal %></td>
+          <td><%= deal.nameBeer %></td>
+          <td><%= deal.description %></td>
+		  <td><%= deal.reduction %></td>
+		  <td><%= deal.prix %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
 </div>
+

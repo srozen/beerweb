@@ -34,7 +34,7 @@ resources :beer_categories
   post '/catalogue', :to => 'beer_categories#index'
   
   
-  get '/bonplans', :to =>'deals#index'
+  get '/bonsplans', :to =>'deals#index'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
