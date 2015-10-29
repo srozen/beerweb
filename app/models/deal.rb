@@ -26,26 +26,23 @@ class Deal < ActiveRecord::Base
                           length: { maximum: 500}
 						  
  validates :categorie, presence: true,
-                          length: { maximum: 50}						  
+                          length: { maximum: 20}						  
  				   				   
  validates :reference, presence: true,
-                          length: { maximum: 40}
+					   numericality: true
 						  
  validates :datedebut, presence: true,
-                          length: { maximum: 50}
+                          
 						  
  validates :datefin, presence: true,
-                          length: { maximum: 50}
-						  
+                          
  validates :prix, presence: true,
-                          length: { maximum: 50}
-
+                  numericality: true
+					   
  validates :reduction, presence: true,
-                          length: { maximum: 50}
-						  
-
-						  
-
+					   numericality: true
+                          
+						  					  
 end
 
 
