@@ -1,54 +1,59 @@
-<div class="col s12 m8 offset-m2 l6 offset-l3">
-  <div class="card-panel grey lighten-5 z-depth-1">
-    <div class="row valign-wrapper">
-      <div class="card-image">
-        <img class="z-depth-2 materialboxed" src="../images/beer_sticker/<%= @beer.id %>.jpg">
-
-      </div>
-      <div class="col s2">
-        <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="circle responsive-img z-depth-2 materialboxed"> <!-- notice the "circle" class -->
-      </div>
-      <div class="col s10">
+<div class="container">
 
 
-<ul class="collapsible popout">
-        <li>
-          <h5 class="center-align"><%= @beer.name %></h5>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="mdi-av-play-shopping-bag"></i>Categorie</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-  </ul>
 
-      </div>
-    </div>
+ <div class="card-panel grey lighten-5 z-depth-1">
+<div class="row">
+          <div class="col s12 m6 l0">
+           
+            <p>  <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="responsive-img beer-profile z-depth-2 materialboxed"> <!-- notice the "circle" class --></p>
+          </div>
+          <div class="col s12 m6 l0">
+           
+            <ul>
+            <li> Degré :  </li>
+            <li> Catégorie :  </li>
+            <li> Origine :  </li>
+            <li> Note :   </li>
+            <li> xxx Collectionneurs l'ont déjà : Consultez leur avis !  </li>
+          </ul>
+          </div>
+        
+        </div>
+
+  </div>
+
+
+
+
+
+  <div class="col s12 m4 l4">
+    <ul class = "collapsible active">
+      <li >
+        <div class="collapsible-header active"><i class="mdi-av-web a"></i>Description</div>
+        <div class="collapsible-body active"><p><%= @beer.description %></p></div>
+      </li>
+   </ul>
+  </div>
+
+  <div class="col s12 m4 l4">
+    <ul class = "collapsible active">
+      <li >
+        <div class="collapsible-header active"><i class="mdi-av-web a"></i>Histoire</div>
+        <div class="collapsible-body active"><p><%= @beer.description %></p></div>
+      </li>
+   </ul>
+  </div>
+  <div class="col s12 m4 l4">
+    <ul class = "collapsible active">
+      <li >
+        <div class="collapsible-header active"><i class="mdi-av-web a"></i>Avis de N.Voet l'expert</div>
+        <div class="collapsible-body active"><p><%= @beer.description %></p></div>
+      </li>
+   </ul>
   </div>
 </div>
-<div class="col s12 m4 l4">
+<script src="../min/plugin-min.js"></script>
+<script src="../min/custom-min.js"></script>
 
-      <ul class="collapsible">
 
-        <li class="active">
-          <div class="collapsible-header"><i class="mdi-av-web"></i>Description</div>
-          <div class="collapsible-body "><p><%= @beer.description %></p></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="mdi-editor-format-align-justify"></i>Story</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-
-      </ul>
-    </div>
-    <!--  Scripts-->
-    <script src="../min/plugin-min.js"></script>
-    <script src="../min/custom-min.js"></script>
-    <script>
-      $(document).ready(function () {
-    $('.materialboxed').materialbox();
-});
-$(document).ready(function () {
-    $('.materialboxed').materialbox();
-});
-      //@ sourceURL=pen.js
-    </script>
