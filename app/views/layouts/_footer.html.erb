@@ -1,14 +1,16 @@
 <footer class="page-footer blue">
+  <div class="footer-copyright">
     <div class="container">
-        <div class="col l6 s12">
-            <div class="row">
-                <div class="col s6">
-                    <h5 class="white-text">© 2015 Copyright BeerCollection ma Biche</h5>
-                </div>
-                <div class="col s6">
-                    <h5><%= link_to "Contactez-nous !", contact_path %></h5>
-                </div>
+      <div class="col l6 s12">
+        <div class="row">
+            <div class="col s6">
+                © 2015 Copyright BeerCollection
+            </div>
+            <div class="col s6">
+                <a href="<%= contact_path %>" class="waves-effect blue lighten-1 waves-light btn"><i class="material-icons right">mail</i>Contactez-nous</a>
             </div>
         </div>
+      </div>
     </div>
+  </div>
 </footer>
