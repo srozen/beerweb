@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
   def new
      @user = User.new
-    @title = "S'inscrire"
+     @title = "S'inscrire"
   end
 
   def destroy

@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    @titre = "S'identifier"
+    @title = "S'identifier"
   end
 def current_user=(user)
     @current_user = user

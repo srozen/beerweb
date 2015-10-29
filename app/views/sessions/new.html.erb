@@ -1,4 +1,5 @@
 <div id="login-page" class="container row-login">
+    <h3><%=@title%></h3>
     <div class="col s12 ">
        <%= form_for(:session, :url => sessions_path) do |f| %>
       <form class="login-form">
@@ -25,14 +26,13 @@
         <div class="row">
           <div class="input-field col s12 m12 l12  login-text">
               <input type="checkbox" id="remember-me" />
-              <label for="remember-me">Remember me</label>
+              <label for="remember-me">Se souvenir de moi</label>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12 actions">
-
-             <%= f.submit "Login" , :class => "btn col s12 waves-light "  %>
-
+             <div class="col s12 m5 l4"><p></p></div>
+             <%= f.submit "Se connecter" , :class => "btn col s6 m2 l4 waves-light "  %>
+             <div class="col s12 m5 l4"><p></p></div>
           </div>
 
 
@@ -41,10 +41,10 @@
         <div class="row">
           <div class="input-field col s6 m6 l6">
 
-            <p class="margin medium-small">Pas encore inscrit ? <%= link_to "Register Now!", signup_path  %></p>
+            <p class="margin medium-small">Pas encore inscrit ? <%= link_to "Inscrivez vous !", signup_path  %></p>
           </div>
           <div class="input-field col s6 m6 l6">
-              <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
+              <p class="margin right-align medium-small"><a href="page-forgot-password.html">Mot de passe oublié ?</a></p>
           </div>
         </div>
 
