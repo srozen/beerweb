@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id            :integer          not null, primary key
+#  note          :float
+#  comment       :text
+#  collection_id :integer
+#  beer_id       :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 # TODO : Assurer les tests et les validations
 # Une review est une entrée de la collection d'un utilisateur et porte sur une bière.
 class Review < ActiveRecord::Base

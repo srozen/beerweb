@@ -3,10 +3,15 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  nom        :string
+#  login      :string
+#  password   :string
+#  salt       :string
 #  email      :string
-#  created_at :datetime
-#  updated_at :datetime
+#  firstName  :string
+#  lastName   :string
+#  birthday   :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 require 'digest'
