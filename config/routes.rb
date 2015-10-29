@@ -5,7 +5,7 @@ resources :users
 resources :beers
 resources :beer_categories
   get 'sessions/new'
-  get '/contact', :to => 'pages#contact'
+  get '/contact', :to => 'contacts#index'
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collection', :to => 'pages#collection'
