@@ -31,10 +31,10 @@ class Deal < ActiveRecord::Base
  validates :reference, presence: true,
 					   numericality: true
 						  
- validates :datedebut, presence: true,
+ validates :datedebut, presence: true
                           
 						  
- validates :datefin, presence: true,
+ validates :datefin, presence: true
                           
  validates :prix, presence: true,
                   numericality: true
