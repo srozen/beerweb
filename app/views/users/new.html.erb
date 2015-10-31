@@ -17,8 +17,8 @@
        <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix"></i>
-          <%= f.label :email, "eMail" %><br />
-      <%= f.text_field :email %>
+          <%= f.email_field :email, :class => "validate" %>
+          <%= f.label :email, "Email", :'data-error' => "wrong", :'data-success' => "right" %><br />
         </div>
       </div>
         <div class="row margin">
