@@ -15,29 +15,28 @@
     </form>
 </div>
 
+<% if @beers.blank? %>
+  <%= "Aucune bière n'a été trouvée." %>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+          <th data-field="name">Nom</th>
+          <th data-field="degree">Degrés</th>
+          <th data-field="price">Catégorie</th>
+      </tr>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-        <th data-field="name">Nom</th>
-        <th data-field="degree">Degrés</th>
-        <th data-field="price">Catégorie</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% # Résultat de la recherche #index %>
-    <% if @beers.blank? %>
-      <%= "Aucune bière n'a été trouvée." %>
-    <% else %>
-      <% @beers.each do |beer| %>
-        <tr>
-          <td><%= link_to beer.name, beer %></td>
-          <td><%= beer.degree %></td>
-          <td><%= beer.beer_category.name %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% # Résultat de la recherche #index %>
+        <% @beers.each do |beer| %>
+          <tr>
+            <td><%= link_to beer.name, beer %></td>
+            <td><%= beer.degree %></td>
+            <td><%= beer.beer_category.name %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% end %>
 </div>
