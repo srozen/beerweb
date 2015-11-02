@@ -28,6 +28,22 @@ module BeerCollectionWebsite
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       html_tag
     }
+    
+    #TODO A ADAPTER AU MAIL SERVER
+
+    #config.action_mailer.smtp_settings = {
+    #   address: "smtp.gmail.com",
+    #   port: 587,
+    #   domain: "<example.tld>",
+    #   user_name: "<username>",
+    #   password: "<password>",
+    #   authentication: :plain,
+    #   enable_starttls_auto: true
+    #}
+
+    #config.action_mailer.default_url_options = {
+    #   host: "yourdomain.tld"
+    #}
 
   end
 end

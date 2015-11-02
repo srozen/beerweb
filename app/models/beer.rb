@@ -15,6 +15,7 @@
 class Beer < ActiveRecord::Base
 
   belongs_to :beer_category
+  has_many :reviews
 
   #===================#
   #=== Validations ===#
