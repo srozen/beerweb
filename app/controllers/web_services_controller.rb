@@ -6,21 +6,26 @@ class WebServicesController < ApplicationController
   # @return : checkUser, checkMail
 
   def register
-    @user_exists = User.exists?(:login => params[:login])
-    @email_exists = User.exists?(:email => params[:email])
 
-    # @return False si le login existe
-    # @return False si l'email existe
-    render :json => {
-      :checkUser => !@user_exists, :checkMail => !@email_exists
-    }
+    if(params[:step]) == "find"
+      @user_exists = User.exists?(:login => params[:login])
+      @email_exists = User.exists?(:email => params[:email])
 
-    if(!@user_exists && !@email_exists)
-      @user = User.new(:login => params[:login],
-                       :email => params[:email],
-                       :pwd => params[:password],
-                       :pwd_confirmation => params[:password])
-      @user.save
+      # @return False si le login existe
+      # @return False si l'email existe
+      render :json => {
+        :checkUser => !@user_exists,
+        :checkMail => !@email_exists,
+        :saltUser => Digest::SHA512.base64digest("#{Time.now.utc}--#{params[:login]}")
+      }
+    else
+      if(!@user_exists && !@email_exists)
+        @user = User.new(:login => params[:login],
+                         :email => params[:email],
+                         :password => params[:password],
+                         :salt => params[:saltUser])
+        @user.save
+      end
     end
   end
 

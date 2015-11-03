@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
-  before_save :encrypt_password
+  before_save :encrypt_password, if: user.salt.nil?
 
   # Retour true (vrai) si le mot de passe correspond.
   def has_password?(submitted_password)
