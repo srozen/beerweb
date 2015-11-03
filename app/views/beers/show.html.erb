@@ -1,56 +1,47 @@
 <div class="container">
-
-
-
- <div class="card-panel grey lighten-5 z-depth-1">
-<div class="row">
-          <div class="col s12 m6 l0">
-           
-            <p>  <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="responsive-img beer-profile z-depth-2 materialboxed"> <!-- notice the "circle" class --></p>
-          </div>
-          <div class="col s12 m6 l0">
-           
-            <ul>
-            <li> Degré :  </li>
-            <li> Catégorie :  </li>
-            <li> Origine :  </li>
-            <li> Note :   </li>
-            <li> xxx Collectionneurs l'ont déjà : Consultez leur avis !  </li>
-          </ul>
-          </div>
-        
-        </div>
-
+  <div class="card-panel grey lighten-5 z-depth-1">
+    <div class="row">
+      <div class="col s12 m6 l0">
+        <p>  <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="responsive-img beer-profile z-depth-2 materialboxed"> <!-- notice the "circle" class --></p>
+      </div>
+      <div class="col s12 m6 l0">
+        <ul>
+          <li> Degré :  </li>
+          <li> Catégorie :  </li>
+          <li> Origine :  </li>
+          <li> Note :   </li>
+          <% if nbReviews(@nbReviews.count) %>
+            <li>  <td><%= @nbReviews.count %></td> Collectionneurs l'ont déjà : <a href='/reviews/<%= @beer.id %>' >Consultez leurs avis ! </a> </li>
+            <% else %>
+              <li>  <td><%= @nbReviews.count %></td> Collectionneurs l'a déjà : <a href='/reviews/<%= @beer.id %>' >Consultez son avis ! </a> </li>
+          <% end %>
+        </ul>
+     </div>
   </div>
-
-
-
-
-
+  </div>
   <div class="col s12 m4 l4">
     <ul class = "collapsible active">
       <li >
-        <div class="collapsible-header active"><i class="mdi-av-web a"></i>Description</div>
-        <div class="collapsible-body active"><p><%= @beer.description %></p></div>
+      <div class="collapsible-header active"><i class="mdi-av-web a"></i>Description</div>
+      <div class="collapsible-body active"><p><%= @beer.description %></p></div>
       </li>
-   </ul>
+    </ul>
   </div>
-
   <div class="col s12 m4 l4">
     <ul class = "collapsible active">
       <li >
         <div class="collapsible-header active"><i class="mdi-av-web a"></i>Histoire</div>
-        <div class="collapsible-body active"><p><%= @beer.description %></p></div>
-      </li>
-   </ul>
+        <div class="collapsible-body active"><p><%= @beer.story %></p></div>
+       </li>
+    </ul>
   </div>
   <div class="col s12 m4 l4">
     <ul class = "collapsible active">
-      <li >
+       <li >
         <div class="collapsible-header active"><i class="mdi-av-web a"></i>Avis de N.Voet l'expert</div>
         <div class="collapsible-body active"><p><%= @beer.description %></p></div>
       </li>
-   </ul>
+    </ul>
   </div>
 </div>
 <script src="../min/plugin-min.js"></script>
