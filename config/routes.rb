@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+
+
 resources :sessions, :only => [:new, :create, :destroy]
 resources :users
 resources :beers
-resources :reviews
+resources :avis
 resources :beer_categories
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
@@ -13,10 +15,9 @@ resources :beer_categories
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
   post '/mlogin', :to => 'users#mlogin'
-
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy', via: 'delete'
-  get '/reviews', :to => 'reviews#show'
+  get '/avis', :to => 'avis#show'
   #get '/', :to => 'pages#home'
   root :to => 'pages#home'
 
