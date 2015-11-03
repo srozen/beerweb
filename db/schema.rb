@@ -34,8 +34,17 @@ ActiveRecord::Schema.define(version: 20151027121741) do
   add_index "beers", ["name"], name: "index_beers_on_name", unique: true
 
   create_table "deals", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "nameBeer"
+    t.text     "description"
+    t.string   "categorie"
+    t.datetime "datedebut"
+    t.datetime "datefin"
+    t.float    "prix"
+    t.float    "reference"
+    t.float    "reduction"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

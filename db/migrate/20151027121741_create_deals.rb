@@ -8,7 +8,7 @@ class CreateDeals < ActiveRecord::Migration
 		 t.datetime :datedebut
 		 t.datetime :datefin
 		 t.float :prix
-		 t.int :reference
+		 t.float :reference
 		 t.float :reduction
 
       t.timestamps null: false
