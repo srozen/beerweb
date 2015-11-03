@@ -6,7 +6,10 @@ class BeerCategoriesController < ApplicationController
 
     respond_to do |format|
         format.html
-        format.json { render json: @beers }
+        format.json { render :json => {
+            :beers => @beers
+          }
+        }
     end
   end
 
