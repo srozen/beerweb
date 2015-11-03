@@ -6,14 +6,14 @@
       <form class="login-form">
 
        <div class="row">
-          
+         
          <div class="input-field col s12 center">
-        
+
          </div>
        </div>
          <div class="row margin">
          <div class="input-field col s12">
-       
+
             <i class="mdi-social-person-outline prefix"></i>
     <%= f.label :login %><br />
    <%= f.text_field :login %>
@@ -21,7 +21,7 @@
        </div>
          <div class="row margin">
          <div class="input-field col s12">
-       
+
            <i class="mdi-social-person-outline prefix"></i>
             <%= f.label :email, "eMail" %><br />
        <%= f.text_field :email %>
@@ -29,7 +29,7 @@
       </div>
          <div class="row margin">
         <div class="input-field col s12">
-      
+
            <i class="mdi-action-lock-outline prefix"></i>
            <%= f.label :password, "Mot de passe" %><br />
        <%= f.password_field :password %>
@@ -37,14 +37,14 @@
         </div>
         <div class="row margin">
          <div class="input-field col s12">
-           
+
             <i class="mdi-action-lock-outline prefix"></i>
        <%= f.label :password_confirmation, "Confirmation" %><br/><br />
    <%= f.password_field :password_confirmation %>
          </div>
        </div>
-     
-       <div class="row">          
+
+       <div class="row">
          <div class="input-field col s12 m12 l12  login-text">
             <%= gravatar_for @user %>
   <a href="http://gravatar.com/emails">changer</a>
@@ -52,9 +52,9 @@
        </div>
         <div class="row">
         <div class="input-field col s12 actions">
-          
+
            <%= f.submit "Update" , :class => "btn col s12 waves-light "  %>
-     
+
          </div>
        <div>
 
