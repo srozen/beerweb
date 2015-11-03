@@ -1,8 +1,8 @@
 <div class = "container">
-  <span>Avis des collectionneurs ! </span> 
-  <% @reviews.where(beer_id: @beer.id).each do |review| %>    
-    <% @collections.where(id: review.collection_id).each do |collection| %>    
-      <% @users.where(id: collection.user_id).each do |user| %>    
+  <span>Avis des collectionneurs ! </span>
+  <% @reviews.where(beer_id: @beer.id).each do |review| %>
+    <% @collections.where(id: review.collection_id).each do |collection| %>
+      <% @users.where(id: collection.user_id).each do |user| %>
         <div class="col s12 m4 l4">
           <ul class = "collapsible active">
             <li >

@@ -17,7 +17,7 @@ resources :beer_categories
   post '/mlogin', :to => 'users#mlogin'
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy', via: 'delete'
-  get '/avis', :to => 'avis#show'
+  get '/reviews', :to => 'reviews#show'
   #get '/', :to => 'pages#home'
   root :to => 'pages#home'
 
