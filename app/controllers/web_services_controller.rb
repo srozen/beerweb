@@ -9,6 +9,8 @@ class WebServicesController < ApplicationController
     @user_exists = User.exists?(:login => params[:login])
     @email_exists = User.exists?(:email => params[:email])
 
+    # @return False si le login existe
+    # @return False si l'email existe
     render :json => {
       :checkUser => !@user_exists, :checkMail => !@email_exists
     }
