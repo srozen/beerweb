@@ -22,7 +22,7 @@ class WebServicesController < ApplicationController
         @user = User.new(:login => params[:login],
                          :email => params[:email],
                          :password => params[:password],
-                         :pwd => params[:passwors],
+                         :pwd => "Thisisamobileregister",
                          :salt => params[:saltUser])
         @user.save
       end
