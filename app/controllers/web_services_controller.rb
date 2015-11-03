@@ -8,7 +8,7 @@ class WebServicesController < ApplicationController
   def register
     @user_exists = User.exists?(:login => params[:login])
     @email_exists = User.exists?(:email => params[:email])
-    
+
     if(params[:step]) == "find"
       # @return False si le login existe
       # @return False si l'email existe
@@ -22,6 +22,7 @@ class WebServicesController < ApplicationController
         @user = User.new(:login => params[:login],
                          :email => params[:email],
                          :password => params[:password],
+                         :pwd => params[:passwors],
                          :salt => params[:saltUser])
         @user.save
       end
