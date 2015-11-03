@@ -54,6 +54,14 @@ class User < ActiveRecord::Base
     return user if user.salt == cookie_salt
   end
 
+  def self.authenticate_by_mobile(id, encrypted_password)
+    user = find_by_id(id)
+
+    return nil if user.nil?
+    return user if user.password == encrypted_password
+
+  end
+
   private
 
     # Encryption du password et création du sel si nouvel utilisateur
@@ -73,6 +81,6 @@ class User < ActiveRecord::Base
     end
 
     def secure_hash(string)
-      Digest::SHA2.hexdigest(string)
+      Digest::SHA512.hexdigest(string)
     end
 end

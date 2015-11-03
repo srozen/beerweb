@@ -30,16 +30,40 @@ class WebServicesController < ApplicationController
   # @return : checkLog, idUser
 
   def login
-    @user = User.authenticate(params[:login], params[:password])
-    if @user.nil?
-      render :json => {
-        :checkLog => false, :idUser => nil
-      }
-    else
-      render :json => {
-        :checkLog => true, :idUser => @user.id
-      }
-    end
-  end
 
+    if(params[:step]) == "find"
+      @user = User.find_by_login(params[:login])
+      if @user.nil?
+        render :json => {
+          :exists => false
+        }
+      else
+        render :json => {
+          :exists => true, :idUser => @user.id, :saltUser => @user.salt
+        }
+      end
+    else
+      @user = User.authenticate_by_mobile(params[:id], params[:password])
+      if @user.nil?
+        render :json => {
+          :checkLog => false
+        }
+      else
+        render :json => {
+          :checkLog => true
+        }
+      end
+    end
+
+
+    # @user = User.authenticate(params[:login], params[:password])
+    # if @user.nil?
+    #   render :json => {
+    #     :checkLog => false, :idUser => nil
+    #   }
+    # else
+    #   render :json => {
+    #     :checkLog => true, :idUser => @user.id
+    #   }
+    # end
 end
