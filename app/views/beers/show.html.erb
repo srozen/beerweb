@@ -11,9 +11,9 @@
           <li> Origine :  </li>
           <li> Note : <%= @nbReviews.average(:note)%>/10  </li>
           <% if nbReviews(@nbReviews.count) %>
-            <li>  <td><%= @nbReviews.count %></td> Collectionneurs l'ont déjà : <a href='/avis/<%= @beer.id %>' >Consultez leurs avis ! </a> </li>
+            <li>  <td><%= @nbReviews.count %></td> Collectionneurs l'ont déjà : <a href='/reviews/<%= @beer.id %>' >Consultez leurs avis ! </a> </li>
             <% else %>
-              <li>  <td><%= @nbReviews.count %></td> Collectionneur l'a déjà : <a href='/avis/<%= @beer.id %>' >Consultez son avis ! </a> </li>
+              <li>  <td><%= @nbReviews.count %></td> Collectionneur l'a déjà : <a href='/reviews/<%= @beer.id %>' >Consultez son avis ! </a> </li>
           <% end %>
       
         </ul>
