@@ -15,5 +15,4 @@ class BeersController < ApplicationController
       }
     end
   end
-
 end
