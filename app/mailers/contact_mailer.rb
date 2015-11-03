@@ -1,9 +1,8 @@
 class ContactMailer < ApplicationMailer
-  default from: 'contact@mydomain.com'
+  default to: 'michashh@gmail.com'
 
-  def echo_email(contact)
+  def new_contact(contact)
     @contact = contact
-    @url = contact_path
-    mail(to: @contact.email, subject: 'Formulaire de contact')
+    mail(:from => @contact.email, :subject => "Contact BeerCollection")
   end
 end

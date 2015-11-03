@@ -4,8 +4,10 @@ resources :sessions, :only => [:new, :create, :destroy]
 resources :users
 resources :beers
 resources :beer_categories
+resources :contacts, :only => [:new, :create]
+
   get 'sessions/new'
-  get '/contact', :to => 'contacts#index'
+  get '/contact', :to => 'contacts#new'
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collection', :to => 'pages#collection'
