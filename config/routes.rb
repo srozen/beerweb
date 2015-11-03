@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 resources :sessions, :only => [:new, :create, :destroy]
 resources :users
 resources :beers
+resources :reviews
 resources :beer_categories
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
@@ -15,6 +16,7 @@ resources :beer_categories
 
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy', via: 'delete'
+  get '/reviews', :to => 'reviews#show'
   #get '/', :to => 'pages#home'
   root :to => 'pages#home'
 
