@@ -43,7 +43,7 @@ class WebServicesController < ApplicationController
         }
       end
     else
-      @user = User.authenticate_by_mobile(params[:id], params[:password])
+      @user = User.authenticate_by_mobile(params[:idUser], params[:password])
       if @user.nil?
         render :json => {
           :checkLog => false
