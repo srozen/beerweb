@@ -1,6 +1,6 @@
 <div id="login-page" class="container row-login">
   <div class="col s12 ">
-    <h3><%=@title%></h3>
+    <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
     <%= form_for(@user) do |f| %>
     <form class="login-form">
       <div class="row">
@@ -37,7 +37,7 @@
       </div>
       <div class="row">
         <div class="col s12 m5 l4"><p></p></div>
-           <%= f.submit "Inscription" , :class => "btn col s6 m3 l4 waves-light "  %>
+           <%= f.submit "Inscription" , :class => "btn col s6 m3 l4 waves-light orange"  %>
         <div class="col s12 m5 l4"><p></p></div>
       </div>
 
