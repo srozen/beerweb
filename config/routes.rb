@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 resources :sessions, :only => [:new, :create, :destroy]
 resources :users
 resources :beers
-resources :avis
+resources :reviews
 resources :beer_categories
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
