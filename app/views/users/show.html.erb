@@ -13,7 +13,9 @@
     </td>
     <td class="sidebar round">
       <strong>login</strong> <%= @user.login %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <% if @user.id == current_user.id %>
+        <strong>URL</strong>  <%= link_to "Editer le profil", edit_user_path(@user) %>
+      <% end %>
     </td>
   </tr>
 </table>
