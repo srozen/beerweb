@@ -25,6 +25,10 @@ class WebServicesController < ApplicationController
                          :pwd => "Thisisamobileregister",
                          :salt => params[:saltUser])
         @user.save
+        render :json => {
+          :checkUser => !@user_exists,
+          :checkMail => !@email_exists
+        }
       end
     end
   end
