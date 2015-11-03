@@ -7,13 +7,13 @@
   <div class="nav-wrapper">
             <a href="<%= root_path %>" id="logo-container" class="brand-logo">Beer Collection</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><%= link_to "Profil", edit_user_path(current_user) %></li>
+                    <li><%= link_to "Profil", user_path(current_user) %></li>
                     <li><%= link_to "Ma collection", collection_path %></li>
                     <li><%= link_to "Catalogue", catalogue_path %></li>
                     <li><%= link_to "Déconnexion", signout_path %></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                  <li><%= link_to "Profil", edit_user_path(current_user) %></li>
+                  <li><%= link_to "Profil", user_path(current_user) %></li>
                   <li><%= link_to "Ma collection", collection_path %></li>
                   <li><%= link_to "Catalogue", catalogue_path %></li>
                   <li><%= link_to "Déconnexion", signout_path %></li>
