@@ -6,6 +6,7 @@ class BeersController < ApplicationController
   #
   def show
     @reviews = Review.all
+
     @nbReviews= Review.where("beer_id = ?", params[:id])
 
     @beer = Beer.find(params[:id])
