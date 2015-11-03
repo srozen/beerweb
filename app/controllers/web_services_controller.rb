@@ -54,7 +54,7 @@ class WebServicesController < ApplicationController
         }
       end
     end
-
+  end
 
     # @user = User.authenticate(params[:login], params[:password])
     # if @user.nil?
