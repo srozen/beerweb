@@ -6,11 +6,10 @@ class WebServicesController < ApplicationController
   # @return : checkUser, checkMail
 
   def register
-
+    @user_exists = User.exists?(:login => params[:login])
+    @email_exists = User.exists?(:email => params[:email])
+    
     if(params[:step]) == "find"
-      @user_exists = User.exists?(:login => params[:login])
-      @email_exists = User.exists?(:email => params[:email])
-
       # @return False si le login existe
       # @return False si l'email existe
       render :json => {
