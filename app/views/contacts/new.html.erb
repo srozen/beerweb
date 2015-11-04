@@ -9,8 +9,12 @@
       </div>
        <div class="row margin">
         <div class="input-field col s12">
-          <%= f.email_field :email, :class => "validate" %>
-          <%= f.label :email, "Email", :'data-error' => "Invalide", :'data-success' => "Valide" %><br />
+          <% if signed_in? %>
+            <%= f.hidden_field :email, :value => @current_user.email%>
+          <% else %>
+            <%= f.email_field :email, :class => "validate" %>
+            <%= f.label :email, "Email", :'data-error' => "Invalide", :'data-success' => "Valide" %><br />
+          <% end %>
         </div>
       </div>
        <div class="row margin">
