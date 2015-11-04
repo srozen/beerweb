@@ -6,9 +6,11 @@
             <div class="col s6">
                 © 2015 Copyright BeerCollection
             </div>
+            <% if !current_page?(contact_path)%>
             <div class="col s6">
                 <a href="<%= contact_path %>" class="waves-effect blue lighten-1 waves-light btn"><i class="material-icons right">mail</i>Contactez-nous</a>
             </div>
+            <% end %>
         </div>
       </div>
     </div>

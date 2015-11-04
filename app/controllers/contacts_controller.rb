@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @title = "Contactez-nous !"
   end
 
   def create
