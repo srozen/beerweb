@@ -12,8 +12,6 @@
 
 class Contact < ActiveRecord::Base
 
-  attr_accessor :subject, :email, :content
-
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, :presence => true,
