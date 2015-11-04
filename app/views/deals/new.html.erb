@@ -1,6 +1,6 @@
 <div id="login-page" class="container row-login">
   <div class="col s12 ">
-    <%= form_for(@deals) do |f| %>
+    <%= form_for(@deal) do |f| %>
     <form class="login-form">
       <div class="row">
         <div class="input-field col s12 center">
@@ -16,7 +16,7 @@
        <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix"></i>
-          <%= f.label :nameBeer, "Nom de la bière" %><br />
+          <%= f.label :nameBeer, "Nom de la biÃ¨re" %><br />
       <%= f.text_field :nameBeer %>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :categorie, "Catégorie" %><br/><br />
+      <%= f.label :categorie, "CatÃ©gorie" %><br/><br />
   <%= f.text_field :categorie %>
         </div>
       </div>
@@ -38,7 +38,7 @@
 	  <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :datedebut, "Date de début" %><br/><br />
+      <%= f.label :datedebut, "Date de dÃ©but" %><br/><br />
   <%= f.text_field :datedebut %>
         </div>
       </div>
@@ -59,14 +59,14 @@
 	  <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :reference, "Référence" %><br/><br />
+      <%= f.label :reference, "RÃ©fÃ©rence" %><br/><br />
   <%= f.text_field :reference %>
         </div>
       </div>
 	  <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :reduction, "Réduction" %><br/><br />
+      <%= f.label :reduction, "RÃ©duction" %><br/><br />
   <%= f.text_field :reduction %>
         </div>
       </div>
