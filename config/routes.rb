@@ -34,6 +34,7 @@ resources :beer_categories
   post '/catalogue', :to => 'beer_categories#index'
   
   
+  get '/ajoutbonplan', :to =>'deals#new'
   get '/bonsplans', :to =>'deals#index'
 
 
