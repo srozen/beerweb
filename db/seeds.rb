@@ -94,3 +94,10 @@ cwlb.comment = "Un peu trop sucrée à mon goût, mais rafraîchissante et valeu
 cwlb.beer = leffeblonde
 cwlb.collection = cw
 cwlb.save
+
+cwdb = Review.new
+cwdb.note = 7.8
+cwdb.comment = "Amerthume agréable, assez forte, une bonne bière de qualité que je recommande sans hésitation"
+cwdb.beer = duvelblonde
+cwdb.collection = cw
+cwdb.save
