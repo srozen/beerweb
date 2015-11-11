@@ -22,8 +22,14 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render :json => {
-          :beers => @collection_beers,
+      format.json {
+        @cbeers = []
+        @collection_beers.each do |cbeer|
+          @nbReviews = Review.where("beer_id = ?", cbeer.id)
+          @cbeers << cbeer.as_json.merge(:global_note => @nbReviews.average(:note))
+        end
+        render :json => {
+          :beers => @cbeers,
           :reviews => @collection_reviews
         }
       }
@@ -32,5 +38,16 @@ class CollectionsController < ApplicationController
         headers['Content-Type'] ||= 'text/csv'
       end
     end
+  end
+
+  def add_beer
+
+    # @params[:userId]
+    # @params[:beerId]
+    # @params[:hashpass]
+    # @params[:note]
+    # @params[:comment]
+
+
   end
 end

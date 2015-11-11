@@ -5,16 +5,25 @@ class BeersController < ApplicationController
   #
   def show
     @reviews = Review.all
-
     @nbReviews= Review.where("beer_id = ?", params[:id])
 
     @beer = Beer.find(params[:id])
     @beer_category = BeerCategory.find_by_id(@beer.beer_category.id)
+
+    if !params[:userId].nil?
+      @collection = Collection.find_by_user_id(params[:userId])
+      @review = Review.where("beer_id = ? AND collection_id = ?", @beer.id, @collection.id)
+    else
+      @review = nil
+    end
+
     respond_to do |format|
       format.html
       format.json {
         render :json => {
-          :beer => @beer, :category => @beer_category
+          :beer => @beer.as_json.merge(:global_note => @nbReviews.average(:note)),
+          :category => @beer_category,
+          :review => @review
         }
       }
     end
