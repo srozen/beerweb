@@ -24,11 +24,9 @@ resources :collections
   root :to => 'pages#home'
 
   ## API ROUTES ##
-  post '/api_login', :to => 'users#api_login'
-  get '/api_login', :to => 'users#api_login'
-
-  post '/api_register', :to => 'users#api_register'
-  get '/api_register', :to => 'users#api_register'
+  post '/api_login', :to => 'web_services#login'
+  post '/api_register', :to => 'web_services#register'
+  post '/api_beer_profile', :to => 'beers#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

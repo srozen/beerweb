@@ -7,7 +7,7 @@
       <div class="col s12 m6 l0">
         <ul>
           <li> Degré :  </li>
-          <li> Catégorie :  </li>
+          <li> Catégorie : <%= link_to @beer_category.name, @beer_category%></li>
           <li> Origine :  </li>
           <li> Note : <%= @nbReviews.average(:note)%>/10  </li>
           <% if nbReviews(@nbReviews.count) %>
@@ -15,7 +15,7 @@
             <% else %>
               <li>  <td><%= @nbReviews.count %></td> Collectionneur l'a déjà : <a href='/reviews/<%= @beer.id %>' >Consultez son avis ! </a> </li>
           <% end %>
-      
+
         </ul>
      </div>
   </div>
@@ -47,5 +47,3 @@
 </div>
 <script src="../min/plugin-min.js"></script>
 <script src="../min/custom-min.js"></script>
-
-

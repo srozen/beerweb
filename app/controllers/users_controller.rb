@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-
   # TODO
   def api_register
     @user_exists = User.exists?(:login => params[:login])
@@ -44,7 +43,6 @@ class UsersController < ApplicationController
       @collection.save
     end
   end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -57,19 +55,6 @@ class UsersController < ApplicationController
     else
       @titre = "Inscription"
       render 'new'
-    end
-  end
-
-  def api_login
-    @user = User.authenticate(params[:login], params[:password])
-    if @user.nil?
-      render :json => {
-        :checkLog => false, :idUser => nil
-      }
-    else
-      render :json => {
-        :checkLog => true, :idUser => @user.id
-      }
     end
   end
 

@@ -3,10 +3,15 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  nom        :string
+#  login      :string
+#  password   :string
+#  salt       :string
 #  email      :string
-#  created_at :datetime
-#  updated_at :datetime
+#  firstName  :string
+#  lastName   :string
+#  birthday   :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 require 'digest'
@@ -59,6 +64,14 @@ class User < ActiveRecord::Base
     return user if user.salt == cookie_salt
   end
 
+  def self.authenticate_by_mobile(id, encrypted_password)
+    user = find_by_id(id)
+
+    return nil if user.nil?
+    return user if user.password == encrypted_password
+
+  end
+
   private
 
     # Encryption du password et création du sel si nouvel utilisateur
@@ -74,10 +87,10 @@ class User < ActiveRecord::Base
     end
 
     def make_salt
-      secure_hash("#{Time.now.utc}--#{password}")
+      secure_hash("#{Time.now.utc}--#{login}")
     end
 
     def secure_hash(string)
-      Digest::SHA2.hexdigest(string)
+      Digest::SHA512.base64digest(string)
     end
 end

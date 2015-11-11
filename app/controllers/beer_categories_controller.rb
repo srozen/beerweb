@@ -7,7 +7,23 @@ class BeerCategoriesController < ApplicationController
 
     respond_to do |format|
         format.html
-        format.json { render json: @beers }
+        format.json { render :json => {
+            :beers => @beers
+          }
+        }
+    end
+  end
+
+  def show
+    @category = BeerCategory.find(params[:id])
+    @category_beers = Beer.where(:beer_category_id => @category.id)
+
+    respond_to do |format|
+      format.html
+      format.json {render :json => {
+          :category => @category, :beers => @category_beers
+        }
+      }
     end
   end
 end
