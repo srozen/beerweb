@@ -46,10 +46,38 @@ class CollectionsController < ApplicationController
 
     # @params[:userId]
     # @params[:beerId]
-    # @params[:hashpass]
+    # @params[:hash]
     # @params[:note]
     # @params[:comment]
 
+    # Voir si les premiers champs sont validates
+    # Voir si le user est correct
+    # Ajouter la review + compléter la collection
 
+    @beer_exists = Beer.exists?(:id => params[:beerId])
+    @user_exists = Beer.exists?(:id => params[:userId])
+
+    if(!@user_exists && !@email_exists)
+      @user = User.authenticate_by_mobile(params[:userId], params[:hash])
+      if @user.nil?
+        render :json => {
+          :success => false
+        }
+      else
+        @review = Review.new(:note => params[:note], :comment => params[:comment], :beer_id => params[:beerId])
+        @collection = Collection.find(user_id = @user.id)
+
+        @review.collection = @collection
+        @review.save
+
+        render :json => {
+          :success => true
+        }
+      end
+    else
+      render :json => {
+        :success => false
+      }
+    end
   end
 end
