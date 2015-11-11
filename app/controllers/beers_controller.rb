@@ -14,7 +14,7 @@ class BeersController < ApplicationController
       @collection = Collection.find_by_user_id(params[:userId])
       @review = Review.where("beer_id = ? AND collection_id = ?", @beer.id, @collection.id)
     else
-      @review = nil
+      @review = []
     end
 
     respond_to do |format|

@@ -8,6 +8,17 @@ class BeerCategoriesController < ApplicationController
     respond_to do |format|
         format.html
         format.json {
+          if !params[:userId].nil?
+            userid = params[:userId]
+
+            # Récupération des reviews du user
+            @collection = Collection.find(user_id = userid)
+            @reviews = @collection.reviews
+          else
+            @reviews = []
+          end
+
+
 
           @cbeers = []
           @beers.each do |beer|
@@ -16,7 +27,8 @@ class BeerCategoriesController < ApplicationController
           end
 
           render :json => {
-            :beers => @cbeers
+            :beers => @cbeers,
+            :reviews => @reviews
           }
         }
     end

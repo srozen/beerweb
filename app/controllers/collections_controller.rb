@@ -12,10 +12,11 @@ class CollectionsController < ApplicationController
 
 
     @reviews = @collection.reviews
-    
+
     @collection_beers = []
     @collection_reviews = []
 
+    ## Pour chaque review, je collecte la bière associée et la review en elle-même dans des tables sparés
     @reviews.each do |review|
       @collection_beers << review.beer
       @collection_reviews << review
