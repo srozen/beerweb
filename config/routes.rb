@@ -27,7 +27,7 @@ resources :collections
   post '/api_register', :to => 'web_services#register'
   post '/api_beer_profile', :to => 'beers#show'
 
-  get '/api_collection', :to => 'collections#show'
+  post '/api_collection', :to => 'collections#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
