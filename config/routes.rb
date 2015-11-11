@@ -7,11 +7,13 @@ resources :users
 resources :beers
 resources :reviews
 resources :beer_categories
+resources :collections
+
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
-  get '/collection', :to => 'pages#collection'
+  get '/collections', :to => 'collections#show'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
   post '/mlogin', :to => 'users#mlogin'

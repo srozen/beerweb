@@ -38,12 +38,19 @@ class UsersController < ApplicationController
                        :pwd => params[:password],
                        :pwd_confirmation => params[:password])
       @user.save
+
+      @collection = Collection.new
+      @collection.user = @user
+      @collection.save
     end
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      @collection = Collection.new
+      @collection.user = @user
+      @collection.save
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
