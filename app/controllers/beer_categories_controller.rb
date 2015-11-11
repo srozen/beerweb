@@ -16,6 +16,7 @@ class BeerCategoriesController < ApplicationController
 
   def show
     @category = BeerCategory.find(params[:id])
+    @title = @category.name
     @category_beers = Beer.where(:beer_category_id => @category.id)
 
     respond_to do |format|
