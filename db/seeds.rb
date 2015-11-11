@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-### beers
+#############
+### beers ###
+#############
 
 leffeblonde = Beer.new
 leffeblonde.name = 'Leffe Blonde'
@@ -65,3 +67,30 @@ leffeblonde.save
 duvelblonde.save
 leffebrune.save
 guinness.save
+
+#############
+### Users ###
+#############
+
+willfrit = User.new
+willfrit.login = "Willfrit"
+willfrit.email = "will.frit@gmail.com"
+willfrit.pwd = "groschicon"
+willfrit.pwd_confirmation = "groschicon"
+
+willfrit.save
+
+##################
+### Collection ###
+##################
+
+cw = Collection.new
+cw.user = willfrit
+cw.save
+
+cwlb = Review.new
+cwlb.note = 6
+cwlb.comment = "Un peu trop sucrée à mon goût, mais rafraîchissante et valeur sûre si on veut déguster une bière agréable et pas trop forte."
+cwlb.beer = leffeblonde
+cwlb.collection = cw
+cwlb.save
