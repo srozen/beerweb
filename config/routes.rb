@@ -28,6 +28,7 @@ resources :collections
   post '/api_beer_profile', :to => 'beers#show'
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
+  post '/api_delete_beer', :to => 'collections#delete_beer'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

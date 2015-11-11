@@ -84,9 +84,36 @@ class CollectionsController < ApplicationController
 
 
   def delete_beer
+
+    # @params[:userId]
+    # @params[:hash]
+    # @params[:reviewId]
+
     # Vérifier les infos User
     # Retrouver la review du User
     # Destroy la Review
+
+    @beer_exists = Beer.exists?(:id => params[:beerId])
+    @review_exists = Review.exists?(:id => params[:reviewId])
+
+    if(@user_exists && @review_exists)
+      @user = User.authenticate_by_mobile(params[:userId], params[:hash])
+      if @user.nil?
+        render :json => {
+          :success => false
+        }
+      else
+        @review = Review.find(:id => params[:reviewId])
+        @review.destroy
+        render :json => {
+          :success => true
+        }
+      end
+    else
+      render :json => {
+        :success => false
+      }
+    end
   end
 
 end
