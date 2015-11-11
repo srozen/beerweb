@@ -7,8 +7,16 @@ class BeerCategoriesController < ApplicationController
 
     respond_to do |format|
         format.html
-        format.json { render :json => {
-            :beers => @beers
+        format.json {
+
+          @cbeers = []
+          @beers.each do |beer|
+            @nbReviews= Review.where("beer_id = ?", beer.id)
+            @cbeers << beer.as_json.merge(:global_note => @nbReviews.average(:note))
+          end
+
+          render :json => {
+            :beers => @cbeers
           }
         }
     end
