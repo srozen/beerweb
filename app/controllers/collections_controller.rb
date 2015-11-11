@@ -55,9 +55,9 @@ class CollectionsController < ApplicationController
     # Ajouter la review + compléter la collection
 
     @beer_exists = Beer.exists?(:id => params[:beerId])
-    @user_exists = Beer.exists?(:id => params[:userId])
+    @user_exists = User.exists?(:id => params[:userId])
 
-    if(!@user_exists && !@beer_exists)
+    if(@user_exists && @beer_exists)
       @user = User.authenticate_by_mobile(params[:userId], params[:hash])
       if @user.nil?
         render :json => {
