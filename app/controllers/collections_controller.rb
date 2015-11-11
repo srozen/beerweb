@@ -103,8 +103,7 @@ class CollectionsController < ApplicationController
           :success => false
         }
       else
-        @review = Review.find(:id => params[:reviewId])
-        @review.destroy
+        Review.find_by_id(params[:reviewId]).destroy
         render :json => {
           :success => true
         }
