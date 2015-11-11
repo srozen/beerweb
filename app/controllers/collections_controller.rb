@@ -12,6 +12,7 @@ class CollectionsController < ApplicationController
 
 
     @reviews = @collection.reviews
+    
     @collection_beers = []
     @collection_reviews = []
 
