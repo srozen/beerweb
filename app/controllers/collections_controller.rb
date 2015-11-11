@@ -93,7 +93,7 @@ class CollectionsController < ApplicationController
     # Retrouver la review du User
     # Destroy la Review
 
-    @beer_exists = Beer.exists?(:id => params[:beerId])
+    @user_exists = User.exists?(:id => params[:beerId])
     @review_exists = Review.exists?(:id => params[:reviewId])
 
     if(@user_exists && @review_exists)
