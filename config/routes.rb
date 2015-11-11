@@ -34,8 +34,7 @@ resources :collections
   # You can have the root of your site routed with "root"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  get '/catalogue', :to => 'beer_categories#index'
-  post '/catalogue', :to => 'beer_categories#index'
+  post '/api_catalogue', :to => 'beer_categories#index'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
