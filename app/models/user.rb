@@ -23,14 +23,16 @@ class User < ActiveRecord::Base
 	validates :login,  :presence => true,
                      :length   => { :maximum => 50 }
 
+
 	validates :email, :presence   => true,
                     :format     => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false }
 
+
 	validates :pwd, 	:presence     => true,
 							      :confirmation => true,
 							      :length       => { :within => 6..40 },
-                    :on => :create
+                    :on => [:create, :update]
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password, if: :no_salt

@@ -21,12 +21,18 @@ class PasswordResetsController < ApplicationController
 
   def update
     @user = User.find_by_password_reset!(params[:id])
-    if @user.password_reset_sent < 1.hours.ago
-      redirect_to new_password_reset_path, :alert => "La requête de mot de passe perdu a expiré"
-    elsif @user.update_attributes(params[:user])
+
+    if @user && @user.update_attributes(user_params)
       redirect_to root_path, :notice => "Votre mot de passe a bien été réinitialisé !"
     else
+      flash.now[:danger] = "Combinaison mot de passe incorrecte"
       render "edit"
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:pwd, :pwd_confirmation)
   end
 end

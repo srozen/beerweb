@@ -2,17 +2,10 @@
   <div class="col s12 ">
     <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
     <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-    <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Formulaire invalide</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
     <form class="login-form">
+      <%= f.hidden_field :login, :value => @user.login %>
+      <%= f.hidden_field :email, :value => @user.email %>
       <div class="row margin">
       <div class="input-field col s12">
         <i class="mdi-action-lock-outline prefix"></i>
