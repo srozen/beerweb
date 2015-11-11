@@ -57,7 +57,7 @@ class CollectionsController < ApplicationController
     @beer_exists = Beer.exists?(:id => params[:beerId])
     @user_exists = Beer.exists?(:id => params[:userId])
 
-    if(!@user_exists && !@email_exists)
+    if(!@user_exists && !@beer_exists)
       @user = User.authenticate_by_mobile(params[:userId], params[:hash])
       if @user.nil?
         render :json => {
@@ -80,4 +80,13 @@ class CollectionsController < ApplicationController
       }
     end
   end
+
+
+
+  def delete_beer
+    # Vérifier les infos User
+    # Retrouver la review du User
+    # Destroy la Review
+  end
+
 end
