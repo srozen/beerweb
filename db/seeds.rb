@@ -80,9 +80,17 @@ willfrit.pwd_confirmation = "groschicon"
 
 willfrit.save
 
-##################
-### Collection ###
-##################
+srozen = User.new
+srozen.login = "Srozen"
+srozen.email = "spat.monroe@gmail.com"
+srozen.pwd = "groschicon"
+srozen.pwd_confirmation = "groschicon"
+
+srozen.save
+
+###########################
+### Collection Willfrit ###
+###########################
 
 cw = Collection.new
 cw.user = willfrit
@@ -101,3 +109,25 @@ cwdb.comment = "Amerthume agréable, assez forte, une bonne bière de qualité q
 cwdb.beer = duvelblonde
 cwdb.collection = cw
 cwdb.save
+
+#########################
+### Collection Srozen ###
+#########################
+
+cz = Collection.new
+cz.user = srozen
+cz.save
+
+czlb = Review.new
+czlb.note = 3
+czlb.comment = "Vraiment pas top, trop légère, goût assez linéaire, mais Leffe Leffe, la bière de tout les barakis."
+czlb.beer = leffeblonde
+czlb.collection = cz
+czlb.save
+
+czdb = Review.new
+czdb.note = 9
+czdb.comment = "Voilà une très bonne bière de qualité, la Duuuuuuuuuuuuuuvel"
+czdb.beer = duvelblonde
+czdb.collection = cz
+czdb.save
