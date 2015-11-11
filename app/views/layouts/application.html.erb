@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <title>First App</title>
+<html>
+<head>
+    <title>Beer Collection</title>
 	<%= csrf_meta_tag %>
 
     <%= render 'layouts/stylesheets' %>
 
-  </head>
-  <body>
+</head>
+<body>
+   <div class="page_flex">
       <%= render 'layouts/header' %>
 
         <% flash.each do |key, value| %>
           <div class="flash <%= key %>"><%= value %></div>
         <% end %>
 
+        <div class="main_flex">
         <%= yield %>
+        </div>
 
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.test? %>
-  </div>
+   </div>
 </body>
 </html>

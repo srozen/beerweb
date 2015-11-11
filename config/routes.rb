@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
 
+
 resources :sessions, :only => [:new, :create, :destroy]
 resources :users
 resources :beers
+resources :reviews
 resources :beer_categories
+resources :collections
+
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
-  get '/collection', :to => 'pages#collection'
+  get '/collections', :to => 'collections#show'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
   post '/mlogin', :to => 'users#mlogin'
-
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy', via: 'delete'
+  get '/reviews', :to => 'reviews#show'
   #get '/', :to => 'pages#home'
   root :to => 'pages#home'
 
@@ -22,6 +26,8 @@ resources :beer_categories
   post '/api_login', :to => 'web_services#login'
   post '/api_register', :to => 'web_services#register'
   post '/api_beer_profile', :to => 'beers#show'
+
+  post '/api_collection', :to => 'collections#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

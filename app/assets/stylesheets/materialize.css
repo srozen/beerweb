@@ -5452,7 +5452,7 @@ h4 {
   margin: 1.14rem 0 0.912rem 0; }
 
 h5 {
-  font-size: 1.64rem;
+  font-size: 1.50rem;
   line-height: 110%;
   margin: 0.82rem 0 0.656rem 0; }
 
@@ -8196,3 +8196,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 @media (min-height: 40.125em) {
   .picker--time .picker__box {
     margin-bottom: 5em; } }
+
+/* Personnal Class **/
+.page_flex {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+.main_flex {
+   flex: 1 0 auto;
+}

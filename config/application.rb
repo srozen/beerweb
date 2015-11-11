@@ -23,5 +23,27 @@ module BeerCollectionWebsite
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    ## Fix du problème de champs invalides visuellement modifiés
+    # => Définition du field error dans ActionView::Base.field_error_proc
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
+    
+    #TODO A ADAPTER AU MAIL SERVER
+
+    #config.action_mailer.smtp_settings = {
+    #   address: "smtp.gmail.com",
+    #   port: 587,
+    #   domain: "<example.tld>",
+    #   user_name: "<username>",
+    #   password: "<password>",
+    #   authentication: :plain,
+    #   enable_starttls_auto: true
+    #}
+
+    #config.action_mailer.default_url_options = {
+    #   host: "yourdomain.tld"
+    #}
+
   end
 end

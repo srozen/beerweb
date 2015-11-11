@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
   def new
      @user = User.new
-    @title = "S'inscrire"
+     @title = "S'inscrire"
   end
 
   def destroy
@@ -22,15 +22,38 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # TODO
+  def api_register
+    @user_exists = User.exists?(:login => params[:login])
+    @email_exists = User.exists?(:email => params[:password])
+
+    render :json => {
+      :checkUser => !@user_exists, :checkMail => !@email_exists
+    }
+
+    if(!@user_exists && !@email_exists)
+      @user = User.new(:login => params[:login],
+                       :email => params[:email],
+                       :pwd => params[:password],
+                       :pwd_confirmation => params[:password])
+      @user.save
+
+      @collection = Collection.new
+      @collection.user = @user
+      @collection.save
+    end
+  end
   def create
     @user = User.new(user_params)
     if @user.save
+      @collection = Collection.new
+      @collection.user = @user
+      @collection.save
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
     else
       @titre = "Inscription"
-      flash[:success] = "kekekeke!"
       render 'new'
     end
   end

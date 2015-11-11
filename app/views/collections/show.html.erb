@@ -1,0 +1,5 @@
+<%= "Votre collection est composée de : #{@collection.reviews.count}  / #{@beers.count} bières !"%>
+
+<% if @collection.user_id == current_user.id %>
+  <%= link_to "Récupérer votre collection en CSV", collection_path(current_user.id, format: :csv) %>
+<% end %>

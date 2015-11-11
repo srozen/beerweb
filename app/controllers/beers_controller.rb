@@ -4,6 +4,10 @@ class BeersController < ApplicationController
   # @param id :integer
   #
   def show
+    @reviews = Review.all
+
+    @nbReviews= Review.where("beer_id = ?", params[:id])
+
     @beer = Beer.find(params[:id])
     @beer_category = BeerCategory.find_by_id(@beer.beer_category.id)
     respond_to do |format|

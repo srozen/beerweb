@@ -1,0 +1,4 @@
+<%= CSV.generate_line(["Nom", "Degre", "Description", "Histoire", "Categorie"]).html_safe.encode("utf-8") %>
+<%- @collection_beers.each do |beer| -%>
+<%= CSV.generate_line([beer.name, beer.degree, beer.description, beer.story, beer.beer_category.name]).html_safe.encode("utf-8") -%>
+<%- end -%>

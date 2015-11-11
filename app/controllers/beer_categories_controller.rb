@@ -2,6 +2,7 @@ class BeerCategoriesController < ApplicationController
 
   # Utilise la méthode search du Beer pour renvoyer des bières
   def index
+    @title = "Catalogue"
     @beers = Beer.search(params[:name])
 
     respond_to do |format|
@@ -15,6 +16,7 @@ class BeerCategoriesController < ApplicationController
 
   def show
     @category = BeerCategory.find(params[:id])
+    @title = @category.name
     @category_beers = Beer.where(:beer_category_id => @category.id)
 
     respond_to do |format|
