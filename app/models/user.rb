@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 	validates :pwd, 	:presence     => true,
 							      :confirmation => true,
 							      :length       => { :within => 6..40 },
-                    :on => [:create, :update]
+                    :on => [:create]
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password, if: :no_salt

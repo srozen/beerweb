@@ -22,3 +22,5 @@
 # Sensitive Files
 config/secrets.yml
 config/database.yml
+
+config/environments/test.rb
