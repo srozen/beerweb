@@ -4,6 +4,7 @@ resources :sessions, :only => [:new, :create, :destroy]
 resources :users
 resources :beers
 resources :beer_categories
+resources :password_resets, :only => [:new, :create, :edit, :update]
   get 'sessions/new'
   get '/contact', :to => 'pages#contact'
   get '/about',   :to => 'pages#about'
@@ -12,6 +13,9 @@ resources :beer_categories
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
   post '/mlogin', :to => 'users#mlogin'
+
+  get '/password_resets', :to => 'password_resets#new'
+  
 
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy', via: 'delete'
