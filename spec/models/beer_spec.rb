@@ -65,13 +65,13 @@ RSpec.describe Beer, type: :model do
   end
 
   it "rejette une description trop longue" do
-    long_description = "z" * 500
+    long_description = "z" * 7000
     too_long_description = Beer.new(@rbeer.merge(:description => long_description))
     expect(too_long_description).to_not be_valid
   end
 
   it "rejette un historique trop longue" do
-    long_story = "z" * 500
+    long_story = "z" * 7000
     too_long_story = Beer.new(@rbeer.merge(:description => long_story))
     expect(too_long_story).to_not be_valid
   end
