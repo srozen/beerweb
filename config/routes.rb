@@ -8,14 +8,18 @@ resources :reviews
 resources :beer_categories
 resources :collections
 
+resources :contacts, :only => [:new, :create]
+resources :password_resets, :only => [:new, :create, :edit, :update]
   get 'sessions/new'
-  get '/contact', :to => 'pages#contact'
+  get '/contact', :to => 'contacts#new'
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collections', :to => 'collections#show'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
   post '/mlogin', :to => 'users#mlogin'
+  get '/password_resets', :to => 'password_resets#new'
+
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy', via: 'delete'
   get '/reviews', :to => 'reviews#show'
@@ -29,6 +33,8 @@ resources :collections
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
   post '/api_delete_beer', :to => 'collections#delete_beer'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

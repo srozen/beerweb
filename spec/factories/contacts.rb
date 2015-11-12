@@ -1,14 +1,18 @@
 # == Schema Information
 #
-# Table name: friendlists
+# Table name: contacts
 #
 #  id         :integer          not null, primary key
+#  email      :string
+#  subject    :text
+#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'rails_helper'
+FactoryGirl.define do
+  factory :contact do
+    
+  end
 
-RSpec.describe Friendlist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
 end

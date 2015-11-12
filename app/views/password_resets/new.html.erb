@@ -1,0 +1,25 @@
+
+<div id="forget_pwd-page" class="container row-login">
+  <div class="col s12 ">
+    <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+    <%= form_tag password_resets_path, :method => :post do  %>
+    <form class="login-form">
+      <div class="row">
+        <div class="input-field col s12 center">
+        </div>
+      </div>
+       <div class="row margin">
+        <div class="input-field col s12">
+          <%= label_tag :email, "Email" %><br />
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+      <div class="row">
+        <div class="col s12 m5 l4"><p></p></div>
+           <%= submit_tag "Envoyer la demande" , :class => "btn col s6 m3 l4 waves-light orange"  %>
+        <div class="col s12 m5 l4"><p></p></div>
+      </div>
+    </div>
+  </form>
+      <% end %>
+  </div>
+</div>

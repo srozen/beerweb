@@ -1,14 +1,15 @@
 # == Schema Information
 #
-# Table name: friendlists
+# Table name: friend_statuses
 #
 #  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'rails_helper'
+FactoryGirl.define do
+  factory :friend_status do
+    
+  end
 
-RSpec.describe Friendlist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
 end

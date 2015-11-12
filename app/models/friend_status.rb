@@ -1,14 +1,12 @@
 # == Schema Information
 #
-# Table name: friendlists
+# Table name: friend_statuses
 #
 #  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'rails_helper'
-
-RSpec.describe Friendlist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+class FriendStatus < ActiveRecord::Base
+  has_and_belongs_to_many :friends
 end

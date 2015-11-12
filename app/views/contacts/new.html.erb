@@ -1,0 +1,44 @@
+<div id="contact-page" class="container row-login">
+  <div class="col s12 ">
+    <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+    <%= form_for(@contact) do |f| %>
+    <form class="login-form">
+      <div class="row">
+        <div class="input-field col s12 center">
+        </div>
+      </div>
+       <div class="row margin">
+        <div class="input-field col s12">
+          <% if signed_in? %>
+            <%= f.hidden_field :email, :value => @current_user.email%>
+          <% else %>
+            <%= f.email_field :email, :class => "validate" %>
+            <%= f.label :email, "Email", :'data-error' => "Invalide", :'data-success' => "Valide" %><br />
+          <% end %>
+        </div>
+      </div>
+       <div class="row margin">
+        <div class="input-field col s12">
+
+          <%= f.label :subject, "Sujet" %><br />
+          <%= f.text_field :subject %>
+        </div>
+      </div>
+        <div class="row margin">
+        <div class="input-field col s12">
+
+          <%= f.label :content, "Message" %><br />
+          <%= f.text_field :content %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m5 l4"><p></p></div>
+           <%= f.submit "Envoyer" , :class => "btn col s6 m3 l4 waves-light orange"  %>
+        <div class="col s12 m5 l4"><p></p></div>
+      </div>
+    </div>
+  </form>
+      <% end %>
+  </div>
+</div>
