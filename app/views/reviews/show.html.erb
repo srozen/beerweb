@@ -6,7 +6,7 @@
         <div class="col s12 m4 l4">
           <ul class = "collapsible active">
             <li >
-              <div class="collapsible-header active"><i class="mdi-av-web a"></i><%= user.login %></div>
+              <div class="collapsible-header active"><i class="mdi-av-web a"></i><%= "#{user.login} : #{review.note}/10" %></div>
               <div class="collapsible-body active"><p> <td><%= review.comment %></td></p></div>
             </li>
          </ul>
