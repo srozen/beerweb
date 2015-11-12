@@ -63,15 +63,24 @@ class UsersController < ApplicationController
     @title = "Édition profil"
   end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:success] = "Profil actualisé."
+
+def update
+  @user = User.find(params[:id])
+  if @user.has_password?(params[:user][:pwd_confirmation])
+    if @user.update_attributes(params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation))
+      flash[:success] = "Profile updated."
       redirect_to @user
     else
       render 'edit'
     end
+  else
+    flash[:failure] = "les mots de passe ne correspondent pas"
+    render 'edit'
   end
+end
+
+
+
 
   private
 

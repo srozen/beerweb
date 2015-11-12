@@ -6,14 +6,15 @@
       </div>
       <div class="col s12 m6 l0">
         <ul>
-          <li> Degré :  </li>
+          <li> Degré : <%= @beer.degree =%> </li>
           <li> Catégorie : <%= link_to @beer_category.name, @beer_category%></li>
-          <li> Origine :  </li>
           <li> Note : <%= @nbReviews.average(:note)%>/10  </li>
           <% if nbReviews(@nbReviews.count) %>
             <li>  <td><%= @nbReviews.count %></td> Collectionneurs l'ont déjà : <a href='/reviews/<%= @beer.id %>' >Consultez leurs avis ! </a> </li>
-            <% else %>
+            <% elsif nbReviewsII(@nbReviews.count) %>
               <li>  <td><%= @nbReviews.count %></td> Collectionneur l'a déjà : <a href='/reviews/<%= @beer.id %>' >Consultez son avis ! </a> </li>
+               <% else %>
+                  <li>  Il n'y a pas encore d'avis concernant cette bière. </li>
           <% end %>
 
         </ul>
