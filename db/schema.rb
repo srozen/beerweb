@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029141244) do
+ActiveRecord::Schema.define(version: 20151111093520) do
 
   create_table "beer_categories", force: :cascade do |t|
     t.string   "name"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20151029141244) do
     t.float    "degree"
     t.text     "description"
     t.text     "story"
+    t.boolean  "confirmed",        default: false
     t.integer  "beer_category_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "beers", ["beer_category_id"], name: "index_beers_on_beer_category_id"
@@ -55,14 +56,22 @@ ActiveRecord::Schema.define(version: 20151029141244) do
   end
 
   create_table "friendlists", force: :cascade do |t|
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "friendlists", ["user_id"], name: "index_friendlists_on_user_id"
+
   create_table "friends", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "friendlist_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "friends", ["friendlist_id"], name: "index_friends_on_friendlist_id"
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id"
 
   create_table "reviews", force: :cascade do |t|
     t.float    "note"
@@ -84,8 +93,10 @@ ActiveRecord::Schema.define(version: 20151029141244) do
     t.string   "firstName"
     t.string   "lastName"
     t.date     "birthday"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "password_reset"
+    t.datetime "password_reset_sent"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

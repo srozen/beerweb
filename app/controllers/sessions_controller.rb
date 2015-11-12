@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   def new
     @titre = "S'identifier"
   end
+
 def current_user=(user)
     @current_user = user
   end
@@ -19,7 +20,7 @@ def current_user=(user)
   end
 
   def destroy
-  sign_out
+    sign_out
     redirect_to root_path
   end
 end

@@ -28,14 +28,16 @@ class User < ActiveRecord::Base
 	validates :login,  :presence => true,
                      :length   => { :maximum => 50 }
 
+
 	validates :email, :presence   => true,
                     :format     => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false }
 
+
 	validates :pwd, 	:presence     => true,
 							      :confirmation => true,
-							      :length       => { :within => 6..40 }
-
+							      :length       => { :within => 6..40 },
+                    :on => [:create]
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password, if: :no_salt
@@ -70,6 +72,21 @@ class User < ActiveRecord::Base
     return nil if user.nil?
     return user if user.password == encrypted_password
 
+  end
+
+
+  # Méthode permettant l'envoi du mot de passe reset
+  def send_password_reset
+    generate_token(:password_reset)
+    self.password_reset_sent = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
   end
 
   private
