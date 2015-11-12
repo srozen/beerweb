@@ -7,11 +7,6 @@
         </p>
       </div>
       <div class="col s12 m6 l0">
-        <ul>
-          <li> Degré :  </li>
-          <li> Catégorie :  </li>
-          <li> Origine :  </li>
-        </ul>
         <% if signed_in? && @user.id == current_user.id %>
           <%= link_to "Editer le profil", edit_user_path(@user), :class => "btn waves-effect waves-light orange" %>
         <% end %>
