@@ -53,6 +53,7 @@ class UsersController < ApplicationController
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
+      @user.send_welcome
     else
       @titre = "Inscription"
       render 'new'
@@ -68,13 +69,13 @@ def update
   @user = User.find(params[:id])
   if @user.has_password?(params[:user][:pwd_confirmation])
     if @user.update_attributes(params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation))
-      flash[:success] = "Profile updated."
+      flash[:success] = "Profil mis à jour !"
       redirect_to @user
     else
       render 'edit'
     end
   else
-    flash[:failure] = "les mots de passe ne correspondent pas"
+    flash[:failure] = "les mots de passe ne correspondent pas !"
     render 'edit'
   end
 end

@@ -75,7 +75,6 @@ class User < ActiveRecord::Base
 
   end
 
-
   # Méthode permettant l'envoi du mot de passe reset
   def send_password_reset
     generate_token(:password_reset)
@@ -88,6 +87,11 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+  end
+
+  # Méthode permettant l'envoi de mail de confirmation d'inscription
+  def send_welcome
+    UserMailer.welcome_mail(self).deliver_now
   end
 
   private
