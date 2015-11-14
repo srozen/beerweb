@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       redirect_to @user
       @user.send_welcome
     else
-      @titre = "Inscription"
+      @title = "Inscription"
       render 'new'
     end
   end
