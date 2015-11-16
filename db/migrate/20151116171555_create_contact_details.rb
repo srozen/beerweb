@@ -9,6 +9,7 @@ class CreateContactDetails < ActiveRecord::Migration
       t.string :zipcode
       t.string :city
       t.string :country
+      t.belongs_to :beer_place, index: true, :polymorphic => true
 
       t.timestamps null: false
     end

@@ -59,9 +59,13 @@ ActiveRecord::Schema.define(version: 20151116171555) do
     t.string   "zipcode"
     t.string   "city"
     t.string   "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "beer_place_id"
+    t.string   "beer_place_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "contact_details", ["beer_place_type", "beer_place_id"], name: "index_contact_details_on_beer_place_type_and_beer_place_id"
 
   create_table "contacts", force: :cascade do |t|
     t.string   "email"
