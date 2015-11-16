@@ -12,5 +12,5 @@
 #
 
 class Bar < ActiveRecord::Base
-  has_one :contact_detail, :as => :Beerentity
+  has_one :contact_detail, :as => :beer_place
 end
