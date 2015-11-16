@@ -1,15 +1,21 @@
 # == Schema Information
 #
-# Table name: friendlists
+# Table name: contact_details
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
+#  telephone  :string
+#  website    :string
+#  street     :string
+#  number     :string
+#  zipcode    :string
+#  city       :string
+#  country    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
-RSpec.describe Friendlist, type: :model do
+RSpec.describe ContactDetail, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

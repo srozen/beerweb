@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111093520) do
+ActiveRecord::Schema.define(version: 20151116171555) do
+
+  create_table "bars", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "contact_detail_id"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "beer_categories", force: :cascade do |t|
     t.string   "name"
@@ -42,15 +51,22 @@ ActiveRecord::Schema.define(version: 20151111093520) do
 
   add_index "collections", ["user_id"], name: "index_collections_on_user_id"
 
-  create_table "contacts", force: :cascade do |t|
-    t.string   "email"
-    t.text     "subject"
-    t.text     "content"
+  create_table "contact_details", force: :cascade do |t|
+    t.string   "telephone"
+    t.string   "website"
+    t.string   "street"
+    t.string   "number"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "friend_statuses", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
+    t.string   "email"
+    t.text     "subject"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,6 +100,15 @@ ActiveRecord::Schema.define(version: 20151111093520) do
 
   add_index "reviews", ["beer_id"], name: "index_reviews_on_beer_id"
   add_index "reviews", ["collection_id"], name: "index_reviews_on_collection_id"
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "contact_detail_id"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
