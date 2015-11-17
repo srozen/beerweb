@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151116171559) do
     t.string   "name"
     t.float    "longitude"
     t.float    "latitude"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,6 +88,14 @@ ActiveRecord::Schema.define(version: 20151116171559) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "friend_statuses", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "users_id"
+    t.integer  "friends_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_index "deals", ["beer_place_type", "beer_place_id"], name: "index_deals_on_beer_place_type_and_beer_place_id"
 
   create_table "friendlists", force: :cascade do |t|
@@ -135,10 +144,11 @@ ActiveRecord::Schema.define(version: 20151116171559) do
     t.string   "firstName"
     t.string   "lastName"
     t.date     "birthday"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "password_reset"
     t.datetime "password_reset_sent"
+    t.string   "visibility",          default: "public"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

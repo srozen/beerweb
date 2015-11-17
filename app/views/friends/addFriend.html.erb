@@ -1,0 +1,79 @@
+<% @users.each do |user| %>
+  <div class="container">
+    <% if !current_user?(user) %>
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row">
+          <div class="col s12 m6 l0">
+            <p>
+              <%= gravatar_for user, :size => 30 %>
+        			<%= link_to user.login, user %>	 
+            </p>
+          </div>
+          
+          <% @friendlists = Friendlist.find(user_id = current_user.id) #on trouve la fd de l'user en cours%> 
+          <% @friends = Friend.where("friendlist_id = ?", @friendlists.id) #on cherche tous les amis de l'user en cours %>
+
+          <% @friendlistsAmi = Friendlist.find(user_id = user.id) %> 
+          <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
+
+          <% if  !@friends.exists?( :user_id =>user.id) #si l'user en cours est un ami on l'affiche %>
+          	<%= form_tag do %>	
+          		<button class="btn waves-effect waves-light orange" class="validate" type="submit" name="addFriend" value="<%= user.id %>"> >Ajouter comme ami<i class="material-icons right">send</i></button>
+          	<% end %>
+            <% if @friendsAmi.exists?( :user_id =>current_user.id) %>
+               <button class="btn waves-effect waves-light orange" type="button" name="action">Vous a ajouté comme ami
+                    <i class="material-icons right">send</i>
+                  </button>  
+            <% end %>
+          <% else %>
+            <% @friend_statuses_one = FriendStatus.find_by(users_id: current_user.id, friends_id: user.id) %>
+            <% @friend_statuses_two = FriendStatus.find_by(users_id: user.id, friends_id: current_user.id) %>
+            <% if !@friend_statuses_one.nil? %>
+              <% if @friend_statuses_one.status == "ami"  %>
+                <% @friends.where(user_id: user.id).each do |friend| %>
+              		<div class="row">
+              			<div class="input-field col s6">
+                    	<button class="btn waves-effect waves-light orange" type="button" name="action">Vous êtes maintenant ami !
+                    		<i class="material-icons right">send</i>
+                      </button>  
+              			</div>			
+                  </div>
+                <% end %>	
+              <% end %>  
+            <% else %>
+              <% if !@friend_statuses_two.nil? %>
+                <% if @friend_statuses_two.status == "ami"  %>
+                  <% @friends.where(user_id: user.id).each do |friend| %>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light orange" type="button" name="action">Vous êtes maintenant ami !
+                          <i class="material-icons right">send</i>
+                        </button>  
+                      </div>      
+                    </div>
+                  <% end %>  
+                <% end %>          
+             <% else %>
+                <% if @friend_statuses_two.nil? or @friend_statuses_one.nil? %>
+                  <% @friends.where(user_id: user.id).each do |friend| %>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light orange" type="button" name="action">Demande d'ajout en ami envoyée
+                          <i class="material-icons right">send</i>
+                        </button>  
+                      </div>      
+                    </div>
+                  <% end %>  
+                <% end %>  
+              <% end %>
+            <% end %> 
+          <% end %>	 
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+

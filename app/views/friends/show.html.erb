@@ -1,0 +1,29 @@
+<div class = "container">
+  <span>Voici vos amis ! </span>
+  <% @friends.where(friendlist_id: @friendlistsUser).each do |friend| %>
+  <% $test = 'blank' %>
+      <% @users.where(id: friend.user_id).each do |user| %>
+
+        <% @friendlistsAmi = Friendlist.find(user_id = user.id) %>
+
+        <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
+
+        <div class="col s12 m4 l4">
+          <ul class = "collapsible active">
+
+              <% @friendsAmi.where(friendlist_id: @friendlistsAmi).each do |friendAmi| %>
+
+                <% @users.where(id: friendAmi.user_id).each do |userAmi| %>
+
+                 <% if userAmi.id = user.id && user.login != $test%>
+                  <p> <td><%= link_to user.login, user %></td></p>
+                  <% $test = user.login %>
+                  <% end %>
+                <% end %>
+              <% end %>        
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+

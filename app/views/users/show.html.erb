@@ -1,22 +1,73 @@
 <div class="container">
   <div class="card-panel grey lighten-5 z-depth-1">
     <div class="row">
+      <% if signed_in? && @user.id == current_user.id %>
+      <h3><span class="span_h3 brown-text">Profil</span></h3>
+      <% else %>
+      <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+      <% end %>
       <div class="col s12 m6 l0">
         <p>
-          <%= gravatar_for @user, :size => '50%', :class => 'responsive-img z-depth-2 materialboxed' %>
+          <%= gravatar_for @user, :size => '75%', :class => 'responsive-img z-depth-2 materialboxed' %>
         </p>
       </div>
       <div class="col s12 m6 l0">
         <ul>
-          <li> Degré :  </li>
-          <li> Catégorie :  </li>
-          <li> Origine :  </li>
+          <li> <b>Nom d'utilisateur :</b> <%= @user.login%></li>
+          <li> <b>Email :</b> <%= @user.email %></li>
         </ul>
+     </div>
+      <div class="col s12 m6 l0">
         <% if signed_in? && @user.id == current_user.id %>
           <%= link_to "Editer le profil", edit_user_path(@user), :class => "btn waves-effect waves-light orange" %>
         <% end %>
      </div>
-  </div>
+
+      <div class="col s12 m6 l0">
+        <br>
+        <% if signed_in? && @user.id == current_user.id %>
+          <%= link_to "Voir ses amis", friend_path(@user), :class => "btn waves-effect waves-light orange" %>
+        <% end %>
+     </div>
+
+
+      <% $i = 0 %>
+      <% @users = User.all %>
+      <% @users.each do |user| %>
+        <% if !current_user?(user) %>
+         
+            <% @friendlistsAmi = Friendlist.find(user_id = user.id) %> 
+            <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
+            <% @friend_statuses_one = FriendStatus.find_by(users_id: current_user.id, friends_id: user.id) %>
+            <% @friend_statuses_two = FriendStatus.find_by(users_id: user.id, friends_id: current_user.id) %>
+            <% if @friendsAmi.exists?( :user_id =>current_user.id) %>
+              <% $i = $i+1 %>
+            <% end %>
+            <% if !@friend_statuses_one.nil? %>
+              <% if @friend_statuses_one.status == "ami" %>
+                <% $i = $i-1 %>
+              <% end %>
+            <% end %>
+            <% if !@friend_statuses_two.nil? %>
+              <% if @friend_statuses_two.status == "ami" %>
+                <% $i = $i-1 %>
+              <% end %>
+            <% end %>
+          
+        <% end %>  
+      <% end %>
+      <div class="col s12 m6 l0">
+        <br>
+        <% if signed_in? && @user.id == current_user.id %>
+          <%= link_to "Chercher des amis", addFriend_path,  :class => "btn waves-effect waves-light orange" %>
+          <% if $i != 0 %>
+            <div class="chip">
+            <%= $i %> ami vous a ajouté
+            </div>
+          <% end %>
+        <% end %>
+     </div>
+   </div>
   </div>
   <div class="col s12 m4 l4">
     <ul class = "collapsible active">
@@ -41,9 +92,7 @@
         <div class="collapsible-body active"><p><%= 'kk' %></p></div>
       </li>
     </ul>
-  </div>
+    </div>
 </div>
 <script src="../min/plugin-min.js"></script>
 <script src="../min/custom-min.js"></script>
-
-<!--  -->

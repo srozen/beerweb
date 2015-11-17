@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :login,  :presence => true,
-                     :length   => { :maximum => 50 }
+                     :length   => { :maximum => 50 },
+                     :uniqueness => { :case_sensitive => false }
 
 
 	validates :email, :presence   => true,
@@ -40,6 +41,22 @@ class User < ActiveRecord::Base
 							      :confirmation => true,
 							      :length       => { :within => 6..40 },
                     :on => [:create]
+    validates :visibility,   :presence     => true
+                   
+
+  # validates :pwd,   :confirmation => true,
+  #                   :length       => { :within => 6..40 },
+  #                   :on => [:update]
+
+  # validates :pwd, 	:presence     => true,
+	# 						      :confirmation => true,
+	# 						      :length       => { :within => 6..40 },
+  #                   :on => [:create]
+  #
+  # validates :pwd, 	:presence     => true,
+  # 						      :confirmation => true,
+  # 						      :length       => { :within => 6..40 },
+  #                   :on => [:create]
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password, if: :no_salt
@@ -76,7 +93,6 @@ class User < ActiveRecord::Base
 
   end
 
-
   # Méthode permettant l'envoi du mot de passe reset
   def send_password_reset
     generate_token(:password_reset)
@@ -91,14 +107,21 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  # Méthode permettant l'envoi de mail de confirmation d'inscription
+  def send_welcome
+    UserMailer.welcome_mail(self).deliver_now
+  end
+
+  # Encryption du password et création du sel si nouvel utilisateur
+  def encrypt_password
+   # Si nouvel user, on crée son SALT
+   self.salt = make_salt if new_record?
+   self.password = encrypt(pwd)
+  end
+
   private
 
-    # Encryption du password et création du sel si nouvel utilisateur
-    def encrypt_password
-     # Si nouvel user, on crée son SALT
-     self.salt = make_salt if new_record?
-     self.password = encrypt(pwd)
-    end
+
 
     def no_salt
       return self.salt.nil?

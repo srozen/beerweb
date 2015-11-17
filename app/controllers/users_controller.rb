@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:index, :edit, :update, :update_visibillity]
+
+  before_filter :authenticateFriends, :only => [:show]
+
+  before_filter :correct_user, :only => [:edit, :update, :update_visibillity]
   before_filter :admin_user,   :only => :destroy
 
   def show
@@ -45,16 +48,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(register_params)
     if @user.save
       @collection = Collection.new
       @collection.user = @user
       @collection.save
+      @friendlists = Friendlist.new
+      @friendlists.user = @user
+      @friendlists.save
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
+      @user.send_welcome
     else
-      @titre = "Inscription"
+      @title = "Inscription"
       render 'new'
     end
   end
@@ -63,21 +70,50 @@ class UsersController < ApplicationController
     @title = "Édition profil"
   end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:success] = "Profil actualisé."
+
+def update
+  @user = User.find(params[:id])
+
+  if @user.has_password?(params[:user][:old_password])
+
+    ## Si mot de passe entré, le modifier
+    if !params[:user][:pwd].blank? && !params[:user][:pwd_confirmation].blank?
+      @user.update_attributes(password_params)
+      @user.encrypt_password
+    end
+
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profil mis à jour !"
       redirect_to @user
     else
+      @title = "Édition profil"
       render 'edit'
     end
+  else
+    @title = "Édition profil"
+    flash[:failure] = "les mots de passe ne correspondent pas !"
+    render 'edit'
   end
+end
+
+
+
+
 
   private
 
     # Rend les paramètres accessibles sur la méthode
-    def user_params
+
+    def register_params
       params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation)
+    end
+
+    def user_params
+      params.require(:user).permit(:login, :email, :firstName, :lastName, :visibility)
+    end
+
+    def password_params
+      params.require(:user).permit(:pwd, :pwd_confirmation)
     end
 
     def admin_user
@@ -86,6 +122,11 @@ class UsersController < ApplicationController
 
     def authenticate
       deny_access unless signed_in?
+    end
+
+    def authenticateFriends
+       @user = User.find(params[:id])
+      deny_access_friends unless current_user?(@user) || isFriend? 
     end
 
     def correct_user

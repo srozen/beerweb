@@ -18,30 +18,66 @@
             <%= f.label :login %><br />
             <%= f.text_field :login %>
           </div>
-       </div>
+          </div>
          <div class="row margin">
          <div class="input-field col s12">
 
            <i class="mdi-social-person-outline prefix"></i>
             <%= f.label :email, "eMail" %><br />
-       <%= f.text_field :email %>
+            <%= f.text_field :email %>
           </div>
       </div>
+
+ </div>
+      <div class="row margin">
+      <div class="input-field col s12">
+
+         <i class="mdi-social-person-outline prefix"></i>
+         <%= f.label :lastName, "Nom" %><br />
+         <%= f.text_field :lastName %>
+       </div>
+       </div>
+       <div class="row margin">
+       <div class="input-field col s12">
+
+          <i class="mdi-social-person-outline prefix"></i>
+          <%= f.label :firstName, "Prénom" %><br />
+          <%= f.text_field :firstName %>
+        </div>
+        </div>
          <div class="row margin">
         <div class="input-field col s12">
 
            <i class="mdi-action-lock-outline prefix"></i>
-           <%= f.label :pwd, "Mot de passe" %><br />
+           <%= f.label :pwd, "Nouveau mot de passe" %><br />
            <%= f.password_field :pwd %>
 
          </div>
         </div>
         <div class="row margin">
+        <div class="input-field col s12">
+
+           <i class="mdi-action-lock-outline prefix"></i>
+           <%= f.label :pwd_confirmation, "Confirmation nouveau mot de passe" %><br />
+           <%= f.password_field :pwd_confirmation %>
+
+         </div>
+        </div>
+
+
+  <div class="row margin">
+         <div class="input-field col s12">
+<span> Visibilitée du profil : </span>
+<%= f.select :visibility, options_for_status, {}, prompt: 'Select One' , :class => 'browser-default' %>
+
+  </div>
+
+        <div class="row margin">
          <div class="input-field col s12">
 
             <i class="mdi-action-lock-outline prefix"></i>
-            <%= f.label :pwd_confirmation, "Confirmation" %><br/><br />
-            <%= f.password_field :pwd_confirmation %>
+            <%= f.label :old_password, "Ancien mot de passe pour onfirmation" %><br/><br />
+            <%= f.password_field :old_password %>
          </div>
        </div>
         <div class="row">
@@ -55,3 +91,7 @@
        <% end %>
     </div>
   </div>
+<script src="min/plugin-min.js"></script>
+<script src="min/custom-min.js"></script>
+
+<!--  -->

@@ -152,7 +152,6 @@ czdb.beer = duvelblonde
 czdb.collection = cz
 czdb.save
 
-
 ###################
 ### Bars'n'Shop ###
 ###################

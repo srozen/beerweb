@@ -8,7 +8,7 @@ resources :reviews
 resources :beer_categories
 
 resources :collections
-
+resources :friends
 resources :contacts, :only => [:new, :create]
 resources :password_resets, :only => [:new, :create, :edit, :update]
 resources :deals
@@ -18,8 +18,10 @@ resources :deals
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collections', :to => 'collections#show'
+  get '/friends', :to => 'friends#show'
   get '/signup',  :to => 'users#new'
-  get '/users',   :to => 'users#show'
+
+  get '/friendsRequest', :to => 'users#friendsRequest'
   post '/mlogin', :to => 'users#mlogin'
   get '/password_resets', :to => 'password_resets#new'
 
@@ -50,6 +52,11 @@ resources :deals
   get '/catalogue', :to => 'beer_categories#index'
   post '/catalogue', :to => 'beer_categories#index'
 
+  post '/addFriend', :to => 'friends#addFriend'
+  get '/addFriend', :to => 'friends#addFriend'
+
+ get '/users',   :to => 'users#show'
+  post '/users',   :to => 'users#show'
 
   get '/ajoutbonplan', :to =>'deals#new'
   get '/bonsplans', :to =>'deals#index'

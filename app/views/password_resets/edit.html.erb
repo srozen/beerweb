@@ -4,8 +4,8 @@
     <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
 
     <form class="login-form">
-      <%= f.hidden_field :login, :value => @user.login %>
-      <%= f.hidden_field :email, :value => @user.email %>
+      <%= @user.login %>
+      <%= @user.email %>
       <div class="row margin">
       <div class="input-field col s12">
         <i class="mdi-action-lock-outline prefix"></i>

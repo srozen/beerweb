@@ -1,19 +1,21 @@
 <div class="container">
   <div class="card-panel grey lighten-5 z-depth-1">
     <div class="row">
+      <h3><span class="span_h3 brown-text"><%=@beer.name%></span></h3>
       <div class="col s12 m6 l0">
         <p>  <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="responsive-img beer-profile z-depth-2 materialboxed"> <!-- notice the "circle" class --></p>
       </div>
       <div class="col s12 m6 l0">
         <ul>
-          <li> Degré :  </li>
-          <li> Catégorie : <%= link_to @beer_category.name, @beer_category%></li>
-          <li> Origine :  </li>
-          <li> Note : <%= @nbReviews.average(:note)%>/10  </li>
+          <li> <b>Degré :</b> <%= @beer.degree =%> </li>
+          <li> <b>Catégorie :</b> <%= link_to @beer_category.name, @beer_category%></li>
+          <li> <b>Note :</b> <%= @nbReviews.average(:note)%>/10  </li>
           <% if nbReviews(@nbReviews.count) %>
             <li>  <td><%= @nbReviews.count %></td> Collectionneurs l'ont déjà : <a href='/reviews/<%= @beer.id %>' >Consultez leurs avis ! </a> </li>
-            <% else %>
+            <% elsif nbReviewsII(@nbReviews.count) %>
               <li>  <td><%= @nbReviews.count %></td> Collectionneur l'a déjà : <a href='/reviews/<%= @beer.id %>' >Consultez son avis ! </a> </li>
+               <% else %>
+                  <li>  Il n'y a pas encore d'avis concernant cette bière. </li>
           <% end %>
 
         </ul>

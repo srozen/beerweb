@@ -1,5 +1,8 @@
-<%= "Votre collection est composée de : #{@collection.reviews.count}  / #{@beers.count} bières !"%>
+
 
 <% if @collection.user_id == current_user.id %>
+  <%= "Votre collection est composée de : #{@collection.reviews.count}  / #{@beers.count} bières !"%>
   <%= link_to "Récupérer votre collection en CSV", collection_path(current_user.id, format: :csv) %>
-<% end %>
+<% else %>
+  <%= "La collection de #{User.find(id = @collection.user_id).login} est composée de : #{@collection.reviews.count}  / #{@beers.count} bières !" %>
+<%end%>
