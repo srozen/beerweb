@@ -72,16 +72,15 @@ def update
       flash[:success] = "Profil mis à jour !"
       redirect_to @user
     else
+      @title = "Édition profil"
       render 'edit'
     end
   else
+    @title = "Édition profil"
     flash[:failure] = "les mots de passe ne correspondent pas !"
     render 'edit'
   end
 end
-
-
-
 
   private
 
