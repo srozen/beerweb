@@ -1,4 +1,5 @@
 <div id="login-page" class="container row-login">
+  <div class="card-panel orange darken-3">Ajout d'un bon plan</div>
   <div class="col s12 ">
     <%= form_for(@deal) do |f| %>
     <form class="login-form">
@@ -6,74 +7,66 @@
         <div class="input-field col s12 center">
         </div>
       </div>
-       <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-social-person-outline prefix"></i>
-            <%= f.label :name %><br />
+   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :Nom %><br />
             <%= f.text_field :name %>
         </div>
       </div>
-       <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-social-person-outline prefix"></i>
-          <%= f.label :nameBeer, "Nom de la bière" %><br />
-      <%= f.text_field :nameBeer %>
+    </form>
+  </div>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :Description %><br />
+            <%= f.text_field :description %>
         </div>
       </div>
-        <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-          <%= f.label :description, "Description" %><br />
-      <%= f.text_field :description %>
+    </form>
+  </div>    
+   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :DateDebut %><br />
+            <%= f.text_field :start_date %>
         </div>
       </div>
-      <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :categorie, "Catégorie" %><br/><br />
-  <%= f.text_field :categorie %>
+    </form>
+  </div>
+   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :DateFin %><br />
+            <%= f.text_field :end_date %>
         </div>
       </div>
-	  
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :datedebut, "Date de début" %><br/><br />
-  <%= f.text_field :datedebut %>
+    </form>
+  </div>
+   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :Reference %><br />
+            <%= f.text_field :reference %>
         </div>
       </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :datefin, "Date de fin" %><br/><br />
-  <%= f.text_field :datefin %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :prix, "Prix" %><br/><br />
-  <%= f.text_field :prix %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :reference, "Référence" %><br/><br />
-  <%= f.text_field :reference %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :reduction, "Réduction" %><br/><br />
-  <%= f.text_field :reduction %>
-        </div>
-      </div>
+    </form>
+  </div>
+      
 	<div class="row">
         <div class="input-field col s12 actions">
 
-           <%= f.submit "Ajout du bon plan" , :class => "btn col s12 waves-light "  %>
+           <%= f.submit "Ajout du bon plan" , :class => "btn col s12 orange darken-3 "  %>
 
         </div>
 
