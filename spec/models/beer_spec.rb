@@ -7,6 +7,7 @@
 #  degree           :float
 #  description      :text
 #  story            :text
+#  confirmed        :boolean          default(FALSE)
 #  beer_category_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

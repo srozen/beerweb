@@ -2,16 +2,18 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  login      :string
-#  password   :string
-#  salt       :string
-#  email      :string
-#  firstName  :string
-#  lastName   :string
-#  birthday   :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                  :integer          not null, primary key
+#  login               :string
+#  password            :string
+#  salt                :string
+#  email               :string
+#  firstName           :string
+#  lastName            :string
+#  birthday            :date
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  password_reset      :string
+#  password_reset_sent :datetime
 #
 
 require 'digest'

@@ -6,10 +6,13 @@ resources :users
 resources :beers
 resources :reviews
 resources :beer_categories
+
 resources :collections
 resources :friends
 resources :contacts, :only => [:new, :create]
 resources :password_resets, :only => [:new, :create, :edit, :update]
+resources :deals
+
   get 'sessions/new'
   get '/contact', :to => 'contacts#new'
   get '/about',   :to => 'pages#about'
@@ -35,6 +38,8 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
   post '/api_delete_beer', :to => 'collections#delete_beer'
+  get '/api_bars', :to => 'bars#index'
+  get '/api_shops', :to => 'shops#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -50,9 +55,14 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   post '/addFriend', :to => 'friends#addFriend'
   get '/addFriend', :to => 'friends#addFriend'
 
- get '/users',   :to => 'users#show'
+  get '/users',   :to => 'users#show'
   post '/users',   :to => 'users#show'
-get '/beermap', :to => 'pages#beermap'
+
+  get '/beermap', :to => 'pages#beermap'
+
+  get '/ajoutbonplan', :to =>'deals#new'
+  get '/bonsplans', :to =>'deals#index'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

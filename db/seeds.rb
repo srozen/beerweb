@@ -69,23 +69,51 @@ leffebrune.save
 guinness.save
 
 #############
+### Deals ###
+#############
+
+dil = Deal.new
+dil.name = "Leffe Promo Pure"
+dil.description = "Leffe moitié prix"
+dil.start_date = "Now"
+dil.end_date = "Tomorrow"
+dil.reference = 9.0
+dil.beer_id = leffeblonde.id
+dil.save
+
+dealduvel = Deal.new
+dealduvel.name = "Duvel Promo Ete 2016"
+dealduvel.description = "Pack 6+2 Gratuites"
+dealduvel.start_date = "Juin 2016"
+dealduvel.end_date = "Aout 2016"
+dealduvel.reference = 10.0
+dealduvel.beer_id = duvelblonde.id
+dealduvel.save
+
+#############
 ### Users ###
 #############
+
+willfriend = Friendlist.new
+willfriend.save
 
 willfrit = User.new
 willfrit.login = "Willfrit"
 willfrit.email = "will.frit@gmail.com"
 willfrit.pwd = "groschicon"
 willfrit.pwd_confirmation = "groschicon"
-
+willfrit.friendlist = willfriend
 willfrit.save
+
+srofriend = Friendlist.new
+srofriend.save
 
 srozen = User.new
 srozen.login = "Srozen"
 srozen.email = "spat.monroe@gmail.com"
 srozen.pwd = "groschicon"
 srozen.pwd_confirmation = "groschicon"
-
+srozen.friendlist = srofriend
 srozen.save
 
 ###########################
@@ -132,3 +160,53 @@ czdb.beer = duvelblonde
 czdb.collection = cz
 czdb.save
 
+###################
+### Bars'n'Shop ###
+###################
+
+bl = Shop.new
+bl.name = "BeerLover's Shop LLN"
+bl.latitude = 50.669723
+bl.longitude = 4.615458
+
+blc = ContactDetail.new
+blc.telephone = "0497533673"
+blc.website = "http://special-beer.com/magasins/antre-de-special-beer/"
+blc.street = "Rue des Wallons"
+blc.number = "8"
+blc.zipcode = "1348"
+blc.city = "Louvain-la-Neuve"
+blc.country = "Belgique"
+
+blc.beer_place = bl
+bl.contact_detail = blc
+blc.save
+bl.save
+
+
+bb = Bar.new
+bb.name = "Beer Bar"
+bb.latitude = 50.669048
+bb.longitude = 4.613728
+
+### BBC est de très mauvais goût par ailleurs
+bbc = ContactDetail.new
+bbc.telephone = "010245838"
+bbc.website = "http://www.beer-bar.be/"
+bbc.street = "Grand-Rue"
+bbc.number = "5"
+bbc.zipcode = "1348"
+bbc.city = "Louvain-la-Neuve"
+bbc.country = "Belgique"
+
+bbc.beer_place = bb
+bb.contact_detail = bbc
+bbc.save
+bb.save
+
+dil.beer_place = bl
+dealduvel.beer_place = bl
+bl.deal << dil
+bl.deal << dealduvel
+dealduvel.save
+dil.save
