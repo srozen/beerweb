@@ -11,7 +11,53 @@
           <%= link_to "Editer le profil", edit_user_path(@user), :class => "btn waves-effect waves-light orange" %>
         <% end %>
      </div>
-  </div>
+
+      <div class="col s12 m6 l0">
+        <br>
+        <% if signed_in? && @user.id == current_user.id %>
+          <%= link_to "Voir ses amis", friend_path(@user), :class => "btn waves-effect waves-light orange" %>
+        <% end %>
+     </div>
+
+
+      <% $i = 0 %>
+      <% @users = User.all %>
+      <% @users.each do |user| %>
+        <% if !current_user?(user) %>
+          <% if  true #si l'user en cours est un ami on l'affiche %>
+            <% @friendlistsAmi = Friendlist.find(user_id = user.id) %> 
+            <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
+            <% @friend_statuses_one = FriendStatus.find_by(users_id: current_user.id, friends_id: user.id) %>
+            <% @friend_statuses_two = FriendStatus.find_by(users_id: user.id, friends_id: current_user.id) %>
+            <% if @friendsAmi.exists?( :user_id =>current_user.id) %>
+              <% $i = $i+1 %>
+            <% end %>
+            <% if !@friend_statuses_one.nil? %>
+              <% if @friend_statuses_one.status == "ami" %>
+                <% $i = $i-1 %>
+              <% end %>
+            <% end %>
+            <% if !@friend_statuses_two.nil? %>
+              <% if @friend_statuses_two.status == "ami" %>
+                <% $i = $i-1 %>
+              <% end %>
+            <% end %>
+          <% else %>
+          <% end %>  
+        <% end %>  
+      <% end %>
+      <div class="col s12 m6 l0">
+        <br>
+        <% if signed_in? && @user.id == current_user.id %>
+          <%= link_to "Chercher des amis", addFriend_path,  :class => "btn waves-effect waves-light orange" %>
+          <% if $i != 0 %>
+            <div class="chip">
+            <%= $i %> ami vous a ajouté
+            </div>
+          <% end %>
+        <% end %>
+     </div>
+   </div>
   </div>
   <div class="col s12 m4 l4">
     <ul class = "collapsible active">
