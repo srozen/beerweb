@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:index, :edit, :update, :update_visibillity]
+
+  before_filter :authenticateFriends, :only => [:show]
+
+  before_filter :correct_user, :only => [:edit, :update, :update_visibillity]
   before_filter :admin_user,   :only => :destroy
 
   def show
@@ -50,6 +53,9 @@ class UsersController < ApplicationController
       @collection = Collection.new
       @collection.user = @user
       @collection.save
+      @friendlists = Friendlist.new
+      @friendlists.user = @user
+      @friendlists.save
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
@@ -67,7 +73,7 @@ class UsersController < ApplicationController
 def update
   @user = User.find(params[:id])
   if @user.has_password?(params[:user][:pwd_confirmation])
-    if @user.update_attributes(params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation))
+    if @user.update_attributes(params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation, :visibility))
       flash[:success] = "Profile updated."
       redirect_to @user
     else
@@ -82,11 +88,12 @@ end
 
 
 
+
   private
 
     # Rend les paramètres accessibles sur la méthode
     def user_params
-      params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation)
+      params.require(:user).permit(:login, :email, :pwd, :pwd_confirmation, :lastName)
     end
 
     def admin_user
@@ -95,6 +102,11 @@ end
 
     def authenticate
       deny_access unless signed_in?
+    end
+
+    def authenticateFriends
+       @user = User.find(params[:id])
+      deny_access_friends unless current_user?(@user) || isFriend? 
     end
 
     def correct_user
