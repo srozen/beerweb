@@ -24,7 +24,7 @@
       <% @users = User.all %>
       <% @users.each do |user| %>
         <% if !current_user?(user) %>
-          <% if  true #si l'user en cours est un ami on l'affiche %>
+         
             <% @friendlistsAmi = Friendlist.find(user_id = user.id) %> 
             <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
             <% @friend_statuses_one = FriendStatus.find_by(users_id: current_user.id, friends_id: user.id) %>
@@ -42,8 +42,7 @@
                 <% $i = $i-1 %>
               <% end %>
             <% end %>
-          <% else %>
-          <% end %>  
+          
         <% end %>  
       <% end %>
       <div class="col s12 m6 l0">
