@@ -26,6 +26,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def api_show
+    @user = User.find(params[:id])
+    @collection = Collection.find(user_id = params[:id])
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+          :login => @user.login,
+          :email => @user.email,
+          :firstName => @user.firstName,
+          :lastName => @user.lastName,
+          :nbBeers => @collection.reviews.count,
+          :totalBeers => Beer.all.count
+        }
+      }
+    end
+  end
+
   def index
     @titre = "Tous les utilisateurs"
     @users = User.paginate(:page => params[:page])
@@ -143,7 +161,7 @@ end
 
     def authenticateFriends
        @user = User.find(params[:id])
-       deny_access_friends unless current_user?(@user) || isFriend? || current_user.id = params[:id]
+       deny_access_friends unless current_user?(@user) || isFriend?
     end
 
     def correct_user
