@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 def current_user=(user)
     @current_user = user
   end
+
   def create
     user = User.authenticate(params[:session][:login], params[:session][:pwd])
     if user.nil?
