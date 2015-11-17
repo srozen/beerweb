@@ -1,11 +1,22 @@
 <div class="container">
   <div class="card-panel grey lighten-5 z-depth-1">
     <div class="row">
+      <% if signed_in? && @user.id == current_user.id %>
+      <h3><span class="span_h3 brown-text">Profil</span></h3>
+      <% else %>
+      <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+      <% end %>
       <div class="col s12 m6 l0">
         <p>
-          <%= gravatar_for @user, :size => '50%', :class => 'responsive-img z-depth-2 materialboxed' %>
+          <%= gravatar_for @user, :size => '75%', :class => 'responsive-img z-depth-2 materialboxed' %>
         </p>
       </div>
+      <div class="col s12 m6 l0">
+        <ul>
+          <li> <b>Nom d'utilisateur :</b> <%= @user.login%></li>
+          <li> <b>Email :</b> <%= @user.email %></li>
+        </ul>
+     </div>
       <div class="col s12 m6 l0">
         <% if signed_in? && @user.id == current_user.id %>
           <%= link_to "Editer le profil", edit_user_path(@user), :class => "btn waves-effect waves-light orange" %>
@@ -81,9 +92,7 @@
         <div class="collapsible-body active"><p><%= 'kk' %></p></div>
       </li>
     </ul>
-  </div>
+    </div>
 </div>
 <script src="../min/plugin-min.js"></script>
 <script src="../min/custom-min.js"></script>
-
-<!--  -->

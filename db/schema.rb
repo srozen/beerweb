@@ -13,6 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20151114213514) do
 
+  create_table "bars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "beer_categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -87,6 +92,11 @@ ActiveRecord::Schema.define(version: 20151114213514) do
 
   add_index "reviews", ["beer_id"], name: "index_reviews_on_beer_id"
   add_index "reviews", ["collection_id"], name: "index_reviews_on_collection_id"
+
+  create_table "shops", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
