@@ -7,7 +7,7 @@ resources :beers
 resources :reviews
 resources :beer_categories
 resources :collections
-
+resources :friends
 resources :contacts, :only => [:new, :create]
 resources :password_resets, :only => [:new, :create, :edit, :update]
   get 'sessions/new'
@@ -15,8 +15,10 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collections', :to => 'collections#show'
+  get '/friends', :to => 'friends#show'
   get '/signup',  :to => 'users#new'
-  get '/users',   :to => 'users#show'
+
+  get '/friendsRequest', :to => 'users#friendsRequest'
   post '/mlogin', :to => 'users#mlogin'
   get '/password_resets', :to => 'password_resets#new'
 
@@ -45,6 +47,11 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   get '/catalogue', :to => 'beer_categories#index'
   post '/catalogue', :to => 'beer_categories#index'
 
+  post '/addFriend', :to => 'friends#addFriend'
+  get '/addFriend', :to => 'friends#addFriend'
+
+ get '/users',   :to => 'users#show'
+  post '/users',   :to => 'users#show'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
