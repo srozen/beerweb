@@ -12,8 +12,7 @@ resources :contacts, :only => [:new, :create]
 resources :password_resets, :only => [:new, :create, :edit, :update]
   get 'sessions/new'
   get '/contact', :to => 'contacts#new'
-  get '/about',   :to => 'pages#about'
-  get '/help',    :to => 'pages#help'
+  get '/admin_beers',   :to => 'pages#administration_beers'
   get '/collections', :to => 'collections#show'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'

@@ -19,4 +19,8 @@ class PagesController < ApplicationController
   def help
     @title = "Aide"
   end
+
+  def administration_beers
+    @title = "Administrer le catalogue"
+  end
 end
