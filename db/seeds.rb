@@ -87,6 +87,7 @@ dealduvel.description = "Pack 6+2 Gratuites"
 dealduvel.start_date = "Juin 2016"
 dealduvel.end_date = "Aout 2016"
 dealduvel.reference = 10.0
+dealduvel.beer_id = duvelblonde.id
 dealduvel.save
 
 #############
