@@ -131,3 +131,4 @@ czdb.comment = "Voilà une très bonne bière de qualité, la Duuuuuuuuuuuuuuvel
 czdb.beer = duvelblonde
 czdb.collection = cz
 czdb.save
+
