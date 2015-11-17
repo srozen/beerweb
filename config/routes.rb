@@ -6,10 +6,13 @@ resources :users
 resources :beers
 resources :reviews
 resources :beer_categories
+
 resources :collections
 
 resources :contacts, :only => [:new, :create]
 resources :password_resets, :only => [:new, :create, :edit, :update]
+resources :deals
+
   get 'sessions/new'
   get '/contact', :to => 'contacts#new'
   get '/about',   :to => 'pages#about'
@@ -46,6 +49,10 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   post '/api_catalogue', :to => 'beer_categories#index'
   get '/catalogue', :to => 'beer_categories#index'
   post '/catalogue', :to => 'beer_categories#index'
+
+
+  get '/ajoutbonplan', :to =>'deals#new'
+  get '/bonsplans', :to =>'deals#index'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
