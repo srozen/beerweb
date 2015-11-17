@@ -19,4 +19,7 @@ class PagesController < ApplicationController
   def help
     @title = "Aide"
   end
+  def beermap
+    @title = "beermap"
+  end
 end
