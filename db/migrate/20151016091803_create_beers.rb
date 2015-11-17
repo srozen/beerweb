@@ -7,7 +7,6 @@ class CreateBeers < ActiveRecord::Migration
       t.text :story
       t.boolean :confirmed, default: false
       t.belongs_to :beer_category, index: true
-
       t.timestamps null: false
     end
 

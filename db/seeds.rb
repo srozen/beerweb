@@ -69,6 +69,26 @@ leffebrune.save
 guinness.save
 
 #############
+### Deals ###
+#############
+
+dil = Deal.new
+dil.name = "Leffe Promo Pure"
+dil.description = "Leffe moitié prix"
+dil.start_date = "Now"
+dil.end_date = "Tomorrow"
+dil.reference = 9.0
+dil.save
+
+dealduvel = Deal.new
+dealduvel.name = "Duvel Promo Ete 2016"
+dealduvel.description = "Pack 6+2 Gratuites"
+dealduvel.start_date = "Juin 2016"
+dealduvel.end_date = "Aout 2016"
+dealduvel.reference = 10.0
+dealduvel.save
+
+#############
 ### Users ###
 #############
 
@@ -176,3 +196,10 @@ bbc.beer_place = bb
 bb.contact_detail = bbc
 bbc.save
 bb.save
+
+dil.beer_place = bl
+dealduvel.beer_place = bl
+bl.deal << dil
+bl.deal << dealduvel
+dealduvel.save
+dil.save
