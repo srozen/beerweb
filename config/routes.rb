@@ -52,7 +52,7 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
 
  get '/users',   :to => 'users#show'
   post '/users',   :to => 'users#show'
-
+get '/beermap', :to => 'pages#beermap'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
