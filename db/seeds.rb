@@ -78,6 +78,7 @@ dil.description = "Leffe moitié prix"
 dil.start_date = "Now"
 dil.end_date = "Tomorrow"
 dil.reference = 9.0
+dil.beer_id = leffeblonde.id
 dil.save
 
 dealduvel = Deal.new
@@ -86,6 +87,7 @@ dealduvel.description = "Pack 6+2 Gratuites"
 dealduvel.start_date = "Juin 2016"
 dealduvel.end_date = "Aout 2016"
 dealduvel.reference = 10.0
+dealduvel.beer_id = duvelblonde.id
 dealduvel.save
 
 #############

@@ -1,13 +1,14 @@
 <div class="container">
+
 	<div class="card-panel orange darken-3">Bons Plans</div>
 	<div class="row">	
-	
 	<% # Résultat de la recherche #index %>
 	<% @deals = Deal.all %>
     <% if @deals.blank? %>
       <%= "Aucun bon plan n'est disponnible!" %>
     <% else %>
 		<% @deals.each do |deal| %>
+		<% @beer = Beer.find_by_id(deal.beer_id) %>
 				<div class="col s12 m4">
 						<div class="card">
 							<div class="card-image waves-effect waves-block waves-light">
@@ -20,11 +21,11 @@
 						<div class="card-reveal">
 							<span class="card-title grey-text text-darken-4"><%= deal.name %><i class="material-icons right">close</i></span>
 							<p><%= deal.description %></p>
-							<p>Référence : <%= deal.reference %> </br> 
+							<p>Référence : <%= deal.reference %> </br>
 							<p>Date de debut : <%= deal.start_date %></br> Date de fin de promo : <%= deal.end_date %>
 							</p>
 							<div class="card-action">
-								<a href="#">Lien vers ...</a>
+								<%= link_to @beer.name, @beer %>
 							</div>
 						</div>
 					</div>
@@ -33,5 +34,3 @@
 	<% end %>
 	</div>
 </div>
-
-
