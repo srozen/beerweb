@@ -1,4 +1,4 @@
-class AddSecondUsersToFriendStatusesFix < ActiveRecord::Migration
+class CreateFriendStatusesFix < ActiveRecord::Migration
   def change
   	 	 
 
