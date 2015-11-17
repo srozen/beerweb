@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111093520) do
+ActiveRecord::Schema.define(version: 20151114213514) do
 
   create_table "beer_categories", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 20151111093520) do
     t.string   "email"
     t.text     "subject"
     t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friend_statuses", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "users_id"
+    t.integer  "friends_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,10 +96,11 @@ ActiveRecord::Schema.define(version: 20151111093520) do
     t.string   "firstName"
     t.string   "lastName"
     t.date     "birthday"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "password_reset"
     t.datetime "password_reset_sent"
+    t.string   "visibility",          default: "public"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
