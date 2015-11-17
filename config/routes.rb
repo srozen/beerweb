@@ -38,6 +38,8 @@ resources :deals
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
   post '/api_delete_beer', :to => 'collections#delete_beer'
+  post '/api_user_profile', :to => 'user#show'
+  get '/api_user_profile', :to => 'user#show'
   get '/api_bars', :to => 'bars#index'
   get '/api_shops', :to => 'shops#index'
 
