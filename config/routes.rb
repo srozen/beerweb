@@ -33,6 +33,8 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
   post '/api_delete_beer', :to => 'collections#delete_beer'
+  get '/api_bars', :to => 'bars#index'
+  get '/api_shops', :to => 'shops#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -15,11 +15,10 @@ ActiveRecord::Schema.define(version: 20151116171555) do
 
   create_table "bars", force: :cascade do |t|
     t.string   "name"
-    t.integer  "contact_detail_id"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "beer_categories", force: :cascade do |t|
@@ -107,11 +106,10 @@ ActiveRecord::Schema.define(version: 20151116171555) do
 
   create_table "shops", force: :cascade do |t|
     t.string   "name"
-    t.integer  "contact_detail_id"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
