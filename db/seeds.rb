@@ -72,6 +72,16 @@ guinness.save
 ### Users ###
 #############
 
+admin = User.new
+admin.login = "admin"
+admin.email = "michashh@gmail.com"
+admin.pwd = "grossecatin"
+admin.pwd_confirmation = "grossecatin"
+admin.admin = true
+
+admin.save
+
+
 willfrit = User.new
 willfrit.login = "Willfrit"
 willfrit.email = "will.frit@gmail.com"

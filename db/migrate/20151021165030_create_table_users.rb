@@ -9,6 +9,9 @@ class CreateTableUsers < ActiveRecord::Migration
       t.string :firstName
       t.string :lastName
       t.date :birthday
+      t.boolean :admin, default: false
+      t.string :password_reset
+      t.datetime :password_reset_sent
 
       t.timestamps null: false
     end
