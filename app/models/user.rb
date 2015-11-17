@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 							      :confirmation => true,
 							      :length       => { :within => 6..40 },
                     :on => [:create]
+    validates :visibility,   :presence     => true
+                   
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password, if: :no_salt
