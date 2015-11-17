@@ -92,20 +92,26 @@ dealduvel.save
 ### Users ###
 #############
 
+willfriend = Friendlist.new
+willfriend.save
+
 willfrit = User.new
 willfrit.login = "Willfrit"
 willfrit.email = "will.frit@gmail.com"
 willfrit.pwd = "groschicon"
 willfrit.pwd_confirmation = "groschicon"
-
+willfrit.friendlist = willfriend
 willfrit.save
+
+srofriend = Friendlist.new
+srofriend.save
 
 srozen = User.new
 srozen.login = "Srozen"
 srozen.email = "spat.monroe@gmail.com"
 srozen.pwd = "groschicon"
 srozen.pwd_confirmation = "groschicon"
-
+srozen.friendlist = srofriend
 srozen.save
 
 ###########################
