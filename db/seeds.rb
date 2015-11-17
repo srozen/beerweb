@@ -78,6 +78,7 @@ dil.description = "Leffe moitié prix"
 dil.start_date = "Now"
 dil.end_date = "Tomorrow"
 dil.reference = 9.0
+dil.beer_id = leffeblonde.id
 dil.save
 
 dealduvel = Deal.new
