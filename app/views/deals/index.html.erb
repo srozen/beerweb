@@ -18,10 +18,11 @@
 							<p><a href="#">Lien vers le profil de la bière</a></p>
 						</div>
 						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4"><%= deal.nameBeer %><i class="material-icons right">close</i></span>
+							<span class="card-title grey-text text-darken-4"><%= deal.name %><i class="material-icons right">close</i></span>
 							<p><%= deal.description %></p>
-							<p>Prix :<%= deal.prix %> </br>  Remise : <%= deal.reduction %></p>
-							<p>Date de debut : <%= deal.datedebut %></br> Date de fin de promo : <%= deal.datefin %></p>
+							<p>Référence :<%= deal.reference %> </br> 
+							<p>Date de debut : <%= deal.start_date %></br> Date de fin de promo : <%= deal.end_date %>
+							</p>
 							<div class="card-action">
 								<a href="#">Lien vers ...</a>
 							</div>

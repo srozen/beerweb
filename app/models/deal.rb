@@ -15,33 +15,24 @@
 
 class Deal < ActiveRecord::Base
 
+
  validates :name, presence: true,
                    length: { maximum: 40},
                    uniqueness: { case_sensitive: false }
 				   				   	
- validates :nameBeer, presence: true,
-                          length: { maximum: 50}
 					
  validates :description, presence: true,
                           length: { maximum: 500}
-						  
- validates :categorie, presence: true,
-                          length: { maximum: 20}						  
+						  						  
  				   				   
  validates :reference, presence: true,
 					   numericality: true
 						  
- validates :datedebut, presence: true
+ validates :start_date, presence: true
                           
 						  
- validates :datefin, presence: true
-                          
- validates :prix, presence: true,
-                  numericality: true
-					   
- validates :reduction, presence: true,
-					   numericality: true
-                          
+ validates :end_date, presence: true
+                                                   
 						  					  
 end
 
