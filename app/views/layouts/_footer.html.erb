@@ -11,6 +11,17 @@
             <div class="col s6 m4 l4">
                 <a href="<%= contact_path %>" class="waves-effect orange accent-2 lighten-1 waves-light btn"><i class="material-icons right">mail</i>Contact</a>
             </div>
+            <% if signed_in? && current_user.admin? %>
+            <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+              <a class="btn-floating btn-large orange">
+                <i class="large mdi-navigation-menu"></i>
+              </a>
+              <ul>
+                <li><a class="btn-floating orange orange" href="<%= handle_users_path %> "><i class="material-icons">supervisor_account</i></a></li>
+                <li><a class="btn-floating yellow orange"><i class="material-icons">input</i></a></li>
+              </ul>
+            </div>
+            <% end %>
             <div class="col s6 m2 l2"><p></p></div>
         </div>
       </div>

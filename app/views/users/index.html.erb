@@ -1,13 +1,21 @@
-<div class="intro deep-orange lighten-2 ">
+<div class="container">
+<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+<div class="row">
+  <table>
+    <thead>
+      <tr>
+          <th data-field="name">Login</th>
+          <th data-field="degree">Email</th>
+      </tr>
+    </thead>
 
-<h1>Tous les utilisateurs</h1>
-
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
+    <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.login, user %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
 </div>
->>>>>>> presentation_page

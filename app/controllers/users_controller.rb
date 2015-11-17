@@ -7,10 +7,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @titre = @user.login
   end
+
   def index
-    @titre = "Tous les utilisateurs"
-    @users = User.paginate(:page => params[:page])
+    @title = "Tous les utilisateurs"
+    @users = User.all
   end
+
   def new
      @user = User.new
      @title = "S'inscrire"

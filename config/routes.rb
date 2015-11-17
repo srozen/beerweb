@@ -17,6 +17,7 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   get '/collections', :to => 'collections#show'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'
+  get '/handle_users', :to => 'users#index'
   post '/mlogin', :to => 'users#mlogin'
   get '/password_resets', :to => 'password_resets#new'
 
