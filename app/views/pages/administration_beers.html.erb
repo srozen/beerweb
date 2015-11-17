@@ -1,7 +1,11 @@
+<% if signed_in? && current_user.admin? %>
 <div class="container">
 <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
 <div class="collection">
-    <a href="#!" class="collection-item orange-text text-darken-1">Ajouter une bière</a>
-    <a href="#!" class="collection-item orange-text text-darken-1">Gérer les requètes de nouvelles bières<span class="new badge">4</span></a>
-    <a href="#!" class="collection-item orange-text text-darken-1">Editer une bière</a>
+    <a href="<%= handle_users_path %>" class="collection-item orange-text text-darken-1">Ajouter une bière</a>
+    <a href="<%= handle_users_path %>" class="collection-item orange-text text-darken-1">Gérer les requètes de nouvelles bières<span class="new badge">4</span></a>
+    <a href="<%= handle_users_path %>" class="collection-item orange-text text-darken-1">Editer une bière</a>
 </div>
+<% else %>
+<p>Vous n'avez pas les droits pour consulter cette page !</p>
+<% end %>
