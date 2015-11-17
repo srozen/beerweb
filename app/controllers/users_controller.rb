@@ -143,7 +143,7 @@ end
 
     def authenticateFriends
        @user = User.find(params[:id])
-      deny_access_friends unless current_user?(@user) || isFriend?
+       deny_access_friends unless current_user?(@user) || isFriend? || current_user.id = params[:id]
     end
 
     def correct_user
