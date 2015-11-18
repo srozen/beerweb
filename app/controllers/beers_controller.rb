@@ -36,8 +36,29 @@ class BeersController < ApplicationController
     @beer_categories = BeerCategory.all
   end
 
+  def create
+    @beer = Beer.new(beer_params)
+
+    ## Ajout de la bière par l'admin
+    if signed_in? && current_user.admin?
+      @beer.confirmed = true
+    end
+
+    if @beer.save
+      flash[:success] = "La bière a bien été ajoutée !"
+      redirect_to @beer
+    else
+      @title = "Ajouter une bière"
+      render 'new'
+    end
+  end
+
 
   private
+
+  def beer_params
+    params.require(:beer).permit(:name, :degree, :description, :story, :beer_category_id)
+  end
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?
