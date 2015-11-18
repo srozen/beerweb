@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+  before_filter :admin_user,   :only => [:new, :update, :destroy]
   ##
   # Renvoie une entité Beer sur base d'un id
   # @param id :integer
@@ -27,5 +28,18 @@ class BeersController < ApplicationController
         }
       }
     end
+  end
+
+  def new
+    @beer = Beer.new
+    @title = "Ajouter une bière"
+    @beer_categories = BeerCategory.all
+  end
+
+
+  private
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 end
