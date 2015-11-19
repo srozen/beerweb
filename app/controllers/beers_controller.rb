@@ -53,13 +53,18 @@ class BeersController < ApplicationController
     end
   end
 
-    def upload_img
-      uploaded_io = params[:beer][:picture]
-      File.open(Rails.root.join('public', 'images', 'beer_profile', @beer.id), 'wb') do |file|
-      file.write(uploaded_io.read)
+  def update
+    if !params[:beer][:picture].blank?
+      upload_img
     end
-end
+  end
 
+def upload_img
+  uploaded_io = params[:beer][:picture]
+  File.open(Rails.root.join('public', 'images', 'beer_profile', params[:beer][:id]), 'wb') do |file|
+    file.write(uploaded_io.read)
+  end
+end
 
   private
 
