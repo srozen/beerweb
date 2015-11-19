@@ -3,15 +3,23 @@
         <div class="container">
         <% if signed_in? %>
 
+        <ul id="dropdown1" class="dropdown-content">
+          <li><%= link_to "Profil", user_path(current_user) %></li>
+          <li><%= link_to "Collection", collection_path(current_user.id) %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Déconnexion", signout_path %></li>
+        </ul>
+
 
   <div class="nav-wrapper">
             <a href="<%= root_path %>" id="logo-container" class="brand-logo">Beer Collection</a>
                 <ul class="right hide-on-med-and-down">
-
-                    <li><%= link_to "Profil", user_path(current_user) %></li>
-                    <li><%= link_to "Ma collection", collection_path(current_user.id) %></li>
-                    <li><%= link_to "Catalogue", catalogue_path %></li>
-                    <li><%= link_to "Déconnexion", signout_path %></li>
+                  <!-- <li><%= link_to "Profil", user_path(current_user) %></li>
+                  <li><%= link_to "Ma collection", collection_path(current_user.id) %></li> -->
+                  <li><%= link_to "Bons plans", bonsplans_path %></li>
+                  <li><%= link_to "Catalogue", catalogue_path %></li>
+                  <!-- <li><%= link_to "Déconnexion", signout_path %></li> -->
+                  <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= current_user.login %><i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                   <li><%= link_to "Profil", user_path(current_user) %></li>
