@@ -4,4 +4,8 @@ module UsersHelper
                                             :class => 'gravatar',
                                             :gravatar => options)
   end
+def options_for_status
+  ['Ami', 'Public']
+end
+
 end

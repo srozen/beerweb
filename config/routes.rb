@@ -6,17 +6,22 @@ resources :users
 resources :beers
 resources :reviews
 resources :beer_categories
-resources :collections
 
+resources :collections
+resources :friends
 resources :contacts, :only => [:new, :create]
 resources :password_resets, :only => [:new, :create, :edit, :update]
+resources :deals
+
   get 'sessions/new'
   get '/contact', :to => 'contacts#new'
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collections', :to => 'collections#show'
+  get '/friends', :to => 'friends#show'
   get '/signup',  :to => 'users#new'
-  get '/users',   :to => 'users#show'
+
+  get '/friendsRequest', :to => 'users#friendsRequest'
   post '/mlogin', :to => 'users#mlogin'
   get '/password_resets', :to => 'password_resets#new'
 
@@ -33,6 +38,8 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
   post '/api_delete_beer', :to => 'collections#delete_beer'
+  get '/api_bars', :to => 'bars#index'
+  get '/api_shops', :to => 'shops#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -44,6 +51,15 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   post '/api_catalogue', :to => 'beer_categories#index'
   get '/catalogue', :to => 'beer_categories#index'
   post '/catalogue', :to => 'beer_categories#index'
+
+  post '/addFriend', :to => 'friends#addFriend'
+  get '/addFriend', :to => 'friends#addFriend'
+
+ get '/users',   :to => 'users#show'
+  post '/users',   :to => 'users#show'
+
+  get '/ajoutbonplan', :to =>'deals#new'
+  get '/bonsplans', :to =>'deals#index'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

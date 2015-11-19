@@ -27,6 +27,8 @@
             <%= f.text_field :email %>
           </div>
       </div>
+
+ </div>
       <div class="row margin">
       <div class="input-field col s12">
 
@@ -63,6 +65,13 @@
         </div>
 
 
+  <div class="row margin">
+         <div class="input-field col s12">
+<span> Visibilitée du profil : </span>
+<%= f.select :visibility, options_for_status, {}, prompt: 'Select One' , :class => 'browser-default' %>
+
+  </div>
+
         <div class="row margin">
          <div class="input-field col s12">
 
@@ -82,7 +91,7 @@
        <% end %>
     </div>
   </div>
-<script src="../min/plugin-min.js"></script>
-<script src="../min/custom-min.js"></script>
+<script src="min/plugin-min.js"></script>
+<script src="min/custom-min.js"></script>
 
 <!--  -->

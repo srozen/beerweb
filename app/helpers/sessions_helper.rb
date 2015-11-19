@@ -3,6 +3,33 @@ module SessionsHelper
    def signed_in?
     !current_user.nil?
   end
+    def isFriend?
+     
+      @user = User.find(params[:id])
+      @friendStatus = @user.visibility
+      if signed_in?
+        if @friendStatus == "public" 
+          then return true 
+        else
+            @friend_statuses_one = FriendStatus.find_by(users_id: current_user.id, friends_id: @user.id)
+            @friend_statuses_two = FriendStatus.find_by(users_id: @user.id, friends_id: current_user.id)
+            if !@friend_statuses_two.nil?
+              if @friend_statuses_two.status == "ami"  
+                then return true end
+              else 
+              if !@friend_statuses_one.nil?
+                if @friend_statuses_one.status == "ami" 
+                 then return true end
+            end
+          end
+        end
+      else return false end
+    end
+
+
+
+
+
   def current_user=(user)
     @current_user = user
   end
@@ -31,6 +58,12 @@ module SessionsHelper
     store_location
     redirect_to signin_path, :notice => "Please sign in to access this page."
   end
+
+   def deny_access_friends
+    store_location
+    redirect_to root_path, :notice => "Please be friend to access"
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     clear_return_to
