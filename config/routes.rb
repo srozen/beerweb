@@ -14,6 +14,7 @@ resources :password_resets, :only => [:new, :create, :edit, :update]
   get '/contact', :to => 'contacts#new'
   get '/admin_beers',   :to => 'pages#administration_beers'
   get '/addbeer', :to => 'beers#new'
+  get '/upload_img', :to => 'beers#upload_img'
   get '/collections', :to => 'collections#show'
   get '/signup',  :to => 'users#new'
   get '/users',   :to => 'users#show'

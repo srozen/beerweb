@@ -4,6 +4,15 @@
       <div class="col s12 m6 l0">
         <p>  <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="responsive-img beer-profile z-depth-2 materialboxed"> <!-- notice the "circle" class --></p>
       </div>
+
+      <%= form_tag({action: :upload_img}, multipart: true) do %>
+        <%= file_field_tag 'picture' %>
+      <% end %>
+
+      <%= form_for @beer do |f| %>
+        <%= f.file_field :picture %>
+      <% end %>
+
       <div class="col s12 m6 l0">
         <ul>
           <li> Degré :  </li>
