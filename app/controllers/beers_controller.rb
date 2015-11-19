@@ -57,11 +57,13 @@ class BeersController < ApplicationController
     if !params[:beer][:picture].blank?
       upload_img
     end
+    @beer = Beer.find(params[:beer][:id])
+    redirect_to @beer
   end
 
 def upload_img
   uploaded_io = params[:beer][:picture]
-  File.open(Rails.root.join('public', 'images', 'beer_profile', params[:beer][:id]), 'wb') do |file|
+  File.open(Rails.root.join('public', 'images', 'beer_profile', "#{ params[:beer][:id]}.jpg"), 'wb') do |file|
     file.write(uploaded_io.read)
   end
 end
