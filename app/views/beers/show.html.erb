@@ -17,10 +17,13 @@
               <li>  <td><%= @nbReviews.count %></td> Collectionneur l'a déjà : <a href='/reviews/<%= @beer.id %>' >Consultez son avis ! </a> </li>
           <% end %>
         </ul>
+
+        <% if current_user.admin?%>
         <%= form_for @beer do |f| %>
           <%= f.hidden_field :id, :value => "#{@beer.id}"%>
           <%= f.file_field :picture %>
           <%= f.submit "Upload"%>
+        <% end %>
         <% end %>
      </div>
   </div>

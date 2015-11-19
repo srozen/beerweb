@@ -22,5 +22,6 @@ class PagesController < ApplicationController
 
   def administration_beers
     @title = "Administrer le catalogue"
+    @nbBeerInconfirmed = Beer.where("confirmed = ?", false)
   end
 end

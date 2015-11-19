@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_filter :admin_user,   :only => [:new, :update, :destroy]
+  before_filter :admin_user,   :only => [:index, :new, :update, :destroy]
   ##
   # Renvoie une entité Beer sur base d'un id
   # @param id :integer
