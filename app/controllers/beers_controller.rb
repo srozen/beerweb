@@ -4,6 +4,12 @@ class BeersController < ApplicationController
   # Renvoie une entité Beer sur base d'un id
   # @param id :integer
   #
+
+  def index
+    @title = "Toutes les bières"
+    @users = User.all
+  end
+
   def show
     @reviews = Review.all
     @nbReviews= Review.where("beer_id = ?", params[:id])

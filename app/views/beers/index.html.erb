@@ -1,0 +1,25 @@
+<% if signed_in? && current_user.admin? %>
+<div class="container">
+<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+<div class="row">
+  <table>
+    <thead>
+      <tr>
+          <th data-field="name">Login</th>
+          <th data-field="degree">Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.login, user %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+<p>Vous n'avez pas les droits pour consulter cette page !</p>
+<% end %>

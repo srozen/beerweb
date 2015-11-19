@@ -3,8 +3,7 @@
 <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
 <div class="collection">
     <a href="<%= addbeer_path %>" class="collection-item orange-text text-darken-1">Ajouter une bière</a>
-    <a href="<%= handle_users_path %>" class="collection-item orange-text text-darken-1">Gérer les requètes de nouvelles bières<span class="new badge brown"><%= "#{@nbBeerInconfirmed.count}" %></span></a>
-    <a href="<%= handle_users_path %>" class="collection-item orange-text text-darken-1">Editer les bières</a>
+    <a href="<%= handle_users_path %>" class="collection-item orange-text text-darken-1">Gérer les bières<span class="new badge brown"><%= "#{@nbBeerInconfirmed.count}" %></span></a>
 </div>
 <% else %>
 <p>Vous n'avez pas les droits pour consulter cette page !</p>
