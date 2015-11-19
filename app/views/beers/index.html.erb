@@ -5,18 +5,25 @@
   <table>
     <thead>
       <tr>
-          <th data-field="name">Login</th>
-          <th data-field="degree">Email</th>
+        <th data-field="state">Etat</th>
+        <th data-field="name">Nom</th>
+        <th data-field="degree">Degrés</th>
       </tr>
     </thead>
 
     <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.login, user %></td>
-            <td><%= user.email %></td>
-          </tr>
-        <% end %>
+      <% @beers.each do |beer| %>
+        <tr>
+          <% if beer.confirmed? %>
+            <td><i class="material-icons">done</i></td>
+          <% else %>
+            <td><i class="material-icons">add</i></td>
+          <% end %>
+          <td><%= beer.name %></td>
+          <td><%= beer.degree %></td>
+          <td><%= link_to "Editer",  beer %> | <%= link_to "Supprimer",  beer %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

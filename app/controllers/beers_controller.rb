@@ -5,11 +5,6 @@ class BeersController < ApplicationController
   # @param id :integer
   #
 
-  def index
-    @title = "Toutes les bières"
-    @users = User.all
-  end
-
   def show
     @reviews = Review.all
     @nbReviews= Review.where("beer_id = ?", params[:id])
@@ -34,6 +29,11 @@ class BeersController < ApplicationController
         }
       }
     end
+  end
+
+  def index
+    @title = "Toutes les bières"
+    @beers = Beer.order(created_at: :desc)
   end
 
   def new
