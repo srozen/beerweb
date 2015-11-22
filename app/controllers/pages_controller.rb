@@ -21,5 +21,7 @@ class PagesController < ApplicationController
   end
   def beermap
     @title = "beermap"
+    @bars = Bar.all 
+    @shops = Shop.all 
   end
 end
