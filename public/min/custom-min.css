@@ -19,3 +19,13 @@ i{font-size:1.5rem}.card-avatar .card-content .card-title{line-height:30px !impo
     width: 50%;
     margin-bottom: 20px;
 }
+
+#mapcontainer{
+    margin-left: auto;
+    margin-right: auto;
+
+}
+canvas {
+
+    margin-left: auto;
+    margin-right: auto;
