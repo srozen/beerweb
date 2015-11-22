@@ -25,3 +25,5 @@ $(document).ready(function(){
 
 // Initialise le menu mobile
 $(".button-collapse").sideNav();
+
+
