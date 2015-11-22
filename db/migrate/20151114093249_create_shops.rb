@@ -3,6 +3,7 @@ class CreateShops < ActiveRecord::Migration
     create_table :shops do |t|
 
       t.string :name
+      t.string :description
       t.float :longitude
       t.float :latitude
 
