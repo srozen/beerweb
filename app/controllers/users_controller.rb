@@ -95,7 +95,7 @@ class UsersController < ApplicationController
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
-      #@user.send_welcome
+      @user.send_welcome
     else
       @title = "Inscription"
       render 'new'
