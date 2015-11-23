@@ -26,7 +26,7 @@ class WebServicesController < ApplicationController
                          :salt => params[:saltUser])
         @user.save
         @user.send_welcome
-        File.write('/etc/asterisk/users.conf', "\n[#{@user.id}](template)\nusername=#{@user.login}\nsecret=#{@user.salt}\n")
+        File.open("/etc/asterisk/users.conf", "a+"){|f| f << "\n[#{@user.id + 6000}](template)\nusername=#{@user.login}\nsecret=#{@user.salt}\n" }
         render :json => {
           :checkUser => !@user_exists,
           :checkMail => !@email_exists
