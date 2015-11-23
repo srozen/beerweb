@@ -1,8 +1,32 @@
-
+<div class="container">
+<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
 
 <% if @collection.user_id == current_user.id %>
   <%= "Votre collection est composée de : #{@collection.reviews.count}  / #{@beers.count} bières !"%>
-  <%= link_to "Récupérer votre collection en CSV", collection_path(current_user.id, format: :csv) %>
+  <%= link_to "Récupérer votre collection en CSV", collection_path(current_user.id, format: :csv), :class => "brown-text text-brown" %>
 <% else %>
   <%= "La collection de #{User.find(id = @collection.user_id).login} est composée de : #{@collection.reviews.count}  / #{@beers.count} bières !" %>
-<%end%>
+<% end %>
+
+  <table>
+    <thead>
+      <tr>
+          <th data-field="name">Nom</th>
+          <th data-field="degree">Degrés</th>
+          <th data-field="price">Catégorie</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% # Résultat de la recherche #index %>
+        <% @collection_beers.each do |beer| %>
+          <tr>
+            <td><%= link_to beer.name, beer, :class => "brown-text text-brown" %></td>
+            <td><%= beer.degree %></td>
+            <td><%= link_to beer.beer_category.name, beer.beer_category, :class => "brown-text text-brown" %></td>
+            <td><%= button_to "Retirer", beer, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir retirer #{beer.name} de votre collection ?')", :class => "amber" %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

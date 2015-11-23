@@ -1,4 +1,5 @@
 class CollectionsController < ApplicationController
+
   def show
 
     if !params[:userId].nil?
@@ -6,6 +7,8 @@ class CollectionsController < ApplicationController
     else
       userid = params[:id]
     end
+
+    @title = "Ma collection"
 
     @collection = Collection.find(user_id = userid)
     @beers = Beer.all
@@ -22,6 +25,7 @@ class CollectionsController < ApplicationController
       @collection_reviews << review
     end
 
+    ### API et CSV
     respond_to do |format|
       format.html
       format.json {
@@ -42,6 +46,7 @@ class CollectionsController < ApplicationController
     end
   end
 
+  ### API
   def add_beer
 
     # @params[:userId]
@@ -81,8 +86,7 @@ class CollectionsController < ApplicationController
     end
   end
 
-
-
+  ### API
   def delete_beer
 
     # @params[:userId]
@@ -115,4 +119,13 @@ class CollectionsController < ApplicationController
     end
   end
 
+  ### Retirer une bière de sa collection depuis le site web
+  def destroy
+    @collection = Collection.find(params[:id])
+    @beer = Beer.find(params[:beer][:id])
+
+    ### Permet de trouver LA review à supprimer
+    @review = Review.where("beer_id = ? AND collection_id = ?", @beer.id, @collection.id)
+    redirect_to collections_path(@collection)
+  end
 end

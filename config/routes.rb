@@ -18,6 +18,7 @@ resources :deals
   get '/about',   :to => 'pages#about'
   get '/help',    :to => 'pages#help'
   get '/collections', :to => 'collections#show'
+  get '/collections', :to => 'collections#destroy'
   get '/friends', :to => 'friends#show'
   get '/signup',  :to => 'users#new'
 
