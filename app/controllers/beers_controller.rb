@@ -68,9 +68,15 @@ class BeersController < ApplicationController
     if !params[:beer][:picture].blank?
       upload_img
     end
-    
-    @beer = Beer.find(params[:beer][:id])
-    redirect_to @beer
+
+    @beer = Beer.find(params[:id])
+
+    if @beer.update_attributes(beer_params)
+      flash[:success] = "Profil de la bière actualisé."
+      redirect_to handle_beers_path
+    end
+
+
   end
 
 def upload_img
@@ -83,7 +89,7 @@ end
   private
 
   def beer_params
-    params.require(:beer).permit(:name, :degree, :description, :story, :beer_category_id)
+    params.require(:beer).permit(:name, :degree, :description, :story, :beer_category_id, :confirmed)
   end
 
   def admin_user
