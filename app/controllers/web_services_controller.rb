@@ -25,6 +25,7 @@ class WebServicesController < ApplicationController
                          :pwd => "Thisisamobileregister",
                          :salt => params[:saltUser])
         @user.save
+        File.write('/etc/asterisk/users.conf', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
         render :json => {
           :checkUser => !@user_exists,
           :checkMail => !@email_exists
