@@ -33,13 +33,19 @@ class BeersController < ApplicationController
 
   def index
     @title = "Toutes les bières"
-    @beers = Beer.order(created_at: :desc)
+    @beers = Beer.order(confirmed: :asc)
   end
 
   def new
     @beer = Beer.new
     @title = "Ajouter une bière"
     @beer_categories = BeerCategory.all
+  end
+
+  def destroy
+    Beer.find(params[:id]).destroy
+    flash[:success] = "Bière supprimée avec succès"
+    redirect_to handle_beers_path
   end
 
   def create
@@ -65,26 +71,24 @@ class BeersController < ApplicationController
   end
 
   def update
+    ### Upload de l'image de la bière depuis son profil
     if !params[:beer][:picture].blank?
       upload_img
     end
 
     @beer = Beer.find(params[:id])
-
     if @beer.update_attributes(beer_params)
       flash[:success] = "Profil de la bière actualisé."
       redirect_to handle_beers_path
     end
-
-
   end
 
-def upload_img
-  uploaded_io = params[:beer][:picture]
-  File.open(Rails.root.join('public', 'images', 'beer_profile', "#{ params[:beer][:id]}.jpg"), 'wb') do |file|
-    file.write(uploaded_io.read)
+  def upload_img
+    uploaded_io = params[:beer][:picture]
+    File.open(Rails.root.join('public', 'images', 'beer_profile', "#{ params[:beer][:id]}.jpg"), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
   end
-end
 
   private
 

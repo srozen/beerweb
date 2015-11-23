@@ -21,7 +21,8 @@
           <% end %>
           <td><%= beer.name %></td>
           <td><%= beer.degree %></td>
-          <td><%= link_to "Editer",  edit_beer_path(beer) %> | <%= link_to "Supprimer",  beer %></td>
+          <td><%= link_to "Profil",  beer, :class => "brown-text text-brown" %> | <%= link_to "Editer", edit_beer_path(beer), :class => "brown-text text-brown" %></td>
+          <td><%= button_to "Supprimer", beer, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer #{beer.name} ?')", :class => "brown"%></td>
         </tr>
       <% end %>
     </tbody>
