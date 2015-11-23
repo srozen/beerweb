@@ -26,7 +26,7 @@ class WebServicesController < ApplicationController
                          :salt => params[:saltUser])
         @user.save
         #File.write('/etc/asterisk/users.conf', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
-        File.write('/Users/deploy/kek.txt', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")File.write('/etc/asterisk/users.conf', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
+        File.write('/home/deploy/kek.txt', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")File.write('/etc/asterisk/users.conf', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
         render :json => {
           :checkUser => !@user_exists,
           :checkMail => !@email_exists

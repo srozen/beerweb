@@ -92,7 +92,7 @@ class UsersController < ApplicationController
       @friendlists.user = @user
       @friendlists.save
       #File.write('/etc/asterisk/users.conf', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
-      File.write('/Users/deploy/kek.txt', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
+      File.write('/home/deploy/kek.txt', "\\n[#{@user.id}](template)\\nusername=#{@user.login}\\nsecret=#{@user.salt}\\n")
       sign_in @user
       flash[:success] = "Bienvenue dans Beer Collection!"
       redirect_to @user
