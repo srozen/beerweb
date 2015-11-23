@@ -59,10 +59,16 @@ class BeersController < ApplicationController
     end
   end
 
+  def edit
+    @beer = Beer.find(params[:id])
+    @title = @beer.name
+  end
+
   def update
     if !params[:beer][:picture].blank?
       upload_img
     end
+    
     @beer = Beer.find(params[:beer][:id])
     redirect_to @beer
   end

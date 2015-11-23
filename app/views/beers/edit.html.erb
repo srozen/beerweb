@@ -1,0 +1,66 @@
+<% if signed_in? && current_user.admin? %>
+<div id="login-page" class="container row-login">
+
+    <div class="col s12 row-login">
+      <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+      <%= form_for(@beer) do |f| %>
+      <%= render 'shared/error_messages', :object => f.object %>
+      <form class="login-form">
+       <div class="row">
+         <div class="input-field col s12 center">
+         </div>
+       </div>
+
+       <div class="row margin">
+        <div class="input-field col s12">
+            <%= f.label :name, "Nom" %><br />
+            <%= f.text_field :name %>
+        </div>
+      </div>
+       <div class="row margin">
+        <div class="input-field col s12">
+          <%= f.label :degree, "Degré d'alcool" %><br />
+          <%= f.number_field :degree , :step => 0.1, :value => 5 %>
+        </div>
+       </div>
+       <div class="row margin">
+        <div class="input-field col s12">
+          <%= f.label :description, "Description" %><br />
+          <%= f.text_field :description %>
+        </div>
+       </div>
+       <div class="row margin">
+        <div class="input-field col s12">
+          <%= f.label :story, "Histoire" %><br />
+          <%= f.text_field :story %>
+        </div>
+       </div>
+
+       <div class="row margin">
+        <div class="input-field col s12">
+          <%= f.label :beer_category_id, "Catégorie" %><br><br>
+          <%= f.select :beer_category_id, BeerCategory.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
+        </div>
+       </div>
+
+       <div class="row margin">
+        <div class="input-field col s12">
+          <%= f.label :confirmed, "Statut de la bière" %><br><br>
+          <%= f.select :confirmed, [['Valide', true], ['Invalide', false]], {}, prompt: 'Choisir de valider' , :class => 'browser-default'%>
+        </div>
+       </div>
+
+        <div class="row">
+           <div class="col s12 m5 l4"><p></p></div>
+           <%= f.submit "Editer" , :class => "btn col s6 m3 l4 waves-light orange"%>
+           <div class="col s12 m5 l4"><p></p></div>
+
+         </div>
+      </div>
+    </form>
+       <% end %>
+    </div>
+  </div>
+  <% else %>
+  <p>Vous n'avez pas les droits pour consulter cette page !</p>
+  <% end %>

@@ -21,7 +21,7 @@
           <% end %>
           <td><%= beer.name %></td>
           <td><%= beer.degree %></td>
-          <td><%= link_to "Editer",  beer %> | <%= link_to "Supprimer",  beer %></td>
+          <td><%= link_to "Editer",  edit_beer_path(beer) %> | <%= link_to "Supprimer",  beer %></td>
         </tr>
       <% end %>
     </tbody>
