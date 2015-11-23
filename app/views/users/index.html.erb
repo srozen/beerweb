@@ -13,8 +13,13 @@
     <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= link_to user.login, user %></td>
-            <td><%= user.email %></td>
+            <% if !user.admin? %>
+              <td><%= link_to user.login, user , :class => "brown-text text-brown"%></td>
+              <td><%= user.email %></td>
+              <td><%= link_to "Editer",  edit_user_path(user), :class => "brown-text text-brown" %></td>
+              <td><%= button_to "Supprimer", user, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer #{user.login} ?')", :class => "brown"%></td>
+            <% end %>
+          </tr>
           </tr>
         <% end %>
     </tbody>
