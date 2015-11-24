@@ -25,5 +25,5 @@ class Review < ActiveRecord::Base
                       length: { maximum: 400 }
 
   validates :beer, uniqueness: true,
-                   scope: :group_id
+                   scope: :collection_id
 end
