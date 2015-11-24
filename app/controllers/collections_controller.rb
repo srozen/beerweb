@@ -66,7 +66,7 @@ class CollectionsController < ApplicationController
           @collection_beers << review.beer.id
         end
 
-        if @collection_beers.include?(@review.params[:beerId])
+        if @collection_beers.include?(params[:beerId])
           render :json => {
             :success => false
           }
