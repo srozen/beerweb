@@ -40,14 +40,12 @@
         </div>
       </div>
 
-
-       <div class="row">
+         <div class="row">
        <div class="input-field col s6">
-         <%= f.label :beer_place_type, "Nom du shop" %><br><br>
-         <%= f.select :beer_place_type, Beer_place_type.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
+         <%= f.label :beer_place_type, "Shop ou bar?" %><br><br>
+         <%= f.select :beer_place_type, [['Shop', "Shop"], ['Bar', "Bar"]], {}, prompt: 'Choisir de valider' , :class => 'browser-default'%>
       </div>
-
-
+    </div>   
       <div class="row">
        <div class="input-field col s6">
          <%= f.label :beer_place_id, "Nom du shop" %><br><br>
