@@ -1,7 +1,6 @@
 <div class="container">
-	<h3><span class="span_h3 brown-text"><%=" Bons Plans "%></span></h3>
+	<div class="card-panel orange darken-3">Bons Plans</div>
 	<div class="row">
-
 	<% # Résultat de la recherche #index %>
 	<% @deals = Deal.all %>
     <% if @deals.blank? %>
@@ -15,8 +14,8 @@
 							<img class="activator" src="images/p<%= deal.id=%>.jpg">
 						</div>
 						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4"><%= deal.name %><i class="material-icons right">more_vert</i></span>
-							<p><%= link_to deal.beer_place.name, deal.beer_place%></p>
+			<span class="card-title activator grey-text text-darken-4"><%= deal.name %><i class="material-icons right">more_vert</i></span></br>
+							<p><%= deal.beer_place.name %></p>
 						</div>
 						<div class="card-reveal">
 							<span class="card-title grey-text text-darken-4"><%= deal.name %><i class="material-icons right">close</i></span>
