@@ -1,6 +1,7 @@
 <section id="wrapper" class="mapcontainer">
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <div class="container">
+    <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
     <div class="row">
       <div class="row">
         <article class="mapcontainer z-depth-2"></article>
@@ -120,8 +121,7 @@
                         '<div class="iw-content">'+
                         '<div class="iw-subTitle">Description</div>'+     
                           '<p><a href = '+ data.website +'>Site web</a></p>'+
-                          '<p>'+ data.street +'</p>'+
-                          '<p>'+ data.number +'</p>'+
+                          '<p>'+ data.street +', '+ data.number +'</p>'+
                           '<p>'+ data.zipcode +'</p>'+
                           '<p>'+ data.city +'</p>'+
                           '<p>'+ data.country +'</p>'+
@@ -162,8 +162,7 @@
                         '<div class="iw-content">'+
                           '<div class="iw-subTitle">Description</div>'+     
                           '<p><a href = '+ data.website +'>Site web</a></p>'+
-                          '<p>'+ data.street +'</p>'+
-                          '<p>'+ data.number +'</p>'+
+                          '<p>'+ data.street +', '+ data.number +'</p>'+
                           '<p>'+ data.zipcode +'</p>'+
                           '<p>'+ data.city +'</p>'+
                           '<p>'+ data.country +'</p>'+

@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     @title = "Aide"
   end
   def beermap
-    @title = "beermap"
+    @title = "Beermap"
     @bars = Bar.all 
     @shops = Shop.all
     @contact_details = ContactDetail.all 
