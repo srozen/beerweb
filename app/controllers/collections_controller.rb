@@ -60,7 +60,7 @@ class CollectionsController < ApplicationController
       else
         @review = Review.new(:note => params[:note], :comment => params[:comment], :beer_id => params[:beerId])
         @collection = Collection.find(user_id = @user.id)
-        @allreviews = @collection.review.all
+        @allreviews = @collection.reviews.all
 
         @allreview.each do |review|
           @collection_beers << review.beer.id
