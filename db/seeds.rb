@@ -75,8 +75,8 @@ guinness.save
 admin = User.new
 admin.login = "admin"
 admin.email = "michashh@gmail.com"
-admin.pwd = "grossecatin"
-admin.pwd_confirmation = "grossecatin"
+admin.pwd = "grosbatard"
+admin.pwd_confirmation = "grosbatard"
 admin.admin = true
 
 admin.save
@@ -97,6 +97,14 @@ srozen.pwd = "groschicon"
 srozen.pwd_confirmation = "groschicon"
 
 srozen.save
+
+#########################
+### Collection admin ###
+#########################
+
+ca = Collection.new
+ca.user = admin
+ca.save
 
 ###########################
 ### Collection Willfrit ###
