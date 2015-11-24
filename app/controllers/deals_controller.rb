@@ -14,7 +14,7 @@ class DealsController < ApplicationController
     if @deal.save
 
       flash[:success] = "Bon plan ajouté"
-      redirect_to @deals
+      redirect_to @deal
     else
       @titre = "Nouveau bon plan"
       render 'new'
