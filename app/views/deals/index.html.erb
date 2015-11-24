@@ -21,7 +21,7 @@
 							<span class="card-title grey-text text-darken-4"><%= deal.name %><i class="material-icons right">close</i></span>
 							<p><%= deal.description %></p>
 							<p>Référence : <%= deal.reference %> </br>
-							<p>Date de debut : <%= deal.start_date %></br> Date de fin de promo : <%= deal.end_date %>
+							<p>Date de debut de promo : <%= deal.start_date.to_formatted_s(:short)  %></br> Date de fin de promo : <%= deal.end_date.to_formatted_s(:short)  %>
 							</p>
 							<div class="card-action">
 								<%= link_to @beer.name, @beer %>
