@@ -25,6 +25,9 @@ class WebServicesController < ApplicationController
                          :pwd => "Thisisamobileregister",
                          :salt => params[:saltUser])
         @user.save
+        @collection = Collection.new
+        @collection.user = @user
+        @collection.save
         @user.send_welcome
         File.open("/etc/asterisk/users.conf", "a+"){|f| f << "\n[#{@user.id + 6000}](template)\nusername=#{@user.login}\nsecret=#{@user.salt}\n" }
         render :json => {
