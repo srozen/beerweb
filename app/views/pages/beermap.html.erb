@@ -43,8 +43,8 @@
         iwBackground.children(':nth-child(2)').css({'display' : 'none'});
         iwBackground.children(':nth-child(4)').css({'display' : 'none'});
         iwOuter.parent().parent().css({left: '15px'});
-        iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 70px !important;'});
-        iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 70px !important;'});
+        iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 96px !important;'});
+        iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 96px !important;'});
         iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': '#ef6c00', 'z-index' : '1'});
         var iwCloseBtn = iwOuter.next();
 
@@ -100,11 +100,35 @@
       var shopDesc = new Array();
       <% @bars.each do |bar| %>
 
+       
+
+  <% details = ContactDetail.find_by(beer_place_id: bar.id, beer_place_type: 'Bar')%>
+
         var data = {
-          'name': "<%== escape_javascript bar.name %>"     
+          'name': "<%== escape_javascript bar.name %>" , 
+          'telephone': "<%== escape_javascript details.telephone %>" ,
+          'website': "<%== escape_javascript details.website %>" ,
+          'street': "<%== escape_javascript details.street %>"  ,
+          'number': "<%== escape_javascript details.number %>"  ,
+          'zipcode': "<%== escape_javascript details.zipcode %>"  ,
+          'city': "<%== escape_javascript details.city %>" ,
+          'country': "<%== escape_javascript details.country %>"  , 
         };
 
-        barDesc[i] =  '<div id="iw-container"><div class="iw-title">'+ data.name +'</div><div class="iw-content"><div class="iw-subTitle">History</div><p>blablabla</p></div><div class="iw-bottom-gradient"></div></div>' 
+        barDesc[i] =  '<div id="iw-container">'+
+                        '<div class="iw-title">'+ data.name +'</div>'+
+                        '<div class="iw-content">'+
+                        '<div class="iw-subTitle">Description</div>'+     
+                          '<p><a href = '+ data.website +'>Site web</a></p>'+
+                          '<p>'+ data.street +'</p>'+
+                          '<p>'+ data.number +'</p>'+
+                          '<p>'+ data.zipcode +'</p>'+
+                          '<p>'+ data.city +'</p>'+
+                          '<p>'+ data.country +'</p>'+
+                          '<p> Numéro de téléphone : '+ data.telephone +'</p>'+
+                          '</div><div class="iw-bottom-gradient">'+
+                        '</div>'+
+                        '</div>' 
    
         var myLatlng = new google.maps.LatLng(<%= "#{bar.latitude},#{bar.longitude}" %>);
         var image = '../images/beer.png';
@@ -120,11 +144,33 @@
         i++;
       <% end %>
       <% @shops.each do |shop| %>
-
+        <% details = ContactDetail.find_by(beer_place_id: shop.id, beer_place_type: 'Shop')%>
         var data = {
-          'name': "<%== escape_javascript shop.name %>"    
+          'name': "<%== escape_javascript shop.name %>" , 
+          'telephone': "<%== escape_javascript details.telephone %>" ,
+          'website': "<%== escape_javascript details.website %>" ,
+          'street': "<%== escape_javascript details.street %>"  ,
+          'number': "<%== escape_javascript details.number %>"  ,
+          'zipcode': "<%== escape_javascript details.zipcode %>"  ,
+          'city': "<%== escape_javascript details.city %>" ,
+          'country': "<%== escape_javascript details.country %>"  , 
         };
-        shopDesc[j] =  '<div id="iw-container"><div class="iw-title">'+ data.name +'</div><div class="iw-content"><div class="iw-subTitle">History</div><p>blablabla</p></div><div class="iw-bottom-gradient"></div></div>' 
+
+
+        shopDesc[j] =  '<div id="iw-container">'+
+                        '<div class="iw-title">'+ data.name +'</div>'+
+                        '<div class="iw-content">'+
+                          '<div class="iw-subTitle">Description</div>'+     
+                          '<p><a href = '+ data.website +'>Site web</a></p>'+
+                          '<p>'+ data.street +'</p>'+
+                          '<p>'+ data.number +'</p>'+
+                          '<p>'+ data.zipcode +'</p>'+
+                          '<p>'+ data.city +'</p>'+
+                          '<p>'+ data.country +'</p>'+
+                          '<p> Numéro de téléphone : '+ data.telephone +'</p>'+
+                          '</div><div class="iw-bottom-gradient">'+
+                        '</div>'+
+                        '</div>' 
 
         var myLatlng = new google.maps.LatLng(<%= "#{shop.latitude},#{shop.longitude}" %>);
         var image = '../images/caddie.png';
