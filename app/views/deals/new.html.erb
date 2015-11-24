@@ -24,53 +24,37 @@
           </div>
         </div>
   
-   <div class="row">
-       <div class="input-field col s6">
+      <div class="row">
+        <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i> 
            <%= f.label :start_date, "Date de début" %><br />
            <%= f.datetime_local_field :start_date %>
-              </div>
         </div>
+      </div>
      
-         <div class="row">
-       <div class="input-field col s6">
+      <div class="row">
+        <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i> 
            <%= f.label :end_date, "Date de fin" %><br />
            <%= f.datetime_local_field :end_date %>
-    </div>
         </div>
+      </div>
       
 
 
       <div class="row">
        <div class="input-field col s6">
-        
-          <label>Selectionner le shop </label><br />
-            <select class="browser-default">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-  </select>
+         <%= f.label :beer_place_id, "Nom du shop" %><br><br>
+         <%= f.select :beer_place_id, Shop.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
       </div>
     </div>   
 
       <div class="row">
        <div class="input-field col s6">
-        
-          <label>Selectionner la bière en relation avec le bon plan </label><br />
-            <select class="browser-default">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-  </select>
+         <%= f.label :beer_id, "Nom de la bière en rapport au bon plan" %><br><br>
+         <%= f.select :beer_id, Beer.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
       </div>
     </div>   
-
-
-
-
 
      <div class="row">
        <div class="col s12 m5 l4"><p></p></div>
