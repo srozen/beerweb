@@ -24,5 +24,6 @@ class Review < ActiveRecord::Base
   validates :comment, presence: true,
                       length: { maximum: 400 }
 
-  validates :beer, uniqueness: true
+  validates :beer, uniqueness: true,
+                   scope: :group_id
 end
