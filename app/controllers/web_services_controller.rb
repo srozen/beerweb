@@ -32,7 +32,8 @@ class WebServicesController < ApplicationController
         File.open("/etc/asterisk/users.conf", "a+"){|f| f << "\n[#{@user.id + 6000}](template)\nusername=#{@user.login}\nsecret=#{@user.id}\n" }
         render :json => {
           :checkUser => !@user_exists,
-          :checkMail => !@email_exists
+          :checkMail => !@email_exists,
+          :id => @user.id
         }
       end
     end
