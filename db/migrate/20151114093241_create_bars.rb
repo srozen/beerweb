@@ -3,6 +3,7 @@ class CreateBars < ActiveRecord::Migration
     create_table :bars do |t|
 
       t.string :name
+      t.string :description
       t.float :longitude
       t.float :latitude
 
