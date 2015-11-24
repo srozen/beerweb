@@ -20,11 +20,12 @@
 
     <tbody>
         <% @collection_beers.each do |beer| %>
+         <% review = Review.where("beer_id = ? AND collection_id = ?", beer.id, @collection.id) %>
           <tr>
             <td><%= link_to beer.name, beer, :class => "brown-text text-brown" %></td>
             <td><%= beer.degree %></td>
             <td><%= link_to beer.beer_category.name, beer.beer_category, :class => "brown-text text-brown" %></td>
-            <td> TODO </td>
+            <td><%= review.first.note %></td>
           </tr>
         <% end %>
     </tbody>
