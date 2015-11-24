@@ -45,9 +45,9 @@ resources :deals
 
   # Demande un id user pour sa friendlist
   post '/api_friendlist', :to => 'friends#show'
-  get '/api_friendlist', :to => 'friends#show'
+  get '/api_friendlist', :to => 'friends#showFriend'
 
-  get '/api_beer_profile', :to => 'beers#show'
+  get '/api_beer_profile', :to => 'beers#showFriend'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
