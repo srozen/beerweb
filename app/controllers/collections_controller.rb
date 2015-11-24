@@ -61,6 +61,7 @@ class CollectionsController < ApplicationController
         @review = Review.new(:note => params[:note], :comment => params[:comment], :beer_id => params[:beerId])
         @collection = Collection.find(user_id = @user.id)
         @allreviews = @collection.reviews.all
+        @collection_beers = []
 
         @allreviews.each do |review|
           @collection_beers << review.beer.id
