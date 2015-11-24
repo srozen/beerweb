@@ -62,7 +62,7 @@ class CollectionsController < ApplicationController
         @collection = Collection.find(user_id = @user.id)
         @allreviews = @collection.reviews.all
 
-        @allreview.each do |review|
+        @allreviews.each do |review|
           @collection_beers << review.beer.id
         end
 
