@@ -88,6 +88,8 @@ class UsersController < ApplicationController
       @collection = Collection.new
       @collection.user = @user
       @collection.save
+      @user.collection = @collection
+      @user.save
       @friendlists = Friendlist.new
       @friendlists.user = @user
       @friendlists.save

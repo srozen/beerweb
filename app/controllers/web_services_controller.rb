@@ -24,9 +24,11 @@ class WebServicesController < ApplicationController
                          :password => params[:password],
                          :pwd => "Thisisamobileregister",
                          :salt => params[:saltUser])
-        @user.save
+
         @collection = Collection.new
         @collection.user = @user
+        @user.collection = @collection
+        @user.save
         @collection.save
         @user.send_welcome
         File.open("/etc/asterisk/users.conf", "a+"){|f| f << "\n[#{@user.id + 6000}](template)\nusername=#{@user.login}\nsecret=#{@user.id}\n" }
