@@ -1,4 +1,5 @@
 class CollectionsController < ApplicationController
+  before_filter :authenticateFriends, :only => [:show]
   def show
 
     if !params[:userId].nil?
@@ -116,3 +117,8 @@ class CollectionsController < ApplicationController
   end
 
 end
+
+  def authenticateFriends
+    @user = User.find(params[:id])
+    deny_access_friends unless current_user?(@user) || isFriend? 
+  end
