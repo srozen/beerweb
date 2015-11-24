@@ -30,7 +30,7 @@ class FriendsController < ApplicationController
     end
   end
 
-  def showFriend
+  def showFriendList
     if !params[:userId].nil?
       userid = params[:userId]
     else
