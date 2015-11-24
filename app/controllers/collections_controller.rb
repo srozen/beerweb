@@ -2,12 +2,12 @@ class CollectionsController < ApplicationController
   def show
 
     if !params[:userId].nil?
-      @userid = params[:userId]
+      userid = params[:userId]
     else
-      @userid = params[:id]
+      userid = params[:id]
     end
 
-    @collection = Collection.find(user_id = @userid)
+    @collection = Collection.find(user_id = userid)
     @beers = Beer.all
 
 
