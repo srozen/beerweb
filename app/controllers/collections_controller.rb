@@ -119,13 +119,4 @@ class CollectionsController < ApplicationController
     end
   end
 
-  ### Retirer une bière de sa collection depuis le site web
-  def destroy
-    @collection = Collection.find(params[:id])
-    @beer = Beer.find(params[:beer][:id])
-
-    ### Permet de trouver LA review à supprimer
-    @review = Review.where("beer_id = ? AND collection_id = ?", @beer.id, @collection.id)
-    redirect_to collections_path(@collection)
-  end
 end

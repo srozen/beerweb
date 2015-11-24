@@ -14,17 +14,17 @@
           <th data-field="name">Nom</th>
           <th data-field="degree">Degrés</th>
           <th data-field="price">Catégorie</th>
+          <th data-field="note">Note</th>
       </tr>
     </thead>
 
     <tbody>
-      <% # Résultat de la recherche #index %>
         <% @collection_beers.each do |beer| %>
           <tr>
             <td><%= link_to beer.name, beer, :class => "brown-text text-brown" %></td>
             <td><%= beer.degree %></td>
             <td><%= link_to beer.beer_category.name, beer.beer_category, :class => "brown-text text-brown" %></td>
-            <td><%= button_to "Retirer", beer, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir retirer #{beer.name} de votre collection ?')", :class => "amber" %></td>
+            <td> TODO </td>
           </tr>
         <% end %>
     </tbody>
