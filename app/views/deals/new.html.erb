@@ -39,7 +39,13 @@
            <%= f.datetime_local_field :end_date %>
         </div>
       </div>
-      
+
+
+       <div class="row">
+       <div class="input-field col s6">
+         <%= f.label :beer_place_type, "Nom du shop" %><br><br>
+         <%= f.select :beer_place_type, Beer_place_type.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
+      </div>
 
 
       <div class="row">
