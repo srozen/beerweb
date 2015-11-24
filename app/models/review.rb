@@ -24,6 +24,5 @@ class Review < ActiveRecord::Base
   validates :comment, presence: true,
                       length: { maximum: 400 }
 
-  validates :beer, uniqueness: true,
-                   scope: :collection_id
+  validates :beer, uniqueness: { :scope => :collection_id }
 end
