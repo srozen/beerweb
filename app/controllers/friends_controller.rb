@@ -13,11 +13,18 @@ class FriendsController < ApplicationController
     @friendlists = Friendlist.all
     @friendlistsUser = Friendlist.find(user_id = userid)
     @friends = Friend.where("friendlist_id = ?", @friendlistsUser.id)
+
     @users = User.all
     respond_to do |format|
+      format.html
       format.json {
+        @userfriends = []
+        @friends.each do |friend|
+          u = User.find_by_id(friend.user_id)
+          @userfriends << friend.as_json.merge(:login => u.login, :email => u.email)
+        end
         render :json => {
-          :friends => @friends
+          :friends => @userfriends
         }
       }
     end

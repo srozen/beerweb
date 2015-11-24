@@ -32,11 +32,12 @@
 
 
       <% $i = 0 %>
+      <!-- Pour tout les users de la db -->
       <% @users = User.all %>
       <% @users.each do |user| %>
         <% if !current_user?(user) %>
-         
-            <% @friendlistsAmi = Friendlist.find(user_id = user.id) %> 
+            
+            <% @friendlistsAmi = Friendlist.find(user_id = user.id) %>
             <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
             <% @friend_statuses_one = FriendStatus.find_by(users_id: current_user.id, friends_id: user.id) %>
             <% @friend_statuses_two = FriendStatus.find_by(users_id: user.id, friends_id: current_user.id) %>
@@ -53,8 +54,8 @@
                 <% $i = $i-1 %>
               <% end %>
             <% end %>
-          
-        <% end %>  
+
+        <% end %>
       <% end %>
       <div class="col s12 m6 l0">
         <br>

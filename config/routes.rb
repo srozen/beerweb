@@ -43,6 +43,12 @@ resources :deals
   get '/api_bars', :to => 'bars#index'
   get '/api_shops', :to => 'shops#index'
 
+  # Demande un id user pour sa friendlist
+  post '/api_friendlist', :to => 'friends#show'
+  get '/api_friendlist', :to => 'friends#show'
+
+  get '/api_beer_profile', :to => 'beers#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
