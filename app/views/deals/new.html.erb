@@ -55,10 +55,19 @@
 
       <div class="row">
        <div class="input-field col s6">
-         <%= f.label :beer_id, "Nom de la bière en rapport au bon plan" %><br><br>
+         <%= f.label :beer_id, "Nom de la bière en rapport avec bon plan" %><br><br>
          <%= f.select :beer_id, Beer.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
       </div>
     </div>   
+
+    <div class="row">
+       <div class="input-field col s6">
+         <%= f.label :picture, "Ajout d'une image pour le bon plan" %><br><br>
+         <%= f.file_field :picture %>
+      </div>
+    </div>  
+
+
 
      <div class="row">
        <div class="col s12 m5 l4"><p></p></div>
