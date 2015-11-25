@@ -12,10 +12,11 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(deal_params)
 
-    uploaded_io = params[:deal][:picture]
-    File.open(Rails.root.join('public', 'images', 'deals', "p#{ params[:deals][:id]}.jpg"), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
+   
+   #### uploaded_io = params[:deals][:picture]
+    ######File.open(Rails.root.join('public', 'images', 'deals', "p#{ params[:deal][:id]}.jpg"), 'wb') do |file|
+    #file.write(uploaded_io.read)
+    #end
     if @deal.save
       redirect_to bonsplans_path
     else
@@ -23,6 +24,8 @@ class DealsController < ApplicationController
       render 'new'
     end
   end
+
+  
 
   private
 
