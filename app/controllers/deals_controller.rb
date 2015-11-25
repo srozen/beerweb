@@ -1,7 +1,16 @@
 class DealsController < ApplicationController
   def index
     @deals = Deal.all
-	@title = "Bons plans"
+	  @title = "Bons plans"
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => {
+          :deals => @deals
+        }
+      }
+    end
   end
 
   def new
