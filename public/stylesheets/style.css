@@ -54,7 +54,7 @@
 .in{font-weight: 400 !important; font-style: normal !important;}
 
 .promo i {
-    color: #2196F3;
+    color: #E65100;
     font-size: 7rem;
     display: block;
 }
@@ -256,7 +256,7 @@ nav a.button-collapse {
 }
 
 .parallax-container {
-    max-height: 400px;
+    max-height: 450px;
 }
 
 footer.page-footer {
