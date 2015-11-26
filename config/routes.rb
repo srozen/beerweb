@@ -15,13 +15,17 @@ resources :deals
 
   get 'sessions/new'
   get '/contact', :to => 'contacts#new'
-  get '/about',   :to => 'pages#about'
-  get '/help',    :to => 'pages#help'
+  get '/admin_beers',   :to => 'pages#administration_beers'
+  get '/addbeer', :to => 'beers#new'
+  get '/upload_img', :to => 'beers#upload_img'
+  get '/handle_beers', :to => 'beers#index'
   get '/collections', :to => 'collections#show'
   get '/friends', :to => 'friends#show'
   get '/signup',  :to => 'users#new'
 
   get '/friendsRequest', :to => 'users#friendsRequest'
+  get '/users',   :to => 'users#show'
+  get '/handle_users', :to => 'users#index'
   post '/mlogin', :to => 'users#mlogin'
   get '/password_resets', :to => 'password_resets#new'
 

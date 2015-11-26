@@ -5,6 +5,7 @@
       <div class="col s12 m6 l0">
         <p>  <img src="../images/beer_profile/<%= @beer.id %>.jpg" alt="" class="responsive-img beer-profile z-depth-2 materialboxed"> <!-- notice the "circle" class --></p>
       </div>
+
       <div class="col s12 m6 l0">
         <ul>
           <li> <b>Degré :</b> <%= @beer.degree =%> </li>
@@ -17,8 +18,15 @@
                <% else %>
                   <li>  Il n'y a pas encore d'avis concernant cette bière. </li>
           <% end %>
-
         </ul>
+
+        <% if current_user.admin?%>
+        <%= form_for @beer do |f| %>
+          <%= f.hidden_field :id, :value => "#{@beer.id}"%>
+          <%= f.file_field :picture %>
+          <%= f.submit "Upload"%>
+        <% end %>
+        <% end %>
      </div>
   </div>
   </div>

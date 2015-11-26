@@ -23,7 +23,7 @@ class Beer < ActiveRecord::Base
   #===================#
 
   validates :name, presence: true,
-                   length: { maximum: 40},
+                   length: { maximum: 40 },
                    uniqueness: { case_sensitive: false }
 
   validates :degree, presence: true,
@@ -31,9 +31,9 @@ class Beer < ActiveRecord::Base
                      inclusion: { in: 0.0..100 }
 
   # TODO : Compléter validations sur autres champs
-  validates :description, length: { maximum: 2000}
+  validates :description, length: { maximum: 2000 }
 
-  validates :story, length: { maximum: 2000}
+  validates :story, length: { maximum: 2000 }
 
 
 

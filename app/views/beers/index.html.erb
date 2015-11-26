@@ -1,0 +1,33 @@
+<% if signed_in? && current_user.admin? %>
+<div class="container">
+<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+<div class="row">
+  <table>
+    <thead>
+      <tr>
+        <th data-field="state">Etat</th>
+        <th data-field="name">Nom</th>
+        <th data-field="degree">Degrés</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @beers.each do |beer| %>
+        <tr>
+          <% if beer.confirmed? %>
+            <td><i class="material-icons">done</i></td>
+          <% else %>
+            <td><i class="material-icons">add</i></td>
+          <% end %>
+          <td><%= beer.name %></td>
+          <td><%= beer.degree %></td>
+          <td><%= link_to "Profil",  beer, :class => "brown-text text-brown" %> | <%= link_to "Editer", edit_beer_path(beer), :class => "brown-text text-brown" %></td>
+          <td><%= button_to "Supprimer", beer, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer #{beer.name} ?')", :class => "brown"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+<p>Vous n'avez pas les droits pour consulter cette page !</p>
+<% end %>

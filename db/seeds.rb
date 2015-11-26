@@ -93,6 +93,18 @@ dealduvel.save
 #############
 ### Users ###
 #############
+adminfriend = Friendlist.new
+adminfriend.save
+
+admin = User.new
+admin.login = "admin"
+admin.email = "michashh@gmail.com"
+admin.pwd = "grosbatard"
+admin.pwd_confirmation = "grosbatard"
+admin.friendlist = adminfriend
+admin.admin = true
+
+admin.save
 
 willfriend = Friendlist.new
 willfriend.save
@@ -129,6 +141,14 @@ willfritisfriend = Friend.new(:user_id => willfrit.id, :friendlist_id => srofrie
 willfritfriendstatus = FriendStatus.new(:status => 'ami', :friends_id => willfrit.id, :users_id => srozen.id)
 willfritisfriend.save
 willfritfriendstatus.save
+
+#########################
+### Collection admin ###
+#########################
+
+ca = Collection.new
+ca.user = admin
+ca.save
 
 ###########################
 ### Collection Willfrit ###
