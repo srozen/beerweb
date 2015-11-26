@@ -19,7 +19,7 @@
                   <li>  Il n'y a pas encore d'avis concernant cette bière. </li>
           <% end %>
         </ul>
-
+      <% if signed_in? %>
         <% if current_user.admin?%>
         <%= form_for @beer do |f| %>
           <%= f.hidden_field :id, :value => "#{@beer.id}"%>
@@ -27,6 +27,7 @@
           <%= f.submit "Upload"%>
         <% end %>
         <% end %>
+      <% end %>
      </div>
   </div>
   </div>
