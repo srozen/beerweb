@@ -57,7 +57,6 @@ module SessionsHelper
  def deny_access
     store_location
     redirect_to signin_path, :notice => "Please sign in to access this page."
-<<<<<<< HEAD
   end
 
    def deny_access_friends
@@ -66,11 +65,7 @@ module SessionsHelper
   end
 
   def redirect_back_or(default)
-=======
- end
 
- def redirect_back_or(default)
->>>>>>> s4_admin_beers
     redirect_to(session[:return_to] || default)
     clear_return_to
  end
