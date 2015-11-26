@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  before_filter :authenticateFriends, :only => [:show]
+  #before_filter :authenticateFriends, :only => [:show]
 
 
   def show
