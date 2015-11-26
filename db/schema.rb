@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 20151116171559) do
   create_table "deals", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "start_date"
-    t.string   "end_date"
-    t.float    "reference"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "reference"
     t.integer  "beer_place_id"
     t.string   "beer_place_type"
     t.integer  "beer_id"

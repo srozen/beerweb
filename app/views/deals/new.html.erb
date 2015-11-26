@@ -1,86 +1,71 @@
-<div id="login-page" class="container row-login">
-  <div class="col s12 ">
-    <%= form_for(@deal) do |f| %>
-    <form class="login-form">
+<div class="container">
+    <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+  <%= form_for(@deal) do |f| %>
+  <form class="col s12">
+    <div class="row">
+       <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+           <%= f.label :name, "Nom du bon plan" %><br />
+           <%= f.text_field :name %>
+          </div>
+        </div>
+    <div class="row">
+       <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+           <%= f.label :description %><br />
+           <%= f.text_field :description %>
+          </div>
+        </div>
+    <div class="row">
+       <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>   
+           <%= f.label :reference %><br />
+           <%= f.text_field :reference %>
+          </div>
+        </div>
+  
       <div class="row">
-        <div class="input-field col s12 center">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i> 
+           <%= f.label :start_date, "Date de début" %><br />
+           <%= f.datetime_local_field :start_date %>
         </div>
       </div>
-       <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-social-person-outline prefix"></i>
-            <%= f.label :name %><br />
-            <%= f.text_field :name %>
+     
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i> 
+           <%= f.label :end_date, "Date de fin" %><br />
+           <%= f.datetime_local_field :end_date %>
         </div>
       </div>
-       <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-social-person-outline prefix"></i>
-          <%= f.label :nameBeer, "Nom de la bière" %><br />
-      <%= f.text_field :nameBeer %>
-        </div>
-      </div>
-        <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-          <%= f.label :description, "Description" %><br />
-      <%= f.text_field :description %>
-        </div>
-      </div>
-      <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :categorie, "Catégorie" %><br/><br />
-  <%= f.text_field :categorie %>
-        </div>
-      </div>
-	  
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :datedebut, "Date de début" %><br/><br />
-  <%= f.text_field :datedebut %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :datefin, "Date de fin" %><br/><br />
-  <%= f.text_field :datefin %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :prix, "Prix" %><br/><br />
-  <%= f.text_field :prix %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :reference, "Référence" %><br/><br />
-  <%= f.text_field :reference %>
-        </div>
-      </div>
-	  <div class="row margin">
-        <div class="input-field col s12">
-          <i class="mdi-action-lock-outline prefix"></i>
-      <%= f.label :reduction, "Réduction" %><br/><br />
-  <%= f.text_field :reduction %>
-        </div>
-      </div>
-	<div class="row">
-        <div class="input-field col s12 actions">
 
-           <%= f.submit "Ajout du bon plan" , :class => "btn col s12 waves-light "  %>
+         <div class="row">
+       <div class="input-field col s6">
+         <%= f.label :beer_place_type, "Shop ou bar?" %><br><br>
+         <%= f.select :beer_place_type, [['Shop', "Shop"], ['Bar', "Bar"]], {}, prompt: 'Choisir de valider' , :class => 'browser-default'%>
+      </div>
+    </div>   
+      <div class="row">
+       <div class="input-field col s6">
+         <%= f.label :beer_place_id, "Nom du shop" %><br><br>
+         <%= f.select :beer_place_id, Shop.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
+      </div>
+    </div>   
 
-        </div>
+      <div class="row">
+       <div class="input-field col s6">
+         <%= f.label :beer_id, "Nom de la bière en rapport au bon plan" %><br><br>
+         <%= f.select :beer_id, Beer.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
+      </div>
+    </div>   
 
+     <div class="row">
+       <div class="col s12 m5 l4"><p></p></div>
+           <%= f.submit "Ajout du bon plan" , :class => "btn col s6 m3 l4 waves-light orange"  %>
+        <div class="col s12 m5 l4"><p></p></div>
+      </div>
+      </form>
+       <% end %>
     </div>
-      
-
-    </form>
-      <% end %>
   </div>
-</div>

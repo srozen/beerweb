@@ -67,12 +67,14 @@ resources :deals
   post '/addFriend', :to => 'friends#addFriend'
   get '/addFriend', :to => 'friends#addFriend'
 
- get '/users',   :to => 'users#show'
+  get '/users',   :to => 'users#show'
   post '/users',   :to => 'users#show'
 
   get '/ajoutbonplan', :to =>'deals#new'
-  get '/bonsplans', :to =>'deals#index'
+  post '/ajoutbonplan', :to=>'deals#new'
 
+  get '/bonsplans', :to =>'deals#index'
+  post '/bonsplans', :to =>'deals#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

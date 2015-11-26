@@ -75,18 +75,18 @@ guinness.save
 dil = Deal.new
 dil.name = "Leffe Promo Pure"
 dil.description = "Leffe moitié prix"
-dil.start_date = "Now"
-dil.end_date = "Tomorrow"
-dil.reference = 9.0
+dil.start_date = "1888-02-21T21:38"
+dil.end_date = "1888-02-21T21:38"
+dil.reference = 9
 dil.beer_id = leffeblonde.id
 dil.save
 
 dealduvel = Deal.new
 dealduvel.name = "Duvel Promo Ete 2016"
 dealduvel.description = "Pack 6+2 Gratuites"
-dealduvel.start_date = "Juin 2016"
-dealduvel.end_date = "Aout 2016"
-dealduvel.reference = 10.0
+dealduvel.start_date = "1888-02-21T21:38"
+dealduvel.end_date = "1888-02-21T21:38"
+dealduvel.reference = 10
 dealduvel.beer_id = duvelblonde.id
 dealduvel.save
 

@@ -3,9 +3,9 @@ class CreateDeals < ActiveRecord::Migration
     create_table :deals do |t|
       t.string :name
       t.text :description
-      t.string :start_date
-      t.string :end_date
-      t.float :reference
+      t.datetime :start_date
+      t.datetime :end_date
+      t.integer :reference
       t.belongs_to :beer_place, index: true, :polymorphic => true
       t.integer :beer_id
       t.timestamps null: false

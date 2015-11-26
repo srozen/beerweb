@@ -1,7 +1,6 @@
 <div class="container">
-	<div class="card-panel blue">Bons Plans</div>
+	<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
 	<div class="row">
-
 	<% # Résultat de la recherche #index %>
 	<% @deals = Deal.all %>
     <% if @deals.blank? %>
@@ -15,14 +14,15 @@
 							<img class="activator" src="images/p<%= deal.id=%>.jpg">
 						</div>
 						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4"><%= deal.name %><i class="material-icons right">more_vert</i></span>
-							<p><a href="#">Lien vers le profil de la bière</a></p>
+			<span class="card-title activator grey-text text-darken-4"><%= deal.name %><i class="material-icons right">more_vert</i></span></br>
+							<p><%= deal.beer_place.name %></br>
+							   <%= deal.beer_place_type %></p>
 						</div>
 						<div class="card-reveal">
 							<span class="card-title grey-text text-darken-4"><%= deal.name %><i class="material-icons right">close</i></span>
 							<p><%= deal.description %></p>
 							<p>Référence : <%= deal.reference %> </br>
-							<p>Date de debut : <%= deal.start_date %></br> Date de fin de promo : <%= deal.end_date %>
+							<p>Date de debut : <%= deal.start_date.to_formatted_s(:long)  %></br> Date de fin : <%= deal.end_date.to_formatted_s(:long)  %>
 							</p>
 							<div class="card-action">
 								<%= link_to @beer.name, @beer %>
