@@ -5,6 +5,16 @@ class BeerCategoriesController < ApplicationController
     @title = "Catalogue"
     @beers = Beer.search(params[:name])
 
+    if signed_in?
+      @collection = Collection.find(current_user.id)
+      @reviews = @collection.reviews
+
+      @collection_beers = []
+      @reviews.each do |review|
+        @collection_beers << review.beer.id
+      end
+    end
+
     respond_to do |format|
         format.html
         format.json {
@@ -17,8 +27,6 @@ class BeerCategoriesController < ApplicationController
           else
             @reviews = []
           end
-
-
 
           @cbeers = []
           @beers.each do |beer|

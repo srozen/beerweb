@@ -20,6 +20,7 @@ resources :deals
   get '/upload_img', :to => 'beers#upload_img'
   get '/handle_beers', :to => 'beers#index'
   get '/collections', :to => 'collections#show'
+  get '/collections', :to => 'collections#destroy'
   get '/friends', :to => 'friends#show'
   get '/signup',  :to => 'users#new'
 

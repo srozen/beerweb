@@ -1,8 +1,18 @@
 class CollectionsController < ApplicationController
   before_filter :authenticateFriends, :only => [:show]
+
+
   def show
 
-    @collection = Collection.find(user_id = params[:id])
+    if !params[:userId].nil?
+      userid = params[:userId]
+    else
+      userid = params[:id]
+    end
+
+    @title = "Ma collection"
+
+    @collection = Collection.find(user_id = userid)
     @beers = Beer.all
 
 
@@ -17,6 +27,7 @@ class CollectionsController < ApplicationController
       @collection_reviews << review
     end
 
+    ### API et CSV
     respond_to do |format|
       format.html
       format.json {
@@ -37,6 +48,7 @@ class CollectionsController < ApplicationController
     end
   end
 
+  ### API
   def add_beer
 
     # @params[:userId]
@@ -87,8 +99,7 @@ class CollectionsController < ApplicationController
     end
   end
 
-
-
+  ### API
   def delete_beer
 
     # @params[:userId]
@@ -125,5 +136,5 @@ end
 
   def authenticateFriends
     @user = User.find(params[:id])
-    deny_access_friends unless current_user?(@user) || isFriend? 
+    deny_access_friends unless current_user?(@user) || isFriend?
   end
