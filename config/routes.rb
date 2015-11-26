@@ -70,6 +70,8 @@ resources :deals
   get '/users',   :to => 'users#show'
   post '/users',   :to => 'users#show'
 
+  get '/beermap', :to => 'pages#beermap'
+
   get '/ajoutbonplan', :to =>'deals#new'
   post '/ajoutbonplan', :to=>'deals#new'
 
