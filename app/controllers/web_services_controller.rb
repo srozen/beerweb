@@ -83,4 +83,34 @@ class WebServicesController < ApplicationController
     #     :checkLog => true, :idUser => @user.id
     #   }
     # end
+
+  def img_comparator
+
+    # Test
+    imgUn = "public/images/beer_profile/1.jpg"
+    imgDeux = "public/images/beer_profile/2.jpg"
+
+    # Debug en console + Site
+    python_cmd = Escape.shell_command(['python', "#{::Rails.root}/bin/py_test.py", "#{imgUn}", "#{imgDeux}"]).to_s
+    @result = system python_cmd
+
+    # Récupérer le résultat du script
+    @output = `python #{::Rails.root}/bin/py_test.py #{imgUn} #{imgDeux}`
+    @intoutput = Float(@output.chomp)
+
+    if @intoutput < 17
+      @comp = true
+    else 
+      @comp = false
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => {
+          :result => @comp
+        }
+      }
+    end
+  end
 end

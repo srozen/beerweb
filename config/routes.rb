@@ -47,6 +47,7 @@ resources :deals
   get '/api_user_profile', :to => 'users#api_show'
   get '/api_bars', :to => 'bars#index'
   get '/api_shops', :to => 'shops#index'
+  get '/api_comp', :to => 'web_services#img_comparator'
 
   # Demande un id user pour sa friendlist
   post '/api_friendlist', :to => 'friends#showFriendList'
