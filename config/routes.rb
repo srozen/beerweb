@@ -55,6 +55,7 @@ resources :deals
   post '/api_deals', :to => 'deals#index'
 
   # Demande un id user pour sa friendlist
+  
   post '/api_friendlist', :to => 'friends#showFriendList'
   get '/api_friendlist', :to => 'friends#showFriendList'
 

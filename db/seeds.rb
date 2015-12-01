@@ -224,6 +224,7 @@ bb.latitude = 50.669048
 bb.longitude = 4.613728
 
 ### BBC est de très mauvais goût par ailleurs
+
 bbc = ContactDetail.new
 bbc.telephone = "010245838"
 bbc.website = "http://www.beer-bar.be/"
