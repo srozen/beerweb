@@ -11,13 +11,8 @@ class BeersController < ApplicationController
 
     @beer = Beer.find(params[:id])
     @beer_category = BeerCategory.find_by_id(@beer.beer_category.id)
-
-    if !params[:userId].nil?
-      @collection = Collection.find_by_user_id(params[:userId])
-      @review = Review.where("beer_id = ? AND collection_id = ?", @beer.id, @collection.id)
-    else
-      @review = []
-    end
+    @collection = Collection.find_by_user_id(params[:userId])
+    @review = Review.where("beer_id = ?", @beer.id)
 
     respond_to do |format|
       format.html

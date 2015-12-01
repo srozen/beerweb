@@ -40,6 +40,7 @@ resources :deals
   post '/api_login', :to => 'web_services#login'
   post '/api_register', :to => 'web_services#register'
   post '/api_beer_profile', :to => 'beers#show'
+  get '/api_beer_profile', :to => 'beers#show'
   post '/api_add_beer', :to => 'collections#add_beer'
   post '/api_collection', :to => 'collections#show'
   post '/api_delete_beer', :to => 'collections#delete_beer'
@@ -47,6 +48,10 @@ resources :deals
   get '/api_user_profile', :to => 'users#api_show'
   get '/api_bars', :to => 'bars#index'
   get '/api_shops', :to => 'shops#index'
+  get 'api_deals', :to => 'deals#index'
+  post '/api_bars', :to => 'bars#index'
+  post '/api_shops', :to => 'shops#index'
+  post '/api_deals', :to => 'deals#index'
 
   # Demande un id user pour sa friendlist
   post '/api_friendlist', :to => 'friends#showFriendList'
