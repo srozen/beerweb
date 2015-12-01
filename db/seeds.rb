@@ -200,7 +200,6 @@ czdb.save
 
 bl = Shop.new
 bl.name = "BeerLover's Shop LLN"
-bl.description = "Agréable magasin dans la galerie Saint-Hubert de Louvain-la-Neuve, le vendeur pourra vous conseiller éfficacement pour tout vos achats de bonnes bières et le choix est très large !"
 bl.latitude = 50.669723
 bl.longitude = 4.615458
 
@@ -221,7 +220,6 @@ bl.save
 
 bb = Bar.new
 bb.name = "Beer Bar"
-bb.description = "Bar à bière avec une large gamme de bières disponibles, ambiance feutrée dans un environnement en bois, ambiance assurée pour déguster un tas de nouvelles bières."
 bb.latitude = 50.669048
 bb.longitude = 4.613728
 
