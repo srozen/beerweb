@@ -54,8 +54,11 @@ resources :deals
   post '/api_shops', :to => 'shops#index'
   post '/api_deals', :to => 'deals#index'
 
+  get '/api_friends_map', :to => 'web_services#map_friends'
+  post '/api_friends_map', :to => 'web_services#map_friends'
+
   # Demande un id user pour sa friendlist
-  
+
   post '/api_friendlist', :to => 'friends#showFriendList'
   get '/api_friendlist', :to => 'friends#showFriendList'
 

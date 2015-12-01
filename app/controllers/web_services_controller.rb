@@ -88,4 +88,22 @@ class WebServicesController < ApplicationController
       }
     end
   end
+
+  def map_friends
+    friendlistsUser = Friendlist.find(user_id = params[:userId])
+    @friends = Friend.where("friendlist_id = ?", friendlistsUser.id)
+    respond_to do |format|
+      format.json {
+        @userfriends = []
+        @friends.each do |friend|
+          u = User.find(friend.user_id)
+          timediff = DateTime.now.to_i - u.last_connection.to_i
+          @userfriends << friend.as_json.merge(:valid => timediff < 600, :login => u.login, :latitude => u.latitude, :longitude => u.longitude)
+        end
+        render :json => {
+          :friends => @userfriends
+        }
+      }
+    end
+  end
 end
