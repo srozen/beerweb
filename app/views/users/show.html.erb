@@ -15,6 +15,21 @@
         <ul>
           <li> <b>Nom d'utilisateur :</b> <%= @user.login%></li>
           <li> <b>Email :</b> <%= @user.email %></li>
+          <li> <b>Nom :</b> <%= @user.firstName %></li>
+          <li> <b>Prenom :</b> <%= @user.lastName %></li>
+          <% if @collection.user_id == current_user.id %>
+            <li> <b>Votre collection est composée de : </b>
+              <%= "#{@collection.reviews.count}  / #{@beers.count} bières !"%>
+            </li>
+          <% else %>
+            <li> 
+              <b><%= "La collection de #{User.find(id = @collection.user_id).login}  est composée de : "%></b>
+              <%= "#{@collection.reviews.count}  / #{@beers.count} bières !" %>
+            </li>
+          <% end %>
+          
+          
+
         </ul>
      </div>
       <div class="col s12 m6 l0">
@@ -29,6 +44,7 @@
           <%= link_to "Voir ses amis", friend_path(@user), :class => "btn waves-effect waves-light orange" %>
         <% end %>
      </div>
+     
 
 
       <% $i = 0 %>
@@ -70,30 +86,6 @@
      </div>
    </div>
   </div>
-  <div class="col s12 m4 l4">
-    <ul class = "collapsible active">
-      <li >
-      <div class="collapsible-header active"><i class="mdi-av-web a"></i>Actualités</div>
-      <div class="collapsible-body active"><p><%= 'kk' %></p></div>
-      </li>
-    </ul>
-  </div>
-  <div class="col s12 m4 l4">
-    <ul class = "collapsible active">
-      <li >
-        <div class="collapsible-header active"><i class="mdi-av-web a"></i>Biographie</div>
-        <div class="collapsible-body active"><p><%= 'kk' %></p></div>
-       </li>
-    </ul>
-  </div>
-  <div class="col s12 m4 l4">
-    <ul class = "collapsible active">
-       <li >
-        <div class="collapsible-header active"><i class="mdi-av-web a"></i>Succès</div>
-        <div class="collapsible-body active"><p><%= 'kk' %></p></div>
-      </li>
-    </ul>
-    </div>
 </div>
 <script src="../min/plugin-min.js"></script>
 <script src="../min/custom-min.js"></script>
