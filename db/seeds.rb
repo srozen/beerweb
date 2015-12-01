@@ -132,15 +132,15 @@ srozen.save
 ### Friends addition ###
 ########################
 
-#srozenisfriend = Friend.new(:user_id => srozen.id, :friendlist_id => willfriend.id)
-#srozenfriendstatus = FriendStatus.new(:status => 'ami', :friends_id => srozen.id, :users_id => willfrit.id)
-#srozenisfriend.save
-#srozenfriendstatus.save
+srozenisfriend = Friend.new(:user_id => srozen.id, :friendlist_id => willfriend.id)
+srozenfriendstatus = FriendStatus.new(:status => 'ami', :friends_id => srozen.id, :users_id => willfrit.id)
+srozenisfriend.save
+srozenfriendstatus.save
 
-#willfritisfriend = Friend.new(:user_id => willfrit.id, :friendlist_id => srofriend.id)
-#willfritfriendstatus = FriendStatus.new(:status => 'ami', :friends_id => willfrit.id, :users_id => srozen.id)
-#willfritisfriend.save
-#willfritfriendstatus.save
+willfritisfriend = Friend.new(:user_id => willfrit.id, :friendlist_id => srofriend.id)
+willfritfriendstatus = FriendStatus.new(:status => 'ami', :friends_id => willfrit.id, :users_id => srozen.id)
+willfritisfriend.save
+willfritfriendstatus.save
 
 #########################
 ### Collection admin ###
