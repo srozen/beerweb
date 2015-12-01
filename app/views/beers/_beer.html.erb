@@ -1,0 +1,10 @@
+<tr>
+    <% if signed_in? && @collection_beers.include?(beer.id) %>
+        <td><i class="material-icons">done</i></td>
+    <% else %>
+        <td></td>
+    <% end %>
+    <td><%= link_to beer.name, beer %></td>
+    <td><%= beer.degree %></td>
+    <td><%= link_to beer.beer_category.name, beer.beer_category %></td>
+</tr>
