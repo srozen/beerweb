@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
   before_filter :authenticateFriends, :only => [:show]
 
   def show
-
+    @title = "Voici vos amis !"
     if !params[:userId].nil?
       userid = params[:userId]
     else
