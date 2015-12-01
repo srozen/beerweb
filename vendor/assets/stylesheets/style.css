@@ -283,3 +283,5 @@ footer.page-footer {
 .pagination li.pages ul li {
     display: inline-block;
     float: none; }
+.a {
+   color: #ffa000 !important;}
