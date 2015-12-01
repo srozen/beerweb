@@ -13,6 +13,10 @@ class CreateTableUsers < ActiveRecord::Migration
       t.string :password_reset
       t.datetime :password_reset_sent
 
+      t.datetime :last_connection
+      t.float :longitude
+      t.float :latitude
+
       t.timestamps null: false
     end
 

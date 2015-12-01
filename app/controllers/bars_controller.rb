@@ -8,6 +8,11 @@ class BarsController < ApplicationController
       format.html
       format.json {
         @fullbars = []
+        user = User.find(params[:userId])
+        user.latitude = params[:latitude]
+        user.longitude = params[:longitude]
+        user.last_connection = DateTime.current
+        user.save
         @bars.each do |bar|
           @fullbars << bar.as_json.merge(:contact => bar.contact_detail)
         end
