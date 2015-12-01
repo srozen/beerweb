@@ -86,29 +86,28 @@ class WebServicesController < ApplicationController
 
   def img_comparator
 
-    # Test
-    imgUn = "public/images/beer_profile/1.jpg"
-    imgDeux = "public/images/beer_profile/2.jpg"
+    # Image envoyé depuis Android à comparer
+    img_src = "#{::Rails.root}/public/images/beer_profile/1.jpg"
 
-    # Debug en console + Site
-    python_cmd = Escape.shell_command(['python', "#{::Rails.root}/bin/py_test.py", "#{imgUn}", "#{imgDeux}"]).to_s
-    @result = system python_cmd
+    # Dossier possédant les images à comparer
+    folder_src = "#{::Rails.root}/public/images/beer_scan/"
 
-    # Récupérer le résultat du script
-    @output = `python #{::Rails.root}/bin/py_test.py #{imgUn} #{imgDeux}`
-    @intoutput = Float(@output.chomp)
+    # Récupérer le résultat du script. 1er arg => image à comparer et 2e arg => le directory parcouru
+    @result = `python #{::Rails.root}/bin/py_test.py #{img_src} #{folder_src}`
+    @numbeer = Integer(@result[0..-6])
 
-    if @intoutput < 17
-      @comp = true
-    else 
-      @comp = false
-    end
+    @beer = Beer.find(@numbeer)
+    @category_beer = Beer.find(@beer.beer_category_id)
 
     respond_to do |format|
       format.html
       format.json {
         render :json => {
-          :result => @comp
+          :name => @beer.name,
+          :degree => @beer.degree,
+          :description => @beer.description,
+          :story => @beer.story,
+          :category => @category_beer.name
         }
       }
     end
