@@ -9,8 +9,8 @@ class BarsController < ApplicationController
       format.json {
         @fullbars = []
         user = User.find(params[:userId])
-        user.latitude = params[:latitude]
-        user.longitude = params[:longitude]
+        user.latitude = params[:latitude].to_f
+        user.longitude = params[:longitude].to_f
         user.last_connection = DateTime.current
         user.save
         @bars.each do |bar|

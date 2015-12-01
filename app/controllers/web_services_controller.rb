@@ -83,7 +83,7 @@ class WebServicesController < ApplicationController
           f.write(Base64.decode64(tmp_img))
         end
         render :json => {
-          :valid => true
+          :checkPhoto => true
         }
       }
     end
