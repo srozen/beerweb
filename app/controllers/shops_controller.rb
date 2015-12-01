@@ -8,6 +8,11 @@ class ShopsController < ApplicationController
       format.html
       format.json {
         @fullshops = []
+        user = User.find(params[:userId])
+        user.latitude = params[:latitude].to_f
+        user.longitude = params[:longitude].to_f
+        user.last_connection = DateTime.current
+        user.save
         @shops.each do |shop|
           @fullshops << shop.as_json.merge(:contact => shop.contact_detail)
         end

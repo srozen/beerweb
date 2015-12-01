@@ -12,7 +12,6 @@ class CreateTableUsers < ActiveRecord::Migration
       t.boolean :admin, default: false
       t.string :password_reset
       t.datetime :password_reset_sent
-
       t.datetime :last_connection
       t.float :longitude
       t.float :latitude
