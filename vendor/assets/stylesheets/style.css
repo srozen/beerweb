@@ -269,15 +269,20 @@ footer.page-footer {
    font-size: 1.2rem;
    border-radius: 2px;
    text-align: center; 
+   margin-bottom: 20px;
 }
 .pagination li a {
-    color: #444; }
+    color: #444; 
+    margin-bottom: 20px; 
+    }
 .pagination li.active a {
     color: #fff; }
 .pagination li.active {
-    background-color: #FFFFFF !important; }
+    background-color: #8C5E5E ; 
+    margin-bottom: 20px; }
 .pagination li.disabled a {
-    color: #999; }
+    color: #999;
+     }
 .pagination li i {
     font-size: 2rem; }
 .pagination li.pages ul li {
