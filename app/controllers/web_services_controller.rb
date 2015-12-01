@@ -73,14 +73,19 @@ class WebServicesController < ApplicationController
     end
   end
 
-    # @user = User.authenticate(params[:login], params[:password])
-    # if @user.nil?
-    #   render :json => {
-    #     :checkLog => false, :idUser => nil
-    #   }
-    # else
-    #   render :json => {
-    #     :checkLog => true, :idUser => @user.id
-    #   }
-    # end
+  def img_comparator
+    tmp_img = params[:img]
+    iduser = params[:idUser]
+
+    respond_to do |format|
+      format.json {
+        File.open("#{RAILS_ROOT}/public/images/img_tmp/#{iduser}", "a+") do |f|
+          f.write(Base64.decode64(tmp_img))
+        end
+        render :json => {
+          :valid => true
+        }
+      }
+    end
+  end
 end

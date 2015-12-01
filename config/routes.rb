@@ -48,6 +48,7 @@ resources :deals
   get '/api_user_profile', :to => 'users#api_show'
   get '/api_bars', :to => 'bars#index'
   get '/api_shops', :to => 'shops#index'
+  post '/api_comp', :to => 'web_services#img_comparator'
   get 'api_deals', :to => 'deals#index'
   post '/api_bars', :to => 'bars#index'
   post '/api_shops', :to => 'shops#index'
