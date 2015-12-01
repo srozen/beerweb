@@ -26,7 +26,7 @@ def main():
 		result = (dif / 255.0 * 100) / ncomponents
 
 		if result < bestresult:
-			
+
 			bestimg = imgComp
 			#bestresult = result
 
