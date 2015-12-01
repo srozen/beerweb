@@ -14,6 +14,7 @@
       </button>
     </form>
 </div>
+
 <% if @beers.blank? %>
   <%= "Aucune bière n'a été trouvée." %>
 <% else %>
@@ -29,18 +30,11 @@
 
     <tbody>
       <% # Résultat de la recherche #index %>
-        <% @beers.each do |beer| %>
-          <tr>
-            <% if signed_in? && @collection_beers.include?(beer.id) %>
-              <td><i class="material-icons">done</i></td>
-            <% else %>
-              <td></td>
-            <% end %>
-            <td><%= link_to beer.name, beer %></td>
-            <td><%= beer.degree %></td>
-            <td><%= link_to beer.beer_category.name, beer.beer_category %></td>
-          </tr>
-        <% end %>
+
+        <%= render @beer_categories %>
+        <%= will_paginate @beer_categories , :class => "pagination" %>
+       
+
     </tbody>
   </table>
 <% end %>
