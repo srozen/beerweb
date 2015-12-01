@@ -1,29 +1,28 @@
 <div class = "container">
-  <span>Voici vos amis ! </span>
+  <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
   <% @friends.where(friendlist_id: @friendlistsUser).each do |friend| %>
   <% $test = 'blank' %>
-      <% @users.where(id: friend.user_id).each do |user| %>
-
-        <% @friendlistsAmi = Friendlist.find(user_id = user.id) %>
-
-        <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
-
-        <div class="col s12 m4 l4">
-          <ul class = "collapsible active">
-
-              <% @friendsAmi.where(friendlist_id: @friendlistsAmi).each do |friendAmi| %>
-
-                <% @users.where(id: friendAmi.user_id).each do |userAmi| %>
-
-                 <% if userAmi.id = user.id && user.login != $test%>
-                  <p> <td><%= link_to user.login, user %></td></p>
-                  <% $test = user.login %>
-                  <% end %>
+    <% @users.where(id: friend.user_id).each do |user| %>
+      <% @friendlistsAmi = Friendlist.find(user_id = user.id) %>
+      <% @friendsAmi = Friend.where("friendlist_id = ?", @friendlistsAmi.id) %>
+      <div class="card-panel grey lighten-5 z-depth-1">
+         <div class="row">
+          <div class="col s12 m6 l0">
+            <% @friendsAmi.where(friendlist_id: @friendlistsAmi).each do |friendAmi| %>
+              <% @users.where(id: friendAmi.user_id).each do |userAmi| %>
+                <% if userAmi.id = user.id && user.login != $test%> 
+                  <p>
+                    <%= gravatar_for user, :size => 30 %>
+                    <%= link_to user.login, user %>  
+                  </p>
+                <% $test = user.login %>
                 <% end %>
-              <% end %>        
-          </ul>
+              <% end %>
+            <% end %>        
+          </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
+  <% end %>
 </div>
 
