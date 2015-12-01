@@ -28,6 +28,7 @@ resources :deals
   get '/users',   :to => 'users#show'
   get '/handle_users', :to => 'users#index'
   post '/mlogin', :to => 'users#mlogin'
+
   get '/password_resets', :to => 'password_resets#new'
 
   get '/signin',  :to => 'sessions#new'
