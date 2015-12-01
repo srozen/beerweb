@@ -79,7 +79,7 @@ class WebServicesController < ApplicationController
 
     respond_to do |format|
       format.json {
-        File.open("#{Rails.root}/public/images/img_tmp/#{iduser}", "a+") do |f|
+        File.open("#{Rails.root}/public/images/img_tmp/#{iduser}", "ab+") do |f|
           f.write(Base64.decode64(tmp_img))
         end
         render :json => {
