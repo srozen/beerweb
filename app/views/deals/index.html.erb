@@ -1,3 +1,4 @@
+<% if signed_in? %>
 <div class="container">
 	<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
 	<div class="row">
@@ -28,8 +29,12 @@
 								<%= link_to @beer.name, @beer %>
 							</div>
 						</div>
+					</div>
 				</div>
 		<% end %>
 	<% end %>
 	</div>
 </div>
+<% else %>
+	<p> Vous n'avez pas les droits pour accéder à cette page. Veuillez créer un compte !</p>
+<% end %>
