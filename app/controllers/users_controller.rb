@@ -144,6 +144,7 @@ def update
       @title = "Édition profil"
       render 'edit'
     end
+    
   else
     @title = "Édition profil"
     flash[:failure] = "les mots de passe ne correspondent pas !"
