@@ -152,10 +152,6 @@ def update
   end
 end
 
-
-
-
-
   private
 
     # Rend les paramètres accessibles sur la méthode
