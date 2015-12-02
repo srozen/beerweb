@@ -98,7 +98,7 @@ class WebServicesController < ApplicationController
         @friends.each do |friend|
           u = User.find(friend.user_id)
           timediff = DateTime.now.to_i - u.last_connection.to_i
-          @userfriends << friend.as_json.merge(:valid => timediff < 600, :login => u.login, :latitude => u.latitude, :longitude => u.longitude)
+          @userfriends << friend.as_json.merge(:valid => timediff < 600, :login => u.login, :latitude => u.latitude, :longitude => u.longitude, :connected => timediff)
         end
         render :json => {
           :friends => @userfriends
