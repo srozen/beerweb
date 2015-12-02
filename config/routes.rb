@@ -16,6 +16,7 @@ resources :deals
   get 'sessions/new'
   get '/contact', :to => 'contacts#new'
   get '/admin_beers',   :to => 'pages#administration_beers'
+  get '/admin_deals', :to => 'pages#administration_deals'
   get '/addbeer', :to => 'beers#new'
   get '/upload_img', :to => 'beers#upload_img'
   get '/handle_beers', :to => 'beers#index'

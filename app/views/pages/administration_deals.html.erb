@@ -1,0 +1,10 @@
+<% if signed_in? && current_user.admin? %>
+<div class="container">
+<h3><span class="span_h3 brown-text"><%=@title%></span></h3>
+<div class="collection">
+    <a href="<%= ajoutbonplan_path %>" class="collection-item orange-text text-darken-1">Ajouter un bon plan</a>
+    <a href="<%= bonsplans_path %>" class="collection-item orange-text text-darken-1">Gérer les bons plans</a>
+</div>
+<% else %>
+<p>Vous n'avez pas les droits pour consulter cette page !</p>
+<% end %>
