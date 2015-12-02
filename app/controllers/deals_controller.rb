@@ -22,6 +22,11 @@ class DealsController < ApplicationController
     @deal = Deal.new(deal_params)
     if @deal.save
 
+      uploaded_io = params[:deal][:picture]
+      File.open(Rails.root.join('public', 'images', 'deal_img', "#{ @deal.id }.jpg"), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+
       flash[:success] = "Bon plan ajouté"
       redirect_to bonsplans_path
     else
@@ -35,6 +40,14 @@ class DealsController < ApplicationController
     flash[:success] = "Bon plan supprimé"
     redirect_to bonsplans_path
   end
+
+  def edit
+    @deal = Deal.find(params[:id])
+    @title = "Editer le bon plan"
+  end
+
+  def update 
+  end 
 
   private
 

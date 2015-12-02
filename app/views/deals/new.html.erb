@@ -59,7 +59,15 @@
            <%= f.label :beer_id, "Nom de la bière en rapport au bon plan" %><br><br>
            <%= f.select :beer_id, Beer.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
          </div>
-      </div>   
+      </div> 
+
+      <div class="row">
+         <div class="input-field col s12">
+           <%= f.label :picture, "Image décrivant le bon plan" %><br><br>  
+           <%= f.file_field :picture %>
+         </div>
+      </div>  
+
       <%= @deal.errors.full_messages.first if @deal.errors.any? %>
      <div class="row">
        <div class="col s12 m5 l4"><p></p></div>
