@@ -28,6 +28,9 @@
 							<div class="card-action">
 								<%= link_to @beer.name, @beer %>
 							</div>
+							<% if current_user.admin? %>
+								<%= button_to "Retirer le bon plan", deal, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer le bon plan #{deal.name} ?')", :class => "orange lighten-2"%>
+							<% end %>
 						</div>
 					</div>
 				</div>

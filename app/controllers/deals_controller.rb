@@ -30,6 +30,12 @@ class DealsController < ApplicationController
     end
   end
 
+  def destroy
+    Deal.find(params[:id]).destroy
+    flash[:success] = "Bon plan supprimé"
+    redirect_to bonsplans_path
+  end
+
   private
 
     # Rend les paramètres accessibles sur la méthode

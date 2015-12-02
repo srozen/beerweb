@@ -17,7 +17,7 @@
               <td><%= link_to user.login, user , :class => "brown-text text-brown"%></td>
               <td><%= user.email %></td>
               <td><%= link_to "Consulter profil",  user_path(user), :class => "brown-text text-brown" %></td>
-              <td><%= button_to "Supprimer", user, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer #{user.login} ?')", :class => "brown"%></td>
+              <td><%= button_to "Supprimer", user, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer #{user.login} ?')", :class => "orange lighten-2"%></td>
             <% end %>
           </tr>
           </tr>

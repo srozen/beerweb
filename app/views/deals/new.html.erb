@@ -1,3 +1,4 @@
+<% if signed_in? && current_user.admin? %>
 <div class="container">
   <div class="col s12 ">
     <h3><span class="span_h3 brown-text"><%=@title%></span></h3>
@@ -59,7 +60,7 @@
            <%= f.select :beer_id, Beer.all.collect { |cat| [cat.name, cat.id]}, {}, prompt: 'Choisir une catégorie' , :class => 'browser-default'%>
          </div>
       </div>   
-
+      <%= @deal.errors.full_messages.first if @deal.errors.any? %>
      <div class="row">
        <div class="col s12 m5 l4"><p></p></div>
            <%= f.submit "Ajout du bon plan" , :class => "btn col s6 m3 l4 waves-light orange"  %>
@@ -69,3 +70,6 @@
        <% end %>
   </div>
 </div>
+<% else %>
+  <p> Vous n'avez pas les droits requis pour accéder à cette page !</p>
+<% end %>
