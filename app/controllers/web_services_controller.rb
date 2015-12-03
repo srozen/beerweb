@@ -125,13 +125,13 @@ class WebServicesController < ApplicationController
       f.write(Base64.decode64(tmp_img))
     end
     # Image envoyé depuis Android à comparer
-    img_src = "#{::Rails.root}/public/images/beer_profile/#{iduser}.jpg"
+    img_src = "#{Rails.root}/public/images/beer_profile/#{iduser}.jpg"
 
     # Dossier possédant les images à comparer
-    folder_src = "#{::Rails.root}/public/images/beer_scan/"
+    folder_src = "#{Rails.root}/public/images/beer_scan/"
 
     # Récupérer le résultat du script. 1er arg => image à comparer et 2e arg => le directory parcouru
-    @result = `python #{::Rails.root}/bin/py_test.py #{img_src} #{folder_src}`
+    @result = `python #{Rails.root}/bin/py_test.py #{img_src} #{folder_src}`
     @numbeer = @result[0..-6].to_i
 
     @beer = Beer.find(@numbeer)
