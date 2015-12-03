@@ -148,6 +148,7 @@ class WebServicesController < ApplicationController
           :story => @beer.story,
           :category => @category_beer.name
         }
+      }
     end
   end
 end
