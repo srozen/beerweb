@@ -101,21 +101,21 @@ class WebServicesController < ApplicationController
     #   }
     # end
 
-  def img_comparator
-    #tmp_img = params[:img]
-    #iduser = params[:idUser]
-
-    respond_to do |format|
-      format.json {
-        File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "ab+") do |f|
-          f.write(Base64.decode64(tmp_img))
-        end
-        render :json => {
-          :checkPhoto => true
-        }
-      }
-    end
-  end
+  # def img_comparator
+  #   #tmp_img = params[:img]
+  #   #iduser = params[:idUser]
+  #
+  #   respond_to do |format|
+  #     format.json {
+  #       File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "ab+") do |f|
+  #         f.write(Base64.decode64(tmp_img))
+  #       end
+  #       render :json => {
+  #         :checkPhoto => true
+  #       }
+  #     }
+  #   end
+  # end
 
   def img_comparator
     tmp_img = params[:img]
