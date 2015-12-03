@@ -1,32 +1,9 @@
-<div class="container">
-  <% if !current_user?(user) %>
-    <div class="card-panel grey lighten-5 z-depth-1">
-      <div class="row">
-        <div class="col s12 m6 l0">
-          <p>
-            <%= gravatar_for user, :size => 30 %>
-      			<%= link_to user.login, user %>	
-            <%= user.id %>
-          </p>
-        </div>
-        <div class="col s12 m6 l0">
-          <div class="row">
-            <% if  !@friends.where(user_id: user.id) %>
-            <% else %>
-              <%= form_tag do %>
-                <div class="row">
-                  <div class="input-field col s6">
-                    <input id="icon_prefix" type="hidden" class="validate" name="addFriend" value="<%= user.id %>">   
-                  </div>
-                </div>
-                <button class="btn waves-effect waves-light orange" type="submit" name="action">Ajouter comme ami
-                  <i class="material-icons right">send</i>
-                </button>
-              <% end %>
-            <% end %>
-          </div>			
-        </div>
-      </div>
-    </div>
+<tr>
+  <% if !user.admin? %>
+    <td><%= link_to user.login, user , :class => "brown-text text-brown"%></td>
+    <td><%= user.email %></td>
+    <td><%= link_to "Consulter profil",  user_path(user), :class => "brown-text text-brown" %></td>
+    <td><%= button_to "Supprimer", user, :method => :delete, :onclick => "return confirm('Etes-vous sûr de vouloir supprimer #{user.login} ?')", :class => "orange lighten-2"%></td>
   <% end %>
-</div>
+</tr>
+         
