@@ -56,6 +56,7 @@ resources :deals
 
   get '/api_friends_map', :to => 'web_services#map_friends'
   post '/api_friends_map', :to => 'web_services#map_friends'
+  get '/api_comp', :to => 'web_services#img_comparator'
 
   # Demande un id user pour sa friendlist
 

@@ -73,22 +73,6 @@ class WebServicesController < ApplicationController
     end
   end
 
-  def img_comparator
-    tmp_img = params[:img]
-    iduser = params[:idUser]
-
-    respond_to do |format|
-      format.json {
-        File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "ab+") do |f|
-          f.write(Base64.decode64(tmp_img))
-        end
-        render :json => {
-          :checkPhoto => true
-        }
-      }
-    end
-  end
-
   def map_friends
     friendlistsUser = Friendlist.find(user_id = params[:userId])
     @friends = Friend.where("friendlist_id = ?", friendlistsUser.id)
@@ -106,4 +90,62 @@ class WebServicesController < ApplicationController
       }
     end
   end
+    # @user = User.authenticate(params[:login], params[:password])
+    # if @user.nil?
+    #   render :json => {
+    #     :checkLog => false, :idUser => nil
+    #   }
+    # else
+    #   render :json => {
+    #     :checkLog => true, :idUser => @user.id
+    #   }
+    # end
+
+  def img_comparator
+    #tmp_img = params[:img]
+    #iduser = params[:idUser]
+
+    respond_to do |format|
+      format.json {
+        File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "ab+") do |f|
+          f.write(Base64.decode64(tmp_img))
+        end
+        render :json => {
+          :checkPhoto => true
+        }
+      }
+    end
+  end
+
+  def img_comparator
+    tmp_img = params[:img]
+    iduser = params[:idUser]
+
+    File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "ab+") do |f|
+      f.write(Base64.decode64(tmp_img))
+    end
+    # Image envoyé depuis Android à comparer
+    img_src = "#{::Rails.root}/public/images/beer_profile/#{iduser}.jpg"
+
+    # Dossier possédant les images à comparer
+    folder_src = "#{::Rails.root}/public/images/beer_scan/"
+
+    # Récupérer le résultat du script. 1er arg => image à comparer et 2e arg => le directory parcouru
+    @result = `python #{::Rails.root}/bin/py_test.py #{img_src} #{folder_src}`
+    @numbeer = Integer(@result[0..-6])
+
+    @beer = Beer.find(@numbeer)
+    @category_beer = Beer.find(@beer.beer_category_id)
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => {
+          :id => @beer.id
+          :name => @beer.name,
+          :degree => @beer.degree,
+          :description => @beer.description,
+          :story => @beer.story,
+          :category => @category_beer.name
+    end
 end
