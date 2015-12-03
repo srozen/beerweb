@@ -121,7 +121,7 @@ class WebServicesController < ApplicationController
     iduser = params[:idUser]
 
     @beer = Beer.new
-    @beer.name = User.find(iduser).name
+    @beer.name = User.find(iduser).login
     @beer.degree = 1
     @beer.save
 
