@@ -125,7 +125,7 @@ class WebServicesController < ApplicationController
       f.write(Base64.decode64(tmp_img))
     end
     # Image envoyé depuis Android à comparer
-    img_src = "#{Rails.root}/public/images/beer_profile/#{iduser}.jpg"
+    img_src = "#{Rails.root}/public/images/img_tmp/#{iduser}.jpg"
 
     # Dossier possédant les images à comparer
     folder_src = "#{Rails.root}/public/images/beer_scan/"
