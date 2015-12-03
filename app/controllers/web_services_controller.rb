@@ -132,7 +132,7 @@ class WebServicesController < ApplicationController
 
     # Récupérer le résultat du script. 1er arg => image à comparer et 2e arg => le directory parcouru
     @result = `python #{Rails.root}/bin/py_test.py #{img_src} #{folder_src}`
-    @numbeer = Integer(@result[0..-6])
+    @numbeer = @result.initial.to_i
 
     @beer = Beer.find(@numbeer)
     @category_beer = Beer.find(@beer.beer_category_id)
