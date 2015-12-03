@@ -149,4 +149,5 @@ class WebServicesController < ApplicationController
           :category => @category_beer.name
         }
     end
+  end
 end
