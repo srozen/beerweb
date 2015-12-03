@@ -64,6 +64,7 @@ class UsersController < ApplicationController
   def index
     @title = "Tous les utilisateurs"
     @users = User.all
+    @usersAll = @users.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
