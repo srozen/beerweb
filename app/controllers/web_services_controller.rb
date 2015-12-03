@@ -141,7 +141,7 @@ class WebServicesController < ApplicationController
       format.html
       format.json {
         render :json => {
-          :id => @beer.id
+          :id => @beer.id,
           :name => @beer.name,
           :degree => @beer.degree,
           :description => @beer.description,
