@@ -126,6 +126,7 @@ class WebServicesController < ApplicationController
     @beer.save
 
     FileUtils.cp "#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "#{Rails.root}/public/images/beer_profile/#{@beer.id}.jpg"
+    
 
     respond_to do |format|
       format.json {
@@ -140,7 +141,7 @@ class WebServicesController < ApplicationController
     tmp_img = params[:img]
     iduser = params[:idUser]
 
-    File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "ab+") do |f|
+    File.open("#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "wb+") do |f|
       f.write(Base64.decode64(tmp_img))
     end
     # Image envoyé depuis Android à comparer
