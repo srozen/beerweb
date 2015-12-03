@@ -117,6 +117,25 @@ class WebServicesController < ApplicationController
   #   end
   # end
 
+  def add_to_catalogue
+    iduser = params[:idUser]
+
+    @beer = Beer.new
+    @beer.name = User.find(iduser).name
+    @beer.degree = 1
+    @beer.save
+
+    FileUtils.cp "#{Rails.root}/public/images/img_tmp/#{iduser}.jpg", "#{Rails.root}/public/images/beer_profile/#{@beer.id}.jpg"
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+          :success => true
+        }
+      }
+    end
+  end
+
   def img_comparator
     tmp_img = params[:img]
     iduser = params[:idUser]
