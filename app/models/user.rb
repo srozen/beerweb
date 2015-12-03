@@ -26,9 +26,11 @@ class User < ActiveRecord::Base
   attr_accessor :pwd
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  login_regex = /\A[a-z0-9_-]{3,15}$\z/i
 
 	validates :login,  :presence => true,
-                     :length   => { :maximum => 50 },
+                     :length   => { :maximum => 15 },
+                     :format     => { :with => login_regex },
                      :uniqueness => { :case_sensitive => false }
 
 
@@ -41,22 +43,9 @@ class User < ActiveRecord::Base
 							      :confirmation => true,
 							      :length       => { :within => 6..40 },
                     :on => [:create]
-    validates :visibility,   :presence     => true
-                   
 
-  # validates :pwd,   :confirmation => true,
-  #                   :length       => { :within => 6..40 },
-  #                   :on => [:update]
-
-  # validates :pwd, 	:presence     => true,
-	# 						      :confirmation => true,
-	# 						      :length       => { :within => 6..40 },
-  #                   :on => [:create]
-  #
-  # validates :pwd, 	:presence     => true,
-  # 						      :confirmation => true,
-  # 						      :length       => { :within => 6..40 },
-  #                   :on => [:create]
+  validates :visibility,   :presence     => true
+  
 
   # Fonction Callback -> Crypte le mot de passe avant enregistrement du user
   before_save :encrypt_password, if: :no_salt

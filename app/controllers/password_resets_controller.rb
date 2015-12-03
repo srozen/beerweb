@@ -17,6 +17,7 @@ class PasswordResetsController < ApplicationController
 
   def edit
     @user = User.find_by_password_reset(params[:id])
+    @title = "Changer votre mot de passe"
   end
 
   def update
@@ -24,14 +25,17 @@ class PasswordResetsController < ApplicationController
 
     if @user
       if !params[:user][:pwd].blank? && !params[:user][:pwd_confirmation].blank?
-        @user.update_attributes(user_params)
+        @user.pwd = params[:user][:pwd]
+        @user.pwd_confirmation = params[:user][:pwd_confirmation]
         @user.encrypt_password
+        @user.save
+        sign_in @user
+        redirect_to @user, :notice => "Votre mot de passe a bien été réinitialisé !"
       end
     else
       flash.now[:danger] = "Combinaison mot de passe incorrecte"
       render "edit"
     end
-    redirect_to root_path, :notice => "Votre mot de passe a bien été réinitialisé !"
   end
 
   private

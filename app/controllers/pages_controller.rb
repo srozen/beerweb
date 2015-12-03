@@ -26,6 +26,10 @@ class PagesController < ApplicationController
     @nbBeerInconfirmed = Beer.where("confirmed = ?", false)
   end
 
+  def administration_deals
+    @title = "Administrer les bons plans"
+  end
+
   def beermap
     @title = "Beermap"
     @bars = Bar.all

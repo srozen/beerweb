@@ -263,3 +263,30 @@ nav a.button-collapse {
 footer.page-footer {
     margin-top: 0px !important;
 }
+
+.pagination li {
+   display: inline-block;
+   font-size: 1.2rem;
+   border-radius: 2px;
+   text-align: center; 
+   margin-bottom: 20px;
+}
+.pagination li a {
+    color: #444; 
+    margin-bottom: 20px; 
+    }
+.pagination li.active a {
+    color: #fff; }
+.pagination li.active {
+    background-color: #8C5E5E ; 
+    margin-bottom: 20px; }
+.pagination li.disabled a {
+    color: #999;
+     }
+.pagination li i {
+    font-size: 2rem; }
+.pagination li.pages ul li {
+    display: inline-block;
+    float: none; }
+.a {
+   color: #ffa000 !important;}

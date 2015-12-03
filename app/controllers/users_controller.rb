@@ -12,9 +12,21 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => [:destroy]
 
   def show
+     if !params[:userId].nil?
+      userid = params[:userId]
+    else
+      userid = params[:id]
+    end
+    
     @user = User.find(params[:id])
     @titre = @user.login
     @collection = Collection.find(user_id = params[:id])
+
+    @collections = Collection.find(user_id = userid)
+    @beers = Beer.all
+
+
+    @reviews = @collections.reviews
 
     respond_to do |format|
       format.html
@@ -132,16 +144,13 @@ def update
       @title = "Édition profil"
       render 'edit'
     end
+    
   else
     @title = "Édition profil"
     flash[:failure] = "les mots de passe ne correspondent pas !"
     render 'edit'
   end
 end
-
-
-
-
 
   private
 

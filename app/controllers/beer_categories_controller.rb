@@ -4,7 +4,7 @@ class BeerCategoriesController < ApplicationController
   def index
     @title = "Catalogue"
     @beers = Beer.search(params[:name])
-
+    @beer_categories = @beers.paginate(:page => params[:page], :per_page => 10)
     if signed_in?
       @collection = Collection.find(current_user.id)
       @reviews = @collection.reviews

@@ -52,6 +52,12 @@ class BeersController < ApplicationController
     end
 
     if @beer.save
+
+      uploaded_io = params[:beer][:picture]
+      File.open(Rails.root.join('public', 'images', 'beer_profile', "#{ @beer.id }.jpg"), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+
       flash[:success] = "La bière a bien été ajoutée !"
       redirect_to @beer
     else
