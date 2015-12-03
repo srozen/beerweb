@@ -10,7 +10,7 @@ def main():
 	img1 = Image.open(fileComp)
 
 	bestresult = 100
-	
+
 	for imgComp in os.listdir(folder):
 
 		img2 = Image.open(os.path.join(folder, imgComp))
@@ -28,8 +28,8 @@ def main():
 		if result < bestresult:
 
 			bestimg = imgComp
-			#bestresult = result
+			bestresult = result
 
-	print bestimg 
+	print bestimg
 
 main()
